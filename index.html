@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Microchip netdev-CI results</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<style>
+:root {
+  --bg: #0f1217;
+  --panel: #161b22;
+  --border: #2a3038;
+  --fg: #e6edf3;
+  --muted: #8b949e;
+  --link: #58a6ff;
+  --pass: #3fb950;
+  --fail: #f85149;
+  --skip: #d29922;
+  --pending: #6e7681;
+}
+@media (prefers-color-scheme: light) {
+  :root {
+    --bg: #ffffff; --panel: #f6f8fa; --border: #d0d7de;
+    --fg: #1f2328; --muted: #59636e; --link: #0969da;
+    --pass: #1a7f37; --fail: #cf222e; --skip: #9a6700; --pending: #59636e;
+  }
+}
+html,body { background: var(--bg); color: var(--fg);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+                         Helvetica, Arial, sans-serif;
+            margin: 0; padding: 0; }
+header { padding: 24px 32px; border-bottom: 1px solid var(--border); }
+h1 { margin: 0; font-size: 22px; font-weight: 600; }
+header p { margin: 6px 0 0 0; color: var(--muted); font-size: 14px; }
+main { max-width: 1100px; margin: 0 auto; padding: 24px 32px; }
+section { margin-bottom: 32px; }
+h2 { font-size: 16px; font-weight: 600; margin: 0 0 12px 0;
+     padding-bottom: 6px; border-bottom: 1px solid var(--border); }
+table { width: 100%; border-collapse: collapse; font-size: 14px; }
+th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--border);
+         vertical-align: top; }
+th { color: var(--muted); font-weight: 500; font-size: 12px;
+     text-transform: uppercase; letter-spacing: 0.5px; }
+a { color: var(--link); text-decoration: none; }
+a:hover { text-decoration: underline; }
+code { font-family: "Cascadia Mono", Consolas, monospace; font-size: 13px;
+       background: var(--panel); padding: 1px 4px; border-radius: 3px; }
+.badge { display: inline-block; padding: 2px 8px; border-radius: 10px;
+         font-size: 11px; font-weight: 600; }
+.badge.pass    { background: rgba(63,185,80,0.15);  color: var(--pass); }
+.badge.fail    { background: rgba(248,81,73,0.15);  color: var(--fail); }
+.badge.skip    { background: rgba(210,153,34,0.15); color: var(--skip); }
+.badge.pending { background: rgba(110,118,129,0.15); color: var(--pending); }
+.counts span { margin-right: 12px; font-variant-numeric: tabular-nums; }
+.counts .p { color: var(--pass); }
+.counts .f { color: var(--fail); }
+.counts .s { color: var(--skip); }
+details { margin: 4px 0; }
+details summary { cursor: pointer; padding: 6px 0; }
+details[open] summary { color: var(--muted); }
+.tests { margin-top: 6px; padding-left: 16px; }
+.tests li { list-style: none; padding: 3px 0;
+            font-family: "Cascadia Mono", Consolas, monospace; font-size: 13px; }
+.tests .verdict { display: inline-block; width: 56px;
+                  font-weight: 600; font-size: 11px;
+                  text-transform: uppercase; }
+.tests .verdict.pass { color: var(--pass); }
+.tests .verdict.fail { color: var(--fail); }
+.tests .verdict.skip { color: var(--skip); }
+.muted { color: var(--muted); }
+.right { text-align: right; }
+footer { color: var(--muted); font-size: 12px; padding: 24px 32px;
+         border-top: 1px solid var(--border); margin-top: 32px; text-align: center; }
+</style>
+</head>
+<body>
+<header>
+  <h1>Microchip netdev-CI results</h1>
+  <p>Automated kselftest runs against current net-next branches on Microchip Ethernet driver hardware.
+     Manifest: <a href="results.json"><code>results.json</code></a>. Schema:
+     <a href="https://github.com/linux-netdev/nipa/wiki/Netdev-CI-system">NIPA wiki</a>.</p>
+</header>
+
+<main>
+<section>
+  <h2>Tested devices</h2>
+  <table>
+    <thead><tr><th>Driver</th><th>Devices</th><th>Status</th></tr></thead>
+    <tbody id="devices"></tbody>
+  </table>
+</section>
+
+<section>
+  <h2>Recent runs</h2>
+  <table>
+    <thead><tr>
+      <th>Branch</th><th>Executor</th><th>Status</th>
+      <th class="right">Counts</th><th>Started</th><th>Detail</th>
+    </tr></thead>
+    <tbody id="runs"></tbody>
+  </table>
+</section>
+</main>
+
+<footer>
+  Source: <a href="https://github.com/microchip1/lan743x-netdev-ci-results">microchip1/lan743x-netdev-ci-results</a> ·
+  Production target: <code>Microchip-Ethernet</code> / <code>microchip-ung</code> (TBD).
+</footer>
+
+<script>
+async function loadJSON(url) {
+  const r = await fetch(url);
+  if (!r.ok) throw new Error(url + " -> " + r.status);
+  return r.json();
+}
+
+function counts(results) {
+  const c = {pass:0, fail:0, skip:0};
+  for (const t of (results || [])) c[t.result] = (c[t.result] || 0) + 1;
+  return c;
+}
+
+async function main() {
+  const manifest = await loadJSON("results.json");
+
+  // Fetch each non-null run JSON in parallel.
+  const runs = await Promise.all(manifest.map(async e => {
+    if (!e.url) return { ...e, _pending: true };
+    try { return { ...e, ...(await loadJSON(e.url)) }; }
+    catch (err) { return { ...e, _err: String(err) }; }
+  }));
+
+  // ---- devices section: collapse by (driver, device.name) ----
+  const devs = new Map();
+  for (const r of runs) {
+    if (r._pending || r._err || !r.device) continue;
+    const drv = r.device.driver;
+    const name = r.device?.versions?.fixed?.["device.name"] || drv;
+    const key = drv;
+    if (!devs.has(key)) devs.set(key, { driver: drv, names: new Set(), latest: r });
+    devs.get(key).names.add(name);
+    if ((r.end || "") > (devs.get(key).latest.end || "")) devs.get(key).latest = r;
+  }
+  const dEl = document.getElementById("devices");
+  if (devs.size === 0) {
+    dEl.innerHTML = '<tr><td colspan="3" class="muted">No completed runs yet.</td></tr>';
+  } else {
+    for (const d of devs.values()) {
+      const c = counts(d.latest.results);
+      const total = c.pass + c.fail + c.skip;
+      let badge;
+      if (c.fail > 0)        badge = '<span class="badge fail">FAIL</span>';
+      else if (total === 0)  badge = '<span class="badge pending">no data</span>';
+      else                   badge = '<span class="badge pass">PASS</span>';
+      const row = document.createElement("tr");
+      row.innerHTML =
+        `<td><code>${d.driver}</code></td>` +
+        `<td>${[...d.names].join(", ")}</td>` +
+        `<td>${badge}</td>`;
+      dEl.appendChild(row);
+    }
+  }
+
+  // ---- runs section ----
+  runs.sort((a, b) => (b.branch || "").localeCompare(a.branch || ""));
+  const rEl = document.getElementById("runs");
+  for (const r of runs) {
+    const tr = document.createElement("tr");
+    if (r._pending) {
+      tr.innerHTML =
+        `<td><code>${r.branch}</code></td>` +
+        `<td>${r.executor}</td>` +
+        `<td><span class="badge pending">in flight</span></td>` +
+        `<td class="right muted">—</td>` +
+        `<td class="muted">—</td>` +
+        `<td class="muted">—</td>`;
+      rEl.appendChild(tr);
+      continue;
+    }
+    if (r._err) {
+      tr.innerHTML =
+        `<td><code>${r.branch}</code></td>` +
+        `<td>${r.executor}</td>` +
+        `<td><span class="badge fail">load error</span></td>` +
+        `<td colspan="3" class="muted">${r._err}</td>`;
+      rEl.appendChild(tr);
+      continue;
+    }
+    const c = counts(r.results);
+    const total = c.pass + c.fail + c.skip;
+    const badge = c.fail > 0
+      ? '<span class="badge fail">FAIL</span>'
+      : (total === 0
+          ? '<span class="badge pending">empty</span>'
+          : '<span class="badge pass">PASS</span>');
+    const detailId = "d-" + r.branch.replace(/[^a-zA-Z0-9_-]/g, "_");
+    tr.innerHTML =
+      `<td><code>${r.branch}</code></td>` +
+      `<td>${r.executor}</td>` +
+      `<td>${badge}</td>` +
+      `<td class="right counts">` +
+        `<span class="p">${c.pass} pass</span>` +
+        (c.fail ? `<span class="f">${c.fail} fail</span>` : "") +
+        (c.skip ? `<span class="s">${c.skip} skip</span>` : "") +
+      `</td>` +
+      `<td class="muted">${(r.start || "").slice(0, 16).replace("T", " ")}</td>` +
+      `<td><a href="#${detailId}" onclick="document.getElementById('${detailId}').open=true">tests</a></td>`;
+    rEl.appendChild(tr);
+
+    const detailRow = document.createElement("tr");
+    detailRow.innerHTML =
+      `<td colspan="6">` +
+        `<details id="${detailId}"><summary class="muted">per-test results (${total})</summary>` +
+        `<ul class="tests">` +
+        (r.results || []).map(t =>
+          `<li><span class="verdict ${t.result}">${t.result}</span> ` +
+          `${t.group}.${t.test}` +
+          (t.time ? ` <span class="muted">(${t.time}s)</span>` : "") + `</li>`
+        ).join("") +
+        `</ul></details>` +
+      `</td>`;
+    rEl.appendChild(detailRow);
+  }
+}
+
+main().catch(err => {
+  document.body.insertAdjacentHTML("beforeend",
+    `<p style="padding:24px 32px;color:var(--fail);">load failed: ${err}</p>`);
+});
+</script>
+</body>
+</html>
