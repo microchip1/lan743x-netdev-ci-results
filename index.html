@@ -283,6 +283,7 @@ function renderMeta(runs) {
 
 function renderHero(runs) {
   const completed = runs.filter(r => !r._pending && !r._err);
+  const pending = runs.filter(r => r._pending).length;
   const last = completed[0];
   const lastC = last ? counts(last.results) : {pass:0,fail:0,skip:0};
   const total = lastC.pass + lastC.fail + lastC.skip;
@@ -312,7 +313,7 @@ function renderHero(runs) {
     { label: "Latest run", value: last ? relTime(last.end || last.start) : "—",
       sub: last ? esc(last.branch) : "—" },
     { label: "Runs published", value: completed.length,
-      sub: pending ? `${runs.filter(r=>r._pending).length} in flight` : "" },
+      sub: pending ? `${pending} in flight` : "" },
     { label: "Trend (last " + trendRuns.length + ")", html: trend },
   ];
   document.getElementById("hero").innerHTML = cards.map(c => `
