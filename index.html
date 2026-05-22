@@ -2,12 +2,13 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>Microchip netdev-CI results</title>
+<title>Microchip netdev-CI · LAN7430</title>
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <style>
 :root {
-  --bg: #0f1217;
+  --bg: #0d1117;
   --panel: #161b22;
+  --panel-2: #1c2128;
   --border: #2a3038;
   --fg: #e6edf3;
   --muted: #8b949e;
@@ -16,75 +17,139 @@
   --fail: #f85149;
   --skip: #d29922;
   --pending: #6e7681;
+  --pass-bg: rgba(63,185,80,0.12);
+  --fail-bg: rgba(248,81,73,0.12);
+  --skip-bg: rgba(210,153,34,0.12);
 }
 @media (prefers-color-scheme: light) {
   :root {
-    --bg: #ffffff; --panel: #f6f8fa; --border: #d0d7de;
-    --fg: #1f2328; --muted: #59636e; --link: #0969da;
-    --pass: #1a7f37; --fail: #cf222e; --skip: #9a6700; --pending: #59636e;
+    --bg: #ffffff; --panel: #f6f8fa; --panel-2: #ffffff;
+    --border: #d0d7de; --fg: #1f2328; --muted: #59636e;
+    --link: #0969da; --pass: #1a7f37; --fail: #cf222e; --skip: #9a6700;
+    --pending: #59636e;
+    --pass-bg: rgba(26,127,55,0.10); --fail-bg: rgba(207,34,46,0.10);
+    --skip-bg: rgba(154,103,0,0.10);
   }
 }
+* { box-sizing: border-box; }
 html,body { background: var(--bg); color: var(--fg);
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
                          Helvetica, Arial, sans-serif;
-            margin: 0; padding: 0; }
-header { padding: 24px 32px; border-bottom: 1px solid var(--border); }
-h1 { margin: 0; font-size: 22px; font-weight: 600; }
-header p { margin: 6px 0 0 0; color: var(--muted); font-size: 14px; }
-main { max-width: 1100px; margin: 0 auto; padding: 24px 32px; }
-section { margin-bottom: 32px; }
-h2 { font-size: 16px; font-weight: 600; margin: 0 0 12px 0;
-     padding-bottom: 6px; border-bottom: 1px solid var(--border); }
-table { width: 100%; border-collapse: collapse; font-size: 14px; }
-th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--border);
+            margin: 0; padding: 0; line-height: 1.45; }
+
+header.top { padding: 28px 32px 20px; border-bottom: 1px solid var(--border); }
+header.top h1 { margin: 0; font-size: 22px; font-weight: 600; letter-spacing: -0.01em; }
+header.top p { margin: 6px 0 0 0; color: var(--muted); font-size: 13px; }
+header.top .meta { color: var(--muted); font-size: 12px; margin-top: 4px;
+                   font-family: "Cascadia Mono", Consolas, monospace; }
+
+main { max-width: 1200px; margin: 0 auto; padding: 24px 32px 64px; }
+
+/* Hero stats */
+.hero {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px; margin: 12px 0 32px;
+}
+.hero .card {
+  background: var(--panel); border: 1px solid var(--border); border-radius: 10px;
+  padding: 16px 18px; display: flex; flex-direction: column;
+}
+.hero .card .label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.6px;
+                     color: var(--muted); font-weight: 600; }
+.hero .card .value { font-size: 28px; font-weight: 600; margin-top: 4px;
+                     font-variant-numeric: tabular-nums; letter-spacing: -0.02em; }
+.hero .card .value.pass { color: var(--pass); }
+.hero .card .value.fail { color: var(--fail); }
+.hero .card .sub { font-size: 12px; color: var(--muted); margin-top: 2px; }
+
+/* Trend bars */
+.trend { display: flex; align-items: end; gap: 4px; height: 36px; margin-top: 6px; }
+.trend .bar { flex: 1; min-width: 6px; display: flex; flex-direction: column;
+              border-radius: 2px 2px 0 0; overflow: hidden; cursor: help; }
+.trend .seg.pass { background: var(--pass); }
+.trend .seg.fail { background: var(--fail); }
+.trend .seg.skip { background: var(--skip); }
+
+/* Sections */
+section { margin-bottom: 36px; }
+h2 { font-size: 14px; font-weight: 600; margin: 0 0 12px 0;
+     text-transform: uppercase; letter-spacing: 0.8px; color: var(--muted);
+     padding-bottom: 8px; border-bottom: 1px solid var(--border); }
+
+/* Tables */
+table { width: 100%; border-collapse: collapse; font-size: 13px; }
+th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--border);
          vertical-align: top; }
-th { color: var(--muted); font-weight: 500; font-size: 12px;
+th { color: var(--muted); font-weight: 500; font-size: 11px;
      text-transform: uppercase; letter-spacing: 0.5px; }
+tbody tr:hover { background: var(--panel); }
 a { color: var(--link); text-decoration: none; }
 a:hover { text-decoration: underline; }
-code { font-family: "Cascadia Mono", Consolas, monospace; font-size: 13px;
-       background: var(--panel); padding: 1px 4px; border-radius: 3px; }
+code { font-family: "Cascadia Mono", Consolas, monospace; font-size: 12px;
+       background: var(--panel); padding: 1px 5px; border-radius: 3px; }
+
+/* Badges */
 .badge { display: inline-block; padding: 2px 8px; border-radius: 10px;
-         font-size: 11px; font-weight: 600; }
-.badge.pass    { background: rgba(63,185,80,0.15);  color: var(--pass); }
-.badge.fail    { background: rgba(248,81,73,0.15);  color: var(--fail); }
-.badge.skip    { background: rgba(210,153,34,0.15); color: var(--skip); }
+         font-size: 11px; font-weight: 600; letter-spacing: 0.3px; }
+.badge.pass    { background: var(--pass-bg); color: var(--pass); }
+.badge.fail    { background: var(--fail-bg); color: var(--fail); }
+.badge.skip    { background: var(--skip-bg); color: var(--skip); }
 .badge.pending { background: rgba(110,118,129,0.15); color: var(--pending); }
-.counts span { margin-right: 12px; font-variant-numeric: tabular-nums; }
-.counts .p { color: var(--pass); }
-.counts .f { color: var(--fail); }
-.counts .s { color: var(--skip); }
-details { margin: 4px 0; }
-details summary { cursor: pointer; padding: 6px 0; }
-details[open] summary { color: var(--muted); }
-.tests { margin-top: 6px; padding-left: 16px; }
-.tests li { list-style: none; padding: 3px 0;
-            font-family: "Cascadia Mono", Consolas, monospace; font-size: 13px; }
-.tests .verdict { display: inline-block; width: 56px;
-                  font-weight: 600; font-size: 11px;
-                  text-transform: uppercase; }
-.tests .verdict.pass { color: var(--pass); }
-.tests .verdict.fail { color: var(--fail); }
-.tests .verdict.skip { color: var(--skip); }
-.muted { color: var(--muted); }
 .right { text-align: right; }
+
+/* Filters row */
+.filters { display: flex; gap: 8px; margin-bottom: 12px; flex-wrap: wrap;
+           align-items: center; }
+.filters input, .filters select {
+  background: var(--panel); color: var(--fg);
+  border: 1px solid var(--border); border-radius: 6px;
+  padding: 6px 10px; font-size: 13px; font-family: inherit;
+  min-width: 200px;
+}
+.filters input:focus, .filters select:focus { outline: none; border-color: var(--link); }
+.filters .pill {
+  background: var(--panel); color: var(--muted); border: 1px solid var(--border);
+  padding: 5px 10px; border-radius: 12px; font-size: 12px; cursor: pointer;
+  user-select: none;
+}
+.filters .pill.active { background: var(--link); color: white; border-color: var(--link); }
+
+/* Test matrix */
+.matrix { overflow-x: auto; }
+.matrix table { font-size: 12px; }
+.matrix th.run { writing-mode: vertical-rl; text-orientation: mixed;
+                 height: 110px; padding: 4px 4px; vertical-align: bottom; }
+.matrix td.cell { padding: 0; text-align: center; height: 22px; width: 22px;
+                  border: 1px solid var(--border); border-collapse: collapse; }
+.matrix td.cell.pass { background: var(--pass); }
+.matrix td.cell.fail { background: var(--fail); }
+.matrix td.cell.skip { background: var(--skip); }
+.matrix td.cell.none { background: transparent; }
+.matrix td.testname { white-space: nowrap; font-family: "Cascadia Mono", Consolas, monospace; }
+.matrix td.testname .group { color: var(--muted); font-size: 11px; }
+
 footer { color: var(--muted); font-size: 12px; padding: 24px 32px;
-         border-top: 1px solid var(--border); margin-top: 32px; text-align: center; }
+         border-top: 1px solid var(--border); text-align: center; }
+footer a { color: var(--muted); }
+footer a:hover { color: var(--link); }
+.muted { color: var(--muted); }
 </style>
 </head>
 <body>
-<header>
-  <h1>Microchip netdev-CI results</h1>
-  <p>Automated kselftest runs against current net-next branches on Microchip Ethernet driver hardware.
-     Manifest: <a href="results.json"><code>results.json</code></a>. Schema:
-     <a href="https://github.com/linux-netdev/nipa/wiki/Netdev-CI-system">NIPA wiki</a>.</p>
+<header class="top">
+  <h1>Microchip netdev-CI · LAN7430</h1>
+  <p>Continuous kselftest results from the <code>lan743x</code> driver against current net-next branches.</p>
+  <p class="meta" id="meta-line">loading…</p>
 </header>
 
 <main>
+
+<section class="hero" id="hero"></section>
+
 <section>
   <h2>Tested devices</h2>
   <table>
-    <thead><tr><th>Driver</th><th>Devices</th><th>Status</th></tr></thead>
+    <thead><tr><th>Driver</th><th>Devices</th><th>Status</th><th>Latest run</th></tr></thead>
     <tbody id="devices"></tbody>
   </table>
 </section>
@@ -93,25 +158,52 @@ footer { color: var(--muted); font-size: 12px; padding: 24px 32px;
   <h2>Recent runs</h2>
   <table>
     <thead><tr>
-      <th>Branch</th><th>Executor</th><th>Status</th>
-      <th class="right">Counts</th><th>Started</th><th>Detail</th>
+      <th>Branch</th><th>Started</th><th>Status</th>
+      <th class="right">Pass</th><th class="right">Fail</th><th class="right">Skip</th>
+      <th>Detail</th>
     </tr></thead>
     <tbody id="runs"></tbody>
   </table>
 </section>
+
+<section>
+  <h2>Test status matrix</h2>
+  <div class="filters">
+    <input type="search" id="filter" placeholder="filter tests by name… (e.g. ethtool, queues)">
+    <span class="pill active" data-group="">all</span>
+    <span class="pill" data-group="selftests-drivers-net">drivers/net</span>
+    <span class="pill" data-group="selftests-drivers-net-hw">drivers/net/hw</span>
+    <span class="pill" data-status="fail">only failing</span>
+    <span class="pill" data-status="pass">only passing</span>
+  </div>
+  <p class="muted" style="font-size:12px;margin:6px 0 12px;">
+    Each row is a test, each column is a run (newest on the right). Square color = pass / fail / skip.
+    Hover a square for the run timestamp; click to open the per-run JSON.
+  </p>
+  <div class="matrix" id="matrix"></div>
+</section>
+
 </main>
 
 <footer>
-  Source: <a href="https://github.com/microchip1/lan743x-netdev-ci-results">microchip1/lan743x-netdev-ci-results</a> ·
-  Production target: <code>Microchip-Ethernet</code> / <code>microchip-ung</code> (TBD).
+  <p>
+    Manifest: <a href="results.json">results.json</a> ·
+    Schema: <a href="https://github.com/linux-netdev/nipa/wiki/Netdev-CI-system">NIPA wiki</a> ·
+    Source: <a href="https://github.com/microchip1/lan743x-netdev-ci-results">microchip1/lan743x-netdev-ci-results</a>
+  </p>
+  <p>Production target: <code>Microchip-Ethernet</code> / <code>microchip-ung</code> (TBD)</p>
 </footer>
 
 <script>
+const STATE = { runs: [], filter: "", group: "", status: "" };
+
 async function loadJSON(url) {
   const r = await fetch(url);
   if (!r.ok) throw new Error(url + " -> " + r.status);
   return r.json();
 }
+function esc(s) { return String(s).replace(/[&<>"']/g, c =>
+  ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c])); }
 
 function counts(results) {
   const c = {pass:0, fail:0, skip:0};
@@ -119,107 +211,249 @@ function counts(results) {
   return c;
 }
 
-async function main() {
-  const manifest = await loadJSON("results.json");
+function pct(num, den) {
+  if (!den) return "—";
+  return (100 * num / den).toFixed(0) + "%";
+}
 
-  // Fetch each non-null run JSON in parallel.
+function relTime(iso) {
+  if (!iso) return "—";
+  const t = new Date(iso.replace(" ", "T"));
+  const dMs = Date.now() - t.getTime();
+  if (Number.isNaN(dMs)) return "—";
+  const mins = Math.floor(dMs / 60000);
+  if (mins < 1) return "just now";
+  if (mins < 60) return mins + "m ago";
+  const hrs = Math.floor(mins / 60);
+  if (hrs < 24) return hrs + "h ago";
+  const days = Math.floor(hrs / 24);
+  return days + "d ago";
+}
+
+async function main() {
+  document.getElementById("meta-line").textContent = "loading manifest…";
+  const manifest = await loadJSON("results.json");
   const runs = await Promise.all(manifest.map(async e => {
     if (!e.url) return { ...e, _pending: true };
     try { return { ...e, ...(await loadJSON(e.url)) }; }
     catch (err) { return { ...e, _err: String(err) }; }
   }));
+  // Newest first
+  runs.sort((a,b) => (b.branch || "").localeCompare(a.branch || ""));
+  STATE.runs = runs;
 
-  // ---- devices section: collapse by (driver, device.name) ----
+  renderMeta(runs);
+  renderHero(runs);
+  renderDevices(runs);
+  renderRuns(runs);
+  renderMatrix();
+
+  // Wire up filters
+  document.getElementById("filter").addEventListener("input", e => {
+    STATE.filter = e.target.value.trim().toLowerCase(); renderMatrix();
+  });
+  document.querySelectorAll(".pill[data-group]").forEach(el => {
+    el.addEventListener("click", () => {
+      document.querySelectorAll(".pill[data-group]").forEach(x => x.classList.remove("active"));
+      el.classList.add("active");
+      STATE.group = el.dataset.group; renderMatrix();
+    });
+  });
+  document.querySelectorAll(".pill[data-status]").forEach(el => {
+    el.addEventListener("click", () => {
+      const same = STATE.status === el.dataset.status;
+      document.querySelectorAll(".pill[data-status]").forEach(x => x.classList.remove("active"));
+      if (!same) { el.classList.add("active"); STATE.status = el.dataset.status; }
+      else STATE.status = "";
+      renderMatrix();
+    });
+  });
+}
+
+function renderMeta(runs) {
+  const completed = runs.filter(r => !r._pending && !r._err).length;
+  const pending = runs.filter(r => r._pending).length;
+  const last = runs.find(r => !r._pending && !r._err);
+  const stamp = last && last.end ? last.end : "—";
+  document.getElementById("meta-line").textContent =
+    `${completed} run${completed===1?"":"s"}` +
+    (pending ? ` · ${pending} in flight` : "") +
+    ` · last: ${stamp}`;
+}
+
+function renderHero(runs) {
+  const completed = runs.filter(r => !r._pending && !r._err);
+  const last = completed[0];
+  const lastC = last ? counts(last.results) : {pass:0,fail:0,skip:0};
+  const total = lastC.pass + lastC.fail + lastC.skip;
+  const passRate = pct(lastC.pass, total);
+
+  // Trend across last 8 completed runs (oldest -> newest)
+  const trendRuns = completed.slice(0, 8).reverse();
+  const maxTotal = Math.max(1, ...trendRuns.map(r => {
+    const c = counts(r.results); return c.pass + c.fail + c.skip;
+  }));
+  let trend = '<div class="trend">';
+  for (const r of trendRuns) {
+    const c = counts(r.results);
+    const t = c.pass + c.fail + c.skip;
+    const h = Math.max(2, Math.round(36 * t / maxTotal));
+    trend += `<div class="bar" title="${esc(r.branch)} · ${c.pass}p ${c.fail}f ${c.skip}s" style="height:${h}px">`;
+    if (c.pass) trend += `<div class="seg pass" style="flex:${c.pass}"></div>`;
+    if (c.skip) trend += `<div class="seg skip" style="flex:${c.skip}"></div>`;
+    if (c.fail) trend += `<div class="seg fail" style="flex:${c.fail}"></div>`;
+    trend += `</div>`;
+  }
+  trend += `</div>`;
+
+  const cards = [
+    { label: "Pass rate (latest)", value: passRate, valueClass: total ? (lastC.fail ? "fail" : "pass") : "",
+      sub: total ? `${lastC.pass} / ${total} tests` : "no data yet" },
+    { label: "Latest run", value: last ? relTime(last.end || last.start) : "—",
+      sub: last ? esc(last.branch) : "—" },
+    { label: "Runs published", value: completed.length,
+      sub: pending ? `${runs.filter(r=>r._pending).length} in flight` : "" },
+    { label: "Trend (last " + trendRuns.length + ")", html: trend },
+  ];
+  document.getElementById("hero").innerHTML = cards.map(c => `
+    <div class="card">
+      <div class="label">${esc(c.label)}</div>
+      ${c.html ?? `<div class="value ${c.valueClass||''}">${esc(c.value)}</div>`}
+      ${c.sub ? `<div class="sub">${c.sub}</div>` : ""}
+    </div>
+  `).join("");
+}
+
+function renderDevices(runs) {
   const devs = new Map();
   for (const r of runs) {
     if (r._pending || r._err || !r.device) continue;
-    const drv = r.device.driver;
+    const drv = r.device.driver || "?";
     const name = r.device?.versions?.fixed?.["device.name"] || drv;
-    const key = drv;
-    if (!devs.has(key)) devs.set(key, { driver: drv, names: new Set(), latest: r });
-    devs.get(key).names.add(name);
-    if ((r.end || "") > (devs.get(key).latest.end || "")) devs.get(key).latest = r;
+    if (!devs.has(drv)) devs.set(drv, { driver: drv, names: new Set(), latest: r });
+    devs.get(drv).names.add(name);
+    if ((r.end || "") > (devs.get(drv).latest.end || "")) devs.get(drv).latest = r;
   }
-  const dEl = document.getElementById("devices");
+  const el = document.getElementById("devices");
   if (devs.size === 0) {
-    dEl.innerHTML = '<tr><td colspan="3" class="muted">No completed runs yet.</td></tr>';
-  } else {
-    for (const d of devs.values()) {
-      const c = counts(d.latest.results);
-      const total = c.pass + c.fail + c.skip;
-      let badge;
-      if (c.fail > 0)        badge = '<span class="badge fail">FAIL</span>';
-      else if (total === 0)  badge = '<span class="badge pending">no data</span>';
-      else                   badge = '<span class="badge pass">PASS</span>';
-      const row = document.createElement("tr");
-      row.innerHTML =
-        `<td><code>${d.driver}</code></td>` +
-        `<td>${[...d.names].join(", ")}</td>` +
-        `<td>${badge}</td>`;
-      dEl.appendChild(row);
-    }
+    el.innerHTML = '<tr><td colspan="4" class="muted">No completed runs yet.</td></tr>';
+    return;
   }
-
-  // ---- runs section ----
-  runs.sort((a, b) => (b.branch || "").localeCompare(a.branch || ""));
-  const rEl = document.getElementById("runs");
-  for (const r of runs) {
-    const tr = document.createElement("tr");
-    if (r._pending) {
-      tr.innerHTML =
-        `<td><code>${r.branch}</code></td>` +
-        `<td>${r.executor}</td>` +
-        `<td><span class="badge pending">in flight</span></td>` +
-        `<td class="right muted">—</td>` +
-        `<td class="muted">—</td>` +
-        `<td class="muted">—</td>`;
-      rEl.appendChild(tr);
-      continue;
-    }
-    if (r._err) {
-      tr.innerHTML =
-        `<td><code>${r.branch}</code></td>` +
-        `<td>${r.executor}</td>` +
-        `<td><span class="badge fail">load error</span></td>` +
-        `<td colspan="3" class="muted">${r._err}</td>`;
-      rEl.appendChild(tr);
-      continue;
-    }
-    const c = counts(r.results);
+  el.innerHTML = [...devs.values()].map(d => {
+    const c = counts(d.latest.results);
     const total = c.pass + c.fail + c.skip;
     const badge = c.fail > 0
-      ? '<span class="badge fail">FAIL</span>'
+      ? `<span class="badge fail">${c.fail} failing</span>`
       : (total === 0
-          ? '<span class="badge pending">empty</span>'
-          : '<span class="badge pass">PASS</span>');
-    const detailId = "d-" + r.branch.replace(/[^a-zA-Z0-9_-]/g, "_");
-    tr.innerHTML =
-      `<td><code>${r.branch}</code></td>` +
-      `<td>${r.executor}</td>` +
-      `<td>${badge}</td>` +
-      `<td class="right counts">` +
-        `<span class="p">${c.pass} pass</span>` +
-        (c.fail ? `<span class="f">${c.fail} fail</span>` : "") +
-        (c.skip ? `<span class="s">${c.skip} skip</span>` : "") +
-      `</td>` +
-      `<td class="muted">${(r.start || "").slice(0, 16).replace("T", " ")}</td>` +
-      `<td><a href="#${detailId}" onclick="document.getElementById('${detailId}').open=true">tests</a></td>`;
-    rEl.appendChild(tr);
+          ? `<span class="badge pending">no data</span>`
+          : `<span class="badge pass">all green</span>`);
+    return `<tr>
+      <td><code>${esc(d.driver)}</code></td>
+      <td>${esc([...d.names].join(", "))}</td>
+      <td>${badge}</td>
+      <td class="muted">${relTime(d.latest.end)}</td>
+    </tr>`;
+  }).join("");
+}
 
-    const detailRow = document.createElement("tr");
-    detailRow.innerHTML =
-      `<td colspan="6">` +
-        `<details id="${detailId}"><summary class="muted">per-test results (${total})</summary>` +
-        `<ul class="tests">` +
-        (r.results || []).map(t =>
-          `<li><span class="verdict ${t.result}">${t.result}</span> ` +
-          `${t.group}.${t.test}` +
-          (t.time ? ` <span class="muted">(${t.time}s)</span>` : "") + `</li>`
-        ).join("") +
-        `</ul></details>` +
-      `</td>`;
-    rEl.appendChild(detailRow);
+function renderRuns(runs) {
+  const el = document.getElementById("runs");
+  el.innerHTML = runs.map(r => {
+    if (r._pending) return `<tr>
+      <td><code>${esc(r.branch)}</code></td>
+      <td class="muted">—</td>
+      <td><span class="badge pending">in flight</span></td>
+      <td colspan="4" class="muted">—</td></tr>`;
+    if (r._err) return `<tr>
+      <td><code>${esc(r.branch)}</code></td>
+      <td class="muted">—</td>
+      <td><span class="badge fail">load error</span></td>
+      <td colspan="4" class="muted">${esc(r._err)}</td></tr>`;
+    const c = counts(r.results);
+    const total = c.pass + c.fail + c.skip;
+    const badge = c.fail
+      ? `<span class="badge fail">FAIL</span>`
+      : (total === 0 ? `<span class="badge pending">empty</span>` : `<span class="badge pass">PASS</span>`);
+    return `<tr>
+      <td><code>${esc(r.branch)}</code></td>
+      <td class="muted">${esc((r.start||"").slice(0,16).replace("T"," "))}</td>
+      <td>${badge}</td>
+      <td class="right">${c.pass}</td>
+      <td class="right">${c.fail || ""}</td>
+      <td class="right">${c.skip || ""}</td>
+      <td><a href="${esc(r.url || "#")}">JSON</a></td>
+    </tr>`;
+  }).join("");
+}
+
+function renderMatrix() {
+  const completed = STATE.runs.filter(r => !r._pending && !r._err);
+  if (completed.length === 0) {
+    document.getElementById("matrix").innerHTML =
+      '<p class="muted">No completed runs yet.</p>';
+    return;
   }
+  // Cap at most recent 12 runs to keep the matrix readable.
+  const recent = completed.slice(0, 12).reverse();   // oldest -> newest
+
+  // Build the universe of (group, test) pairs across these runs.
+  const tests = new Map();
+  for (const r of recent) {
+    for (const t of (r.results || [])) {
+      const key = t.group + "|" + t.test;
+      if (!tests.has(key)) tests.set(key, { group: t.group, test: t.test, byBranch: {} });
+      tests.get(key).byBranch[r.branch] = t.result;
+    }
+  }
+
+  // Apply filters.
+  const f = STATE.filter;
+  const g = STATE.group;
+  const s = STATE.status;
+  const rows = [...tests.values()].filter(row => {
+    if (f && !(row.test.toLowerCase().includes(f) || row.group.toLowerCase().includes(f))) return false;
+    if (g && row.group !== g) return false;
+    if (s) {
+      const latest = row.byBranch[recent[recent.length-1].branch];
+      if (s === "fail" && latest !== "fail") return false;
+      if (s === "pass" && latest !== "pass") return false;
+    }
+    return true;
+  });
+
+  // Sort: failing first, then group, then test name.
+  const ord = { fail: 0, skip: 1, pass: 2, undefined: 3 };
+  rows.sort((a, b) => {
+    const av = ord[a.byBranch[recent[recent.length-1].branch]] ?? 3;
+    const bv = ord[b.byBranch[recent[recent.length-1].branch]] ?? 3;
+    if (av !== bv) return av - bv;
+    if (a.group !== b.group) return a.group.localeCompare(b.group);
+    return a.test.localeCompare(b.test);
+  });
+
+  const head = '<thead><tr><th>Test</th>' +
+    recent.map(r =>
+      `<th class="run" title="${esc(r.branch)} · ${esc(r.end||r.start||"")}">${esc(r.branch.replace(/^net-next-hw-/, ""))}</th>`
+    ).join("") + '</tr></thead>';
+
+  const body = '<tbody>' + rows.map(row => {
+    const cells = recent.map(r => {
+      const v = row.byBranch[r.branch];
+      const cls = v ? v : "none";
+      const url = STATE.runs.find(x => x.branch === r.branch)?.url || "#";
+      return `<td class="cell ${cls}" title="${esc(r.branch)}: ${esc(v || "no data")}">` +
+             (v ? `<a href="${esc(url)}" style="display:block;width:100%;height:100%;"></a>` : "") +
+             `</td>`;
+    }).join("");
+    return `<tr><td class="testname"><span class="group">${esc(row.group.replace(/^selftests-/, ""))}/</span>${esc(row.test)}</td>${cells}</tr>`;
+  }).join("") + '</tbody>';
+
+  if (rows.length === 0) {
+    document.getElementById("matrix").innerHTML =
+      '<p class="muted">No tests match the current filters.</p>';
+    return;
+  }
+  document.getElementById("matrix").innerHTML = `<table>${head}${body}</table>`;
 }
 
 main().catch(err => {
