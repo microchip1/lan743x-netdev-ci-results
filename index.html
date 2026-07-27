@@ -402,8 +402,9 @@ function renderMatrix() {
   for (const r of recent) {
     for (const t of (r.results || [])) {
       const key = t.group + "|" + t.test;
-      if (!tests.has(key)) tests.set(key, { group: t.group, test: t.test, byBranch: {} });
+      if (!tests.has(key)) tests.set(key, { group: t.group, test: t.test, byBranch: {}, linkByBranch: {} });
       tests.get(key).byBranch[r.branch] = t.result;
+      if (t.link) tests.get(key).linkByBranch[r.branch] = t.link;
     }
   }
 
@@ -441,8 +442,10 @@ function renderMatrix() {
     const cells = recent.map(r => {
       const v = row.byBranch[r.branch];
       const cls = v ? v : "none";
-      const url = STATE.runs.find(x => x.branch === r.branch)?.url || "#";
-      return `<td class="cell ${cls}" title="${esc(r.branch)}: ${esc(v || "no data")}">` +
+      const testLog = row.linkByBranch[r.branch];
+      const url = testLog || STATE.runs.find(x => x.branch === r.branch)?.url || "#";
+      const tt = testLog ? "click for stdout" : "click for run JSON";
+      return `<td class="cell ${cls}" title="${esc(r.branch)}: ${esc(v || "no data")} (${tt})">` +
              (v ? `<a href="${esc(url)}" style="display:block;width:100%;height:100%;"></a>` : "") +
              `</td>`;
     }).join("");
