@@ -198,6 +198,16 @@ footer a:hover { color: var(--link); }
 const STATE = { runs: [], filter: "", group: "", status: "" };
 
 async function loadJSON(url) {
+  // If url is absolute and points at a different host than the current page,
+  // strip the origin so we fetch same-origin (needed when serving the DUT
+  // local site via an SSH tunnel: manifest entries carry the DUT's raw
+  // hostname/IP which isn't reachable from the browser via the tunnel).
+  try {
+    const u = new URL(url, document.baseURI);
+    if (u.origin !== window.location.origin) {
+      url = u.pathname + u.search + u.hash;
+    }
+  } catch (e) { /* leave url as-is */ }
   const r = await fetch(url);
   if (!r.ok) throw new Error(url + " -> " + r.status);
   return r.json();
