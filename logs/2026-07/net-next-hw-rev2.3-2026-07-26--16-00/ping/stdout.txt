@@ -1,0 +1,60 @@
+TAP version 13
+1..7
+ok 1 ping.test_default_v4
+ok 2 ping.test_default_v6
+ok 3 ping.test_xdp_generic_sb
+# Exception| Traceback (most recent call last):
+# Exception|   File "/home/validation1/selftests/sw-linux-patch-tests/repository/ksft/net/lib/py/ksft.py", line 420, in ksft_run
+# Exception|     func(*args)
+# Exception|     ~~~~^^^^^^^
+# Exception|   File "/home/validation1/selftests/sw-linux-patch-tests/repository/ksft/drivers/net/ping.py", line 188, in test_xdp_generic_mb
+# Exception|     _test_v6(cfg)
+# Exception|     ~~~~~~~~^^^^^
+# Exception|   File "/home/validation1/selftests/sw-linux-patch-tests/repository/ksft/drivers/net/ping.py", line 30, in _test_v6
+# Exception|     cmd("ping -s 65000 -c 1 -W0.5 " + cfg.addr_v["6"], host=cfg.remote)
+# Exception|     ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+# Exception|   File "/home/validation1/selftests/sw-linux-patch-tests/repository/ksft/net/lib/py/utils.py", line 96, in __init__
+# Exception|     self.process(terminate=False, fail=fail, expect_fail=expect_fail,
+# Exception|     ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+# Exception|                  timeout=timeout)
+# Exception|                  ^^^^^^^^^^^^^^^^
+# Exception|   File "/home/validation1/selftests/sw-linux-patch-tests/repository/ksft/net/lib/py/utils.py", line 129, in process
+# Exception|     raise CmdExitFailure("Command failed", self)
+# Exception| net.lib.py.utils.CmdExitFailure: Command failed
+# Exception| CMD[remote]: ping -s 65000 -c 1 -W0.5 fc00:100::1
+# Exception|   EXIT: 1
+# Exception|   STDOUT: PING fc00:100::1 (fc00:100::1) 65000 data bytes
+# Exception|           
+# Exception|           --- fc00:100::1 ping statistics ---
+# Exception|           1 packets transmitted, 0 received, 100% packet loss, time 0ms
+# Exception| 
+not ok 4 ping.test_xdp_generic_mb
+ok 5 ping.test_xdp_native_sb # SKIP device does not support native-XDP
+# Exception| Traceback (most recent call last):
+# Exception|   File "/home/validation1/selftests/sw-linux-patch-tests/repository/ksft/net/lib/py/ksft.py", line 420, in ksft_run
+# Exception|     func(*args)
+# Exception|     ~~~~^^^^^^^
+# Exception|   File "/home/validation1/selftests/sw-linux-patch-tests/repository/ksft/drivers/net/ping.py", line 212, in test_xdp_native_mb
+# Exception|     _test_v6(cfg)
+# Exception|     ~~~~~~~~^^^^^
+# Exception|   File "/home/validation1/selftests/sw-linux-patch-tests/repository/ksft/drivers/net/ping.py", line 30, in _test_v6
+# Exception|     cmd("ping -s 65000 -c 1 -W0.5 " + cfg.addr_v["6"], host=cfg.remote)
+# Exception|     ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+# Exception|   File "/home/validation1/selftests/sw-linux-patch-tests/repository/ksft/net/lib/py/utils.py", line 96, in __init__
+# Exception|     self.process(terminate=False, fail=fail, expect_fail=expect_fail,
+# Exception|     ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+# Exception|                  timeout=timeout)
+# Exception|                  ^^^^^^^^^^^^^^^^
+# Exception|   File "/home/validation1/selftests/sw-linux-patch-tests/repository/ksft/net/lib/py/utils.py", line 129, in process
+# Exception|     raise CmdExitFailure("Command failed", self)
+# Exception| net.lib.py.utils.CmdExitFailure: Command failed
+# Exception| CMD[remote]: ping -s 65000 -c 1 -W0.5 fc00:100::1
+# Exception|   EXIT: 1
+# Exception|   STDOUT: PING fc00:100::1 (fc00:100::1) 65000 data bytes
+# Exception|           
+# Exception|           --- fc00:100::1 ping statistics ---
+# Exception|           1 packets transmitted, 0 received, 100% packet loss, time 0ms
+# Exception| 
+not ok 6 ping.test_xdp_native_mb
+ok 7 ping.test_xdp_offload # SKIP device does not support offloaded XDP
+# Totals: pass:3 fail:2 xfail:0 xpass:0 skip:2 error:0
