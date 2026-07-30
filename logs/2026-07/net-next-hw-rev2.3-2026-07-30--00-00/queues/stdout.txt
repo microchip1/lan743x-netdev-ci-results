@@ -1,0 +1,20 @@
+TAP version 13
+1..4
+ok 1 queues.get_queues
+# Exception| Traceback (most recent call last):
+# Exception|   File "/home/validation1/selftests/sw-linux-patch-tests/repository/ksft/net/lib/py/ksft.py", line 420, in ksft_run
+# Exception|     func(*args)
+# Exception|     ~~~~^^^^^^^
+# Exception|   File "/home/validation1/selftests/sw-linux-patch-tests/repository/ksft/drivers/net/queues.py", line 83, in addremove_queues
+# Exception|     channels = netnl.channels_get({'header': {'dev-index': cfg.ifindex}})
+# Exception|   File "/home/validation1/selftests/sw-linux-patch-tests/repository/ksft/net/lib/ynl/pyynl/lib/ynl.py", line 1395, in _op
+# Exception|     return self._ops(ops)[0]
+# Exception|            ~~~~~~~~~^^^^^
+# Exception|   File "/home/validation1/selftests/sw-linux-patch-tests/repository/ksft/net/lib/ynl/pyynl/lib/ynl.py", line 1352, in _ops
+# Exception|     raise NlError(nl_msg)
+# Exception| net.lib.ynl.pyynl.lib.ynl.NlError: Netlink error: Operation not supported
+# Exception| 
+not ok 2 queues.addremove_queues
+ok 3 queues.check_down
+ok 4 queues.check_xsk
+# Totals: pass:3 fail:1 xfail:0 xpass:0 skip:0 error:0
