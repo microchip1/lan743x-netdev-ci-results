@@ -1,0 +1,1163 @@
+TAP version 13
+1..12
+# Check| At /home/validation1/selftests/sw-linux-patch-tests/repository/ksft/drivers/net/hw/toeplitz.py, line 152, in test:
+# Check|     ksft_in("receive-hashing: on", cmd(f"ethtool -k {cfg.ifname}").stdout)
+# Check failed receive-hashing: on not in Features for enp134s0:
+# rx-checksumming: on
+# tx-checksumming: on
+# 	tx-checksum-ipv4: off [fixed]
+# 	tx-checksum-ip-generic: on
+# 	tx-checksum-ipv6: off [fixed]
+# 	tx-checksum-fcoe-crc: off [fixed]
+# 	tx-checksum-sctp: off [fixed]
+# scatter-gather: on
+# 	tx-scatter-gather: on
+# 	tx-scatter-gather-fraglist: off [fixed]
+# tcp-segmentation-offload: on
+# 	tx-tcp-segmentation: on
+# 	tx-tcp-ecn-segmentation: off [fixed]
+# 	tx-tcp-mangleid-segmentation: off
+# 	tx-tcp6-segmentation: off [fixed]
+# 	tx-tcp-accecn-segmentation: off [fixed]
+# generic-segmentation-offload: on
+# generic-receive-offload: on
+# large-receive-offload: off [fixed]
+# rx-vlan-offload: off [fixed]
+# tx-vlan-offload: off [fixed]
+# ntuple-filters: off [fixed]
+# receive-hashing: off [fixed]
+# highdma: off [fixed]
+# rx-vlan-filter: off [fixed]
+# vlan-challenged: off [fixed]
+# tx-gso-robust: off [fixed]
+# tx-fcoe-segmentation: off [fixed]
+# tx-gre-segmentation: off [fixed]
+# tx-gre-csum-segmentation: off [fixed]
+# tx-ipxip4-segmentation: off [fixed]
+# tx-ipxip6-segmentation: off [fixed]
+# tx-udp_tnl-segmentation: off [fixed]
+# tx-udp_tnl-csum-segmentation: off [fixed]
+# tx-gso-partial: off [fixed]
+# tx-tunnel-remcsum-segmentation: off [fixed]
+# tx-sctp-segmentation: off [fixed]
+# tx-esp-segmentation: off [fixed]
+# tx-udp-segmentation: off [fixed]
+# tx-gso-list: off [fixed]
+# tx-nocache-copy: off
+# loopback: off [fixed]
+# rx-fcs: off [fixed]
+# rx-all: off [fixed]
+# tx-vlan-stag-hw-insert: off [fixed]
+# rx-vlan-stag-hw-parse: off [fixed]
+# rx-vlan-stag-filter: off [fixed]
+# l2-fwd-offload: off [fixed]
+# hw-tc-offload: off [fixed]
+# esp-hw-offload: off [fixed]
+# esp-tx-csum-hw-offload: off [fixed]
+# rx-udp_tunnel-port-offload: off [fixed]
+# tls-hw-tx-offload: off [fixed]
+# tls-hw-rx-offload: off [fixed]
+# rx-gro-hw: off [fixed]
+# tls-hw-record: off [fixed]
+# rx-gro-list: off
+# macsec-hw-offload: off [fixed]
+# rx-udp-gro-forwarding: off
+# hsr-tag-ins-offload: off [fixed]
+# hsr-tag-rm-offload: off [fixed]
+# hsr-fwd-offload: off [fixed]
+# hsr-dup-offload: off [fixed]
+#  
+# Exception| Traceback (most recent call last):
+# Exception|   File "/home/validation1/selftests/sw-linux-patch-tests/repository/ksft/net/lib/py/ksft.py", line 420, in ksft_run
+# Exception|     func(*args)
+# Exception|     ~~~~^^^^^^^
+# Exception|   File "/home/validation1/selftests/sw-linux-patch-tests/repository/ksft/drivers/net/hw/toeplitz.py", line 194, in test
+# Exception|     with bkg(" ".join(rx_cmd), ksft_ready=True, exit_wait=True) as rx_proc:
+# Exception|          ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+# Exception|   File "/home/validation1/selftests/sw-linux-patch-tests/repository/ksft/net/lib/py/utils.py", line 200, in __exit__
+# Exception|     return self.process(terminate=terminate, fail=self.check_fail,
+# Exception|            ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+# Exception|                         expect_fail=self.expect_fail)
+# Exception|                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+# Exception|   File "/home/validation1/selftests/sw-linux-patch-tests/repository/ksft/net/lib/py/utils.py", line 129, in process
+# Exception|     raise CmdExitFailure("Command failed", self)
+# Exception| net.lib.py.utils.CmdExitFailure: Command failed
+# Exception| CMD: /home/validation1/selftests/sw-linux-patch-tests/repository/ksft/drivers/net/hw/toeplitz -4 -t -d 49524 -i enp134s0 -T 4000 -s -v
+# Exception|   EXIT: 40
+# Exception|   STDERR: RSS indirection table size: 128
+# Exception|           cpu 0: rx_hash 0xe59bd221 [saddr 192.168.100.2 daddr 192.168.100.1 sport 59636 dport 49524] != expected 0x97bad9a6
+# Exception|           cpu 0: rx_hash 0x4eb2a329 [saddr 192.168.100.2 daddr 192.168.100.1 sport 59646 dport 49524] != expected 0x780896a2
+# Exception|           cpu 1: rx_hash 0xd9e3feba [saddr 192.168.100.2 daddr 192.168.100.1 sport 59624 dport 49524] != expected 0x346178f
+# Exception|           cpu 1: rx_hash 0xfee192e4 [saddr 192.168.100.2 daddr 192.168.100.1 sport 59650 dport 49524] != expected 0x2d72ee03
+# Exception|           cpu 18: rx_hash 0xc36a88d7 [saddr 192.168.100.2 daddr 192.168.100.1 sport 59608 dport 49524] != expected 0xaa1d9930
+# Exception|           cpu 18: rx_hash 0x948998cc [saddr 192.168.100.2 daddr 192.168.100.1 sport 59628 dport 49524] != expected 0xc50dc4d8
+# Exception|           cpu 18: rx_hash 0x6e5f4ebc [saddr 192.168.100.2 daddr 192.168.100.1 sport 59658 dport 49524] != expected 0x4e5707a8
+# Exception|           cpu 18: rx_hash 0xfcbb1e8c [saddr 192.168.100.2 daddr 192.168.100.1 sport 59660 dport 49524] != expected 0x48b7250
+# Exception|           cpu 18: rx_hash 0x13a510b0 [saddr 192.168.100.2 daddr 192.168.100.1 sport 59698 dport 49524] != expected 0x842960bc
+# Exception|           cpu 18: rx_hash 0x10ff640d [saddr 192.168.100.2 daddr 192.168.100.1 sport 59710 dport 49524] != expected 0x21475a40
+# Exception|           cpu 18: rx_hash 0xa0edfd85 [saddr 192.168.100.2 daddr 192.168.100.1 sport 59734 dport 49524] != expected 0x16cf74b4
+# Exception|           cpu 18: rx_hash 0x1c1bfd8a [saddr 192.168.100.2 daddr 192.168.100.1 sport 59746 dport 49524] != expected 0x79df295c
+# Exception|           cpu 19: rx_hash 0x07da6c21 [saddr 192.168.100.2 daddr 192.168.100.1 sport 55214 dport 49524] != expected 0x5167521d
+# Exception|           cpu 19: rx_hash 0xaf1502d1 [saddr 192.168.100.2 daddr 192.168.100.1 sport 59592 dport 49524] != expected 0x9b8f6de5
+# Exception|           cpu 19: rx_hash 0xac52ad2f [saddr 192.168.100.2 daddr 192.168.100.1 sport 59684 dport 49524] != expected 0xff67e191
+# Exception|           cpu 19: rx_hash 0x1a478c5e [saddr 192.168.100.2 daddr 192.168.100.1 sport 59718 dport 49524] != expected 0x275d8061
+# Exception|           cpu 19: rx_hash 0x75889806 [saddr 192.168.100.2 daddr 192.168.100.1 sport 59762 dport 49524] != expected 0x484ddd89
+# Exception|           cpu 0: rx_hash 0x21d52383 [saddr 192.168.100.2 daddr 192.168.100.1 sport 59672 dport 49524] != expected 0xf35255d2
+# Exception|           cpu 0: rx_hash 0x767b71f4 [saddr 192.168.100.2 daddr 192.168.100.1 sport 59690 dport 49524] != expected 0xd69e7dc2
+# Exception|           cpu 0: rx_hash 0x17499578 [saddr 192.168.100.2 daddr 192.168.100.1 sport 59692 dport 49524] != expected 0x9c42083a
+# Exception|           cpu 0: rx_hash 0x399816c8 [saddr 192.168.100.2 daddr 192.168.100.1 sport 59788 dport 49524] != expected 0xe2b92cca
+# Exception|           cpu 0: rx_hash 0xcc1838a0 [saddr 192.168.100.2 daddr 192.168.100.1 sport 59838 dport 49524] != expected 0xc77504da
+# Exception|           cpu 0: rx_hash 0x34ad7e07 [saddr 192.168.100.2 daddr 192.168.100.1 sport 59874 dport 49524] != expected 0x9fed77c6
+# Exception|           cpu 0: rx_hash 0x792b0475 [saddr 192.168.100.2 daddr 192.168.100.1 sport 59920 dport 49524] != expected 0x5ae20492
+# Exception|           cpu 1: rx_hash 0x8d31e0e9 [saddr 192.168.100.2 daddr 192.168.100.1 sport 59798 dport 49524] != expected 0x3c99971b
+# Exception|           cpu 1: rx_hash 0x68eaa9d6 [saddr 192.168.100.2 daddr 192.168.100.1 sport 59812 dport 49524] != expected 0x1955bf0b
+# Exception|           cpu 1: rx_hash 0x8308c0d6 [saddr 192.168.100.2 daddr 192.168.100.1 sport 59890 dport 49524] != expected 0xae7f8313
+# Exception|           cpu 1: rx_hash 0x823d2211 [saddr 192.168.100.2 daddr 192.168.100.1 sport 59904 dport 49524] != expected 0x6b70f047
+# Exception|           cpu 1: rx_hash 0xd0eafd43 [saddr 192.168.100.2 daddr 192.168.100.1 sport 59956 dport 49524] != expected 0x460adaf
+# Exception|           cpu 18: rx_hash 0x709176b6 [saddr 192.168.100.2 daddr 192.168.100.1 sport 59796 dport 49524] != expected 0xb00e31b4
+# Exception|           cpu 18: rx_hash 0x54b18485 [saddr 192.168.100.2 daddr 192.168.100.1 sport 59818 dport 49524] != expected 0x30ac2358
+# Exception|           cpu 18: rx_hash 0x88a3caa3 [saddr 192.168.100.2 daddr 192.168.100.1 sport 59844 dport 49524] != expected 0x4df87854
+# Exception|           cpu 18: rx_hash 0xa97704d2 [saddr 192.168.100.2 daddr 192.168.100.1 sport 59854 dport 49524] != expected 0xa24a3750
+# Exception|           cpu 18: rx_hash 0x3c810d62 [saddr 192.168.100.2 daddr 192.168.100.1 sport 59900 dport 49524] != expected 0x87861f40
+# Exception|           cpu 18: rx_hash 0xf4622de8 [saddr 192.168.100.2 daddr 192.168.100.1 sport 59918 dport 49524] != expected 0x42896c14
+# Exception|           cpu 19: rx_hash 0xbb978784 [saddr 192.168.100.2 daddr 192.168.100.1 sport 59774 dport 49524] != expected 0xed23e775
+# Exception|           cpu 19: rx_hash 0x84893ebc [saddr 192.168.100.2 daddr 192.168.100.1 sport 59834 dport 49524] != expected 0x13ed78d
+# Exception|           cpu 19: rx_hash 0xaf876f05 [saddr 192.168.100.2 daddr 192.168.100.1 sport 59858 dport 49524] != expected 0x36b6f979
+# Exception|           cpu 19: rx_hash 0xb7ab6022 [saddr 192.168.100.2 daddr 192.168.100.1 sport 59934 dport 49524] != expected 0x731b98c1
+# Exception|           cpu 19: rx_hash 0xc6e67b6c [saddr 192.168.100.2 daddr 192.168.100.1 sport 59948 dport 49524] != expected 0x56d7b0d1
+# Exception|           count: pass=0 nohash=0 fail=40
+# Exception| 
+not ok 1 toeplitz.test.tcp_ipv4
+# Check| At /home/validation1/selftests/sw-linux-patch-tests/repository/ksft/drivers/net/hw/toeplitz.py, line 152, in test:
+# Check|     ksft_in("receive-hashing: on", cmd(f"ethtool -k {cfg.ifname}").stdout)
+# Check failed receive-hashing: on not in Features for enp134s0:
+# rx-checksumming: on
+# tx-checksumming: on
+# 	tx-checksum-ipv4: off [fixed]
+# 	tx-checksum-ip-generic: on
+# 	tx-checksum-ipv6: off [fixed]
+# 	tx-checksum-fcoe-crc: off [fixed]
+# 	tx-checksum-sctp: off [fixed]
+# scatter-gather: on
+# 	tx-scatter-gather: on
+# 	tx-scatter-gather-fraglist: off [fixed]
+# tcp-segmentation-offload: on
+# 	tx-tcp-segmentation: on
+# 	tx-tcp-ecn-segmentation: off [fixed]
+# 	tx-tcp-mangleid-segmentation: off
+# 	tx-tcp6-segmentation: off [fixed]
+# 	tx-tcp-accecn-segmentation: off [fixed]
+# generic-segmentation-offload: on
+# generic-receive-offload: on
+# large-receive-offload: off [fixed]
+# rx-vlan-offload: off [fixed]
+# tx-vlan-offload: off [fixed]
+# ntuple-filters: off [fixed]
+# receive-hashing: off [fixed]
+# highdma: off [fixed]
+# rx-vlan-filter: off [fixed]
+# vlan-challenged: off [fixed]
+# tx-gso-robust: off [fixed]
+# tx-fcoe-segmentation: off [fixed]
+# tx-gre-segmentation: off [fixed]
+# tx-gre-csum-segmentation: off [fixed]
+# tx-ipxip4-segmentation: off [fixed]
+# tx-ipxip6-segmentation: off [fixed]
+# tx-udp_tnl-segmentation: off [fixed]
+# tx-udp_tnl-csum-segmentation: off [fixed]
+# tx-gso-partial: off [fixed]
+# tx-tunnel-remcsum-segmentation: off [fixed]
+# tx-sctp-segmentation: off [fixed]
+# tx-esp-segmentation: off [fixed]
+# tx-udp-segmentation: off [fixed]
+# tx-gso-list: off [fixed]
+# tx-nocache-copy: off
+# loopback: off [fixed]
+# rx-fcs: off [fixed]
+# rx-all: off [fixed]
+# tx-vlan-stag-hw-insert: off [fixed]
+# rx-vlan-stag-hw-parse: off [fixed]
+# rx-vlan-stag-filter: off [fixed]
+# l2-fwd-offload: off [fixed]
+# hw-tc-offload: off [fixed]
+# esp-hw-offload: off [fixed]
+# esp-tx-csum-hw-offload: off [fixed]
+# rx-udp_tunnel-port-offload: off [fixed]
+# tls-hw-tx-offload: off [fixed]
+# tls-hw-rx-offload: off [fixed]
+# rx-gro-hw: off [fixed]
+# tls-hw-record: off [fixed]
+# rx-gro-list: off
+# macsec-hw-offload: off [fixed]
+# rx-udp-gro-forwarding: off
+# hsr-tag-ins-offload: off [fixed]
+# hsr-tag-rm-offload: off [fixed]
+# hsr-fwd-offload: off [fixed]
+# hsr-dup-offload: off [fixed]
+#  
+# Exception| Traceback (most recent call last):
+# Exception|   File "/home/validation1/selftests/sw-linux-patch-tests/repository/ksft/net/lib/py/ksft.py", line 420, in ksft_run
+# Exception|     func(*args)
+# Exception|     ~~~~^^^^^^^
+# Exception|   File "/home/validation1/selftests/sw-linux-patch-tests/repository/ksft/drivers/net/hw/toeplitz.py", line 194, in test
+# Exception|     with bkg(" ".join(rx_cmd), ksft_ready=True, exit_wait=True) as rx_proc:
+# Exception|          ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+# Exception|   File "/home/validation1/selftests/sw-linux-patch-tests/repository/ksft/net/lib/py/utils.py", line 200, in __exit__
+# Exception|     return self.process(terminate=terminate, fail=self.check_fail,
+# Exception|            ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+# Exception|                         expect_fail=self.expect_fail)
+# Exception|                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+# Exception|   File "/home/validation1/selftests/sw-linux-patch-tests/repository/ksft/net/lib/py/utils.py", line 129, in process
+# Exception|     raise CmdExitFailure("Command failed", self)
+# Exception| net.lib.py.utils.CmdExitFailure: Command failed
+# Exception| CMD: /home/validation1/selftests/sw-linux-patch-tests/repository/ksft/drivers/net/hw/toeplitz -6 -t -d 49339 -i enp134s0 -T 4000 -s -v
+# Exception|   EXIT: 40
+# Exception|   STDERR: RSS indirection table size: 128
+# Exception|           cpu 0: rx_hash 0xbcd4aba1 [saddr fc00:100::2 daddr fc00:100::1 sport 44026 dport 49339] != expected 0xabb5ecaa
+# Exception|           cpu 0: rx_hash 0x8aae02b2 [saddr fc00:100::2 daddr fc00:100::1 sport 44104 dport 49339] != expected 0x6f05b6a
+# Exception|           cpu 0: rx_hash 0xe32120bc [saddr fc00:100::2 daddr fc00:100::1 sport 44130 dport 49339] != expected 0x26c5a852
+# Exception|           cpu 0: rx_hash 0xe7b94dca [saddr fc00:100::2 daddr fc00:100::1 sport 44144 dport 49339] != expected 0xd021a662
+# Exception|           cpu 1: rx_hash 0xc5400334 [saddr fc00:100::2 daddr fc00:100::1 sport 44078 dport 49339] != expected 0x11483e73
+# Exception|           cpu 1: rx_hash 0x075fcc20 [saddr fc00:100::2 daddr fc00:100::1 sport 44082 dport 49339] != expected 0xbcebc463
+# Exception|           cpu 1: rx_hash 0xe08989af [saddr fc00:100::2 daddr fc00:100::1 sport 44126 dport 49339] != expected 0x7a20c0f7
+# Exception|           cpu 1: rx_hash 0x0dfc35d4 [saddr fc00:100::2 daddr fc00:100::1 sport 44134 dport 49339] != expected 0xacf13dff
+# Exception|           cpu 18: rx_hash 0x8799ad0c [saddr fc00:100::2 daddr fc00:100::1 sport 44038 dport 49339] != expected 0x2514e610
+# Exception|           cpu 18: rx_hash 0x8eba56ee [saddr fc00:100::2 daddr fc00:100::1 sport 44052 dport 49339] != expected 0xd3f0e820
+# Exception|           cpu 18: rx_hash 0xb45a827b [saddr fc00:100::2 daddr fc00:100::1 sport 44058 dport 49339] != expected 0x88b71c00
+# Exception|           cpu 18: rx_hash 0xa3a5ae10 [saddr fc00:100::2 daddr fc00:100::1 sport 44096 dport 49339] != expected 0xc3ea11bc
+# Exception|           cpu 18: rx_hash 0xe56f21b9 [saddr fc00:100::2 daddr fc00:100::1 sport 44132 dport 49339] != expected 0xb89816a4
+# Exception|           cpu 18: rx_hash 0xbae9a18e [saddr fc00:100::2 daddr fc00:100::1 sport 44150 dport 49339] != expected 0x4e7c1894
+# Exception|           cpu 18: rx_hash 0x3d7b7492 [saddr fc00:100::2 daddr fc00:100::1 sport 44172 dport 49339] != expected 0xc8362330
+# Exception|           cpu 19: rx_hash 0x24b010bb [saddr fc00:100::2 daddr fc00:100::1 sport 44062 dport 49339] != expected 0x28389ad
+# Exception|           cpu 19: rx_hash 0x4e5d1667 [saddr fc00:100::2 daddr fc00:100::1 sport 44106 dport 49339] != expected 0x12997031
+# Exception|           cpu 19: rx_hash 0xb3f37b3c [saddr fc00:100::2 daddr fc00:100::1 sport 44118 dport 49339] != expected 0xbf3a8a21
+# Exception|           cpu 0: rx_hash 0x96848eb1 [saddr fc00:100::2 daddr fc00:100::1 sport 44164 dport 49339] != expected 0xd2c69e6
+# Exception|           cpu 0: rx_hash 0x038aafa5 [saddr fc00:100::2 daddr fc00:100::1 sport 44170 dport 49339] != expected 0x566b9dc6
+# Exception|           cpu 0: rx_hash 0xd4a9da1b [saddr fc00:100::2 daddr fc00:100::1 sport 44226 dport 49339] != expected 0xebd29e4a
+# Exception|           cpu 0: rx_hash 0xa54ff888 [saddr fc00:100::2 daddr fc00:100::1 sport 44254 dport 49339] != expected 0x4671645a
+# Exception|           cpu 0: rx_hash 0x25abd334 [saddr fc00:100::2 daddr fc00:100::1 sport 44296 dport 49339] != expected 0x607bc066
+# Exception|           cpu 0: rx_hash 0x9ed5a323 [saddr fc00:100::2 daddr fc00:100::1 sport 44336 dport 49339] != expected 0xb6aa3d6e
+# Exception|           cpu 1: rx_hash 0xf24c468e [saddr fc00:100::2 daddr fc00:100::1 sport 44178 dport 49339] != expected 0x71fcf27b
+# Exception|           cpu 1: rx_hash 0xffd1deef [saddr fc00:100::2 daddr fc00:100::1 sport 44188 dport 49339] != expected 0x2abb065b
+# Exception|           cpu 1: rx_hash 0x7dfed1a3 [saddr fc00:100::2 daddr fc00:100::1 sport 44202 dport 49339] != expected 0xa72d0f73
+# Exception|           cpu 1: rx_hash 0xe8be2608 [saddr fc00:100::2 daddr fc00:100::1 sport 44290 dport 49339] != expected 0xb108a1eb
+# Exception|           cpu 18: rx_hash 0x1cb9a5a9 [saddr fc00:100::2 daddr fc00:100::1 sport 44212 dport 49339] != expected 0x1ee7de38
+# Exception|           cpu 18: rx_hash 0xdcfcb365 [saddr fc00:100::2 daddr fc00:100::1 sport 44228 dport 49339] != expected 0x758f20bc
+# Exception|           cpu 18: rx_hash 0x3f8da63e [saddr fc00:100::2 daddr fc00:100::1 sport 44248 dport 49339] != expected 0xd82cdaac
+# Exception|           cpu 18: rx_hash 0x4244e3ac [saddr fc00:100::2 daddr fc00:100::1 sport 44270 dport 49339] != expected 0x55bad384
+# Exception|           cpu 18: rx_hash 0x940482c5 [saddr fc00:100::2 daddr fc00:100::1 sport 44306 dport 49339] != expected 0x53858480
+# Exception|           cpu 18: rx_hash 0x279c07d7 [saddr fc00:100::2 daddr fc00:100::1 sport 44330 dport 49339] != expected 0x85547988
+# Exception|           cpu 18: rx_hash 0xc45588c1 [saddr fc00:100::2 daddr fc00:100::1 sport 44342 dport 49339] != expected 0x28f78398
+# Exception|           cpu 19: rx_hash 0xcd530f47 [saddr fc00:100::2 daddr fc00:100::1 sport 44242 dport 49339] != expected 0x95fbb21
+# Exception|           cpu 19: rx_hash 0x5a30f2d9 [saddr fc00:100::2 daddr fc00:100::1 sport 44278 dport 49339] != expected 0x722dbc39
+# Exception|           cpu 19: rx_hash 0x47b69287 [saddr fc00:100::2 daddr fc00:100::1 sport 44298 dport 49339] != expected 0x7412eb3d
+# Exception|           cpu 19: rx_hash 0x87394acb [saddr fc00:100::2 daddr fc00:100::1 sport 44312 dport 49339] != expected 0x82f6e50d
+# Exception|           cpu 19: rx_hash 0xb9f4d71c [saddr fc00:100::2 daddr fc00:100::1 sport 44320 dport 49339] != expected 0x54271805
+# Exception|           count: pass=0 nohash=0 fail=40
+# Exception| 
+not ok 2 toeplitz.test.tcp_ipv6
+# Check| At /home/validation1/selftests/sw-linux-patch-tests/repository/ksft/drivers/net/hw/toeplitz.py, line 152, in test:
+# Check|     ksft_in("receive-hashing: on", cmd(f"ethtool -k {cfg.ifname}").stdout)
+# Check failed receive-hashing: on not in Features for enp134s0:
+# rx-checksumming: on
+# tx-checksumming: on
+# 	tx-checksum-ipv4: off [fixed]
+# 	tx-checksum-ip-generic: on
+# 	tx-checksum-ipv6: off [fixed]
+# 	tx-checksum-fcoe-crc: off [fixed]
+# 	tx-checksum-sctp: off [fixed]
+# scatter-gather: on
+# 	tx-scatter-gather: on
+# 	tx-scatter-gather-fraglist: off [fixed]
+# tcp-segmentation-offload: on
+# 	tx-tcp-segmentation: on
+# 	tx-tcp-ecn-segmentation: off [fixed]
+# 	tx-tcp-mangleid-segmentation: off
+# 	tx-tcp6-segmentation: off [fixed]
+# 	tx-tcp-accecn-segmentation: off [fixed]
+# generic-segmentation-offload: on
+# generic-receive-offload: on
+# large-receive-offload: off [fixed]
+# rx-vlan-offload: off [fixed]
+# tx-vlan-offload: off [fixed]
+# ntuple-filters: off [fixed]
+# receive-hashing: off [fixed]
+# highdma: off [fixed]
+# rx-vlan-filter: off [fixed]
+# vlan-challenged: off [fixed]
+# tx-gso-robust: off [fixed]
+# tx-fcoe-segmentation: off [fixed]
+# tx-gre-segmentation: off [fixed]
+# tx-gre-csum-segmentation: off [fixed]
+# tx-ipxip4-segmentation: off [fixed]
+# tx-ipxip6-segmentation: off [fixed]
+# tx-udp_tnl-segmentation: off [fixed]
+# tx-udp_tnl-csum-segmentation: off [fixed]
+# tx-gso-partial: off [fixed]
+# tx-tunnel-remcsum-segmentation: off [fixed]
+# tx-sctp-segmentation: off [fixed]
+# tx-esp-segmentation: off [fixed]
+# tx-udp-segmentation: off [fixed]
+# tx-gso-list: off [fixed]
+# tx-nocache-copy: off
+# loopback: off [fixed]
+# rx-fcs: off [fixed]
+# rx-all: off [fixed]
+# tx-vlan-stag-hw-insert: off [fixed]
+# rx-vlan-stag-hw-parse: off [fixed]
+# rx-vlan-stag-filter: off [fixed]
+# l2-fwd-offload: off [fixed]
+# hw-tc-offload: off [fixed]
+# esp-hw-offload: off [fixed]
+# esp-tx-csum-hw-offload: off [fixed]
+# rx-udp_tunnel-port-offload: off [fixed]
+# tls-hw-tx-offload: off [fixed]
+# tls-hw-rx-offload: off [fixed]
+# rx-gro-hw: off [fixed]
+# tls-hw-record: off [fixed]
+# rx-gro-list: off
+# macsec-hw-offload: off [fixed]
+# rx-udp-gro-forwarding: off
+# hsr-tag-ins-offload: off [fixed]
+# hsr-tag-rm-offload: off [fixed]
+# hsr-fwd-offload: off [fixed]
+# hsr-dup-offload: off [fixed]
+#  
+# Exception| Traceback (most recent call last):
+# Exception|   File "/home/validation1/selftests/sw-linux-patch-tests/repository/ksft/net/lib/py/ksft.py", line 420, in ksft_run
+# Exception|     func(*args)
+# Exception|     ~~~~^^^^^^^
+# Exception|   File "/home/validation1/selftests/sw-linux-patch-tests/repository/ksft/drivers/net/hw/toeplitz.py", line 194, in test
+# Exception|     with bkg(" ".join(rx_cmd), ksft_ready=True, exit_wait=True) as rx_proc:
+# Exception|          ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+# Exception|   File "/home/validation1/selftests/sw-linux-patch-tests/repository/ksft/net/lib/py/utils.py", line 200, in __exit__
+# Exception|     return self.process(terminate=terminate, fail=self.check_fail,
+# Exception|            ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+# Exception|                         expect_fail=self.expect_fail)
+# Exception|                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+# Exception|   File "/home/validation1/selftests/sw-linux-patch-tests/repository/ksft/net/lib/py/utils.py", line 129, in process
+# Exception|     raise CmdExitFailure("Command failed", self)
+# Exception| net.lib.py.utils.CmdExitFailure: Command failed
+# Exception| CMD: /home/validation1/selftests/sw-linux-patch-tests/repository/ksft/drivers/net/hw/toeplitz -4 -u -d 39285 -i enp134s0 -T 4000 -s -v
+# Exception|   EXIT: 40
+# Exception|   STDERR: RSS indirection table size: 128
+# Exception|           cpu 0: rx_hash 0xc055b60c [saddr 192.168.100.2 daddr 192.168.100.1 sport 43686 dport 39285] != expected 0x8c655b16
+# Exception|           cpu 0: rx_hash 0x9eab313d [saddr 192.168.100.2 daddr 192.168.100.1 sport 40243 dport 39285] != expected 0x3e5bc7e6
+# Exception|           cpu 18: rx_hash 0x6a0f7339 [saddr 192.168.100.2 daddr 192.168.100.1 sport 43290 dport 39285] != expected 0xacf70924
+# Exception|           cpu 18: rx_hash 0x64398f95 [saddr 192.168.100.2 daddr 192.168.100.1 sport 46717 dport 39285] != expected 0xe4a8b2f8
+# Exception|           cpu 18: rx_hash 0x11fec09b [saddr 192.168.100.2 daddr 192.168.100.1 sport 59597 dport 39285] != expected 0xda156d08
+# Exception|           cpu 18: rx_hash 0x4ec552a6 [saddr 192.168.100.2 daddr 192.168.100.1 sport 55657 dport 39285] != expected 0xbd15ee6c
+# Exception|           cpu 19: rx_hash 0xa6171fc8 [saddr 192.168.100.2 daddr 192.168.100.1 sport 36463 dport 39285] != expected 0x9b679ee5
+# Exception|           cpu 0: rx_hash 0xd3b3bc5d [saddr 192.168.100.2 daddr 192.168.100.1 sport 53157 dport 39285] != expected 0x605679be
+# Exception|           cpu 0: rx_hash 0x270f6f88 [saddr 192.168.100.2 daddr 192.168.100.1 sport 58121 dport 39285] != expected 0x92fec0f2
+# Exception|           cpu 18: rx_hash 0x6d83951f [saddr 192.168.100.2 daddr 192.168.100.1 sport 52337 dport 39285] != expected 0x774c0578
+# Exception|           cpu 18: rx_hash 0x6b517c60 [saddr 192.168.100.2 daddr 192.168.100.1 sport 54226 dport 39285] != expected 0xd30e8e5c
+# Exception|           cpu 19: rx_hash 0x0fe357a3 [saddr 192.168.100.2 daddr 192.168.100.1 sport 43048 dport 39285] != expected 0xfa220e79
+# Exception|           cpu 19: rx_hash 0x6927e921 [saddr 192.168.100.2 daddr 192.168.100.1 sport 52593 dport 39285] != expected 0x4552a35
+# Exception|           cpu 0: rx_hash 0x54981cab [saddr 192.168.100.2 daddr 192.168.100.1 sport 35857 dport 39285] != expected 0x6e2da69a
+# Exception|           cpu 0: rx_hash 0x7de86946 [saddr 192.168.100.2 daddr 192.168.100.1 sport 40098 dport 39285] != expected 0x83cd0fba
+# Exception|           cpu 1: rx_hash 0x42883286 [saddr 192.168.100.2 daddr 192.168.100.1 sport 35785 dport 39285] != expected 0x9fab73
+# Exception|           cpu 18: rx_hash 0x50bd552e [saddr 192.168.100.2 daddr 192.168.100.1 sport 39324 dport 39285] != expected 0xacb079c8
+# Exception|           cpu 19: rx_hash 0x76c7ede8 [saddr 192.168.100.2 daddr 192.168.100.1 sport 53452 dport 39285] != expected 0x1f05e31
+# Exception|           cpu 19: rx_hash 0x030f782e [saddr 192.168.100.2 daddr 192.168.100.1 sport 60839 dport 39285] != expected 0xced581cd
+# Exception|           cpu 18: rx_hash 0x1856e55b [saddr 192.168.100.2 daddr 192.168.100.1 sport 38595 dport 39285] != expected 0x19a037f4
+# Exception|           cpu 18: rx_hash 0x16728944 [saddr 192.168.100.2 daddr 192.168.100.1 sport 44608 dport 39285] != expected 0xa8e0fcf8
+# Exception|           cpu 1: rx_hash 0xb3b4cd5e [saddr 192.168.100.2 daddr 192.168.100.1 sport 40820 dport 39285] != expected 0x1840d5d3
+# Exception|           cpu 1: rx_hash 0x580618a4 [saddr 192.168.100.2 daddr 192.168.100.1 sport 35683 dport 39285] != expected 0x91d6c087
+# Exception|           cpu 18: rx_hash 0x54c9b5ba [saddr 192.168.100.2 daddr 192.168.100.1 sport 32955 dport 39285] != expected 0x4dc1a354
+# Exception|           cpu 19: rx_hash 0x63525e89 [saddr 192.168.100.2 daddr 192.168.100.1 sport 34757 dport 39285] != expected 0x1754ffb5
+# Exception|           cpu 19: rx_hash 0xeb516646 [saddr 192.168.100.2 daddr 192.168.100.1 sport 57414 dport 39285] != expected 0xa4d91421
+# Exception|           cpu 0: rx_hash 0xf9003636 [saddr 192.168.100.2 daddr 192.168.100.1 sport 52012 dport 39285] != expected 0x20a8c802
+# Exception|           cpu 1: rx_hash 0x38c3a9f8 [saddr 192.168.100.2 daddr 192.168.100.1 sport 46947 dport 39285] != expected 0x8fdaf533
+# Exception|           cpu 18: rx_hash 0xe7f98d76 [saddr 192.168.100.2 daddr 192.168.100.1 sport 55563 dport 39285] != expected 0x652f8f9c
+# Exception|           cpu 18: rx_hash 0x75aab91f [saddr 192.168.100.2 daddr 192.168.100.1 sport 42198 dport 39285] != expected 0xe2739100
+# Exception|           cpu 0: rx_hash 0x5694b92a [saddr 192.168.100.2 daddr 192.168.100.1 sport 35782 dport 39285] != expected 0x30497a7e
+# Exception|           cpu 0: rx_hash 0x8f3b2af4 [saddr 192.168.100.2 daddr 192.168.100.1 sport 40997 dport 39285] != expected 0x28005c32
+# Exception|           cpu 1: rx_hash 0x89b2d0c7 [saddr 192.168.100.2 daddr 192.168.100.1 sport 52922 dport 39285] != expected 0x120b732b
+# Exception|           cpu 1: rx_hash 0x3ab454a9 [saddr 192.168.100.2 daddr 192.168.100.1 sport 59861 dport 39285] != expected 0xfbbb5f3b
+# Exception|           cpu 18: rx_hash 0x140df505 [saddr 192.168.100.2 daddr 192.168.100.1 sport 45892 dport 39285] != expected 0x9826fc2c
+# Exception|           cpu 19: rx_hash 0x4ba904e0 [saddr 192.168.100.2 daddr 192.168.100.1 sport 60112 dport 39285] != expected 0xee4a79d9
+# Exception|           cpu 19: rx_hash 0x57cde25e [saddr 192.168.100.2 daddr 192.168.100.1 sport 33985 dport 39285] != expected 0x1b8a9409
+# Exception|           cpu 0: rx_hash 0x1c676d08 [saddr 192.168.100.2 daddr 192.168.100.1 sport 55336 dport 39285] != expected 0x1b47314a
+# Exception|           cpu 0: rx_hash 0xb88c712e [saddr 192.168.100.2 daddr 192.168.100.1 sport 53618 dport 39285] != expected 0x14793d0a
+# Exception|           cpu 1: rx_hash 0xb23395a4 [saddr 192.168.100.2 daddr 192.168.100.1 sport 56241 dport 39285] != expected 0x7c78871b
+# Exception|           count: pass=0 nohash=0 fail=40
+# Exception| 
+not ok 3 toeplitz.test.udp_ipv4
+# Check| At /home/validation1/selftests/sw-linux-patch-tests/repository/ksft/drivers/net/hw/toeplitz.py, line 152, in test:
+# Check|     ksft_in("receive-hashing: on", cmd(f"ethtool -k {cfg.ifname}").stdout)
+# Check failed receive-hashing: on not in Features for enp134s0:
+# rx-checksumming: on
+# tx-checksumming: on
+# 	tx-checksum-ipv4: off [fixed]
+# 	tx-checksum-ip-generic: on
+# 	tx-checksum-ipv6: off [fixed]
+# 	tx-checksum-fcoe-crc: off [fixed]
+# 	tx-checksum-sctp: off [fixed]
+# scatter-gather: on
+# 	tx-scatter-gather: on
+# 	tx-scatter-gather-fraglist: off [fixed]
+# tcp-segmentation-offload: on
+# 	tx-tcp-segmentation: on
+# 	tx-tcp-ecn-segmentation: off [fixed]
+# 	tx-tcp-mangleid-segmentation: off
+# 	tx-tcp6-segmentation: off [fixed]
+# 	tx-tcp-accecn-segmentation: off [fixed]
+# generic-segmentation-offload: on
+# generic-receive-offload: on
+# large-receive-offload: off [fixed]
+# rx-vlan-offload: off [fixed]
+# tx-vlan-offload: off [fixed]
+# ntuple-filters: off [fixed]
+# receive-hashing: off [fixed]
+# highdma: off [fixed]
+# rx-vlan-filter: off [fixed]
+# vlan-challenged: off [fixed]
+# tx-gso-robust: off [fixed]
+# tx-fcoe-segmentation: off [fixed]
+# tx-gre-segmentation: off [fixed]
+# tx-gre-csum-segmentation: off [fixed]
+# tx-ipxip4-segmentation: off [fixed]
+# tx-ipxip6-segmentation: off [fixed]
+# tx-udp_tnl-segmentation: off [fixed]
+# tx-udp_tnl-csum-segmentation: off [fixed]
+# tx-gso-partial: off [fixed]
+# tx-tunnel-remcsum-segmentation: off [fixed]
+# tx-sctp-segmentation: off [fixed]
+# tx-esp-segmentation: off [fixed]
+# tx-udp-segmentation: off [fixed]
+# tx-gso-list: off [fixed]
+# tx-nocache-copy: off
+# loopback: off [fixed]
+# rx-fcs: off [fixed]
+# rx-all: off [fixed]
+# tx-vlan-stag-hw-insert: off [fixed]
+# rx-vlan-stag-hw-parse: off [fixed]
+# rx-vlan-stag-filter: off [fixed]
+# l2-fwd-offload: off [fixed]
+# hw-tc-offload: off [fixed]
+# esp-hw-offload: off [fixed]
+# esp-tx-csum-hw-offload: off [fixed]
+# rx-udp_tunnel-port-offload: off [fixed]
+# tls-hw-tx-offload: off [fixed]
+# tls-hw-rx-offload: off [fixed]
+# rx-gro-hw: off [fixed]
+# tls-hw-record: off [fixed]
+# rx-gro-list: off
+# macsec-hw-offload: off [fixed]
+# rx-udp-gro-forwarding: off
+# hsr-tag-ins-offload: off [fixed]
+# hsr-tag-rm-offload: off [fixed]
+# hsr-fwd-offload: off [fixed]
+# hsr-dup-offload: off [fixed]
+#  
+# Exception| Traceback (most recent call last):
+# Exception|   File "/home/validation1/selftests/sw-linux-patch-tests/repository/ksft/net/lib/py/ksft.py", line 420, in ksft_run
+# Exception|     func(*args)
+# Exception|     ~~~~^^^^^^^
+# Exception|   File "/home/validation1/selftests/sw-linux-patch-tests/repository/ksft/drivers/net/hw/toeplitz.py", line 194, in test
+# Exception|     with bkg(" ".join(rx_cmd), ksft_ready=True, exit_wait=True) as rx_proc:
+# Exception|          ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+# Exception|   File "/home/validation1/selftests/sw-linux-patch-tests/repository/ksft/net/lib/py/utils.py", line 200, in __exit__
+# Exception|     return self.process(terminate=terminate, fail=self.check_fail,
+# Exception|            ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+# Exception|                         expect_fail=self.expect_fail)
+# Exception|                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+# Exception|   File "/home/validation1/selftests/sw-linux-patch-tests/repository/ksft/net/lib/py/utils.py", line 129, in process
+# Exception|     raise CmdExitFailure("Command failed", self)
+# Exception| net.lib.py.utils.CmdExitFailure: Command failed
+# Exception| CMD: /home/validation1/selftests/sw-linux-patch-tests/repository/ksft/drivers/net/hw/toeplitz -6 -u -d 37625 -i enp134s0 -T 4000 -s -v
+# Exception|   EXIT: 40
+# Exception|   STDERR: RSS indirection table size: 128
+# Exception|           cpu 0: rx_hash 0xa54e0ea9 [saddr fc00:100::2 daddr fc00:100::1 sport 58499 dport 37625] != expected 0xf558bf22
+# Exception|           cpu 0: rx_hash 0x73c7f2c0 [saddr fc00:100::2 daddr fc00:100::1 sport 59099 dport 37625] != expected 0xa578f0ee
+# Exception|           cpu 1: rx_hash 0x145e7629 [saddr fc00:100::2 daddr fc00:100::1 sport 36144 dport 37625] != expected 0xc31dfc7b
+# Exception|           cpu 18: rx_hash 0x7c920692 [saddr fc00:100::2 daddr fc00:100::1 sport 60877 dport 37625] != expected 0x8b51ca44
+# Exception|           cpu 18: rx_hash 0x00202ca8 [saddr fc00:100::2 daddr fc00:100::1 sport 43949 dport 37625] != expected 0xa252ef5c
+# Exception|           cpu 19: rx_hash 0x1727aa18 [saddr fc00:100::2 daddr fc00:100::1 sport 49302 dport 37625] != expected 0x62482b55
+# Exception|           cpu 19: rx_hash 0xe743cb2b [saddr fc00:100::2 daddr fc00:100::1 sport 40173 dport 37625] != expected 0xbd54e259
+# Exception|           cpu 19: rx_hash 0x40c5593d [saddr fc00:100::2 daddr fc00:100::1 sport 53913 dport 37625] != expected 0xbf2b6dcd
+# Exception|           cpu 0: rx_hash 0xa19db256 [saddr fc00:100::2 daddr fc00:100::1 sport 48192 dport 37625] != expected 0x474e1b1e
+# Exception|           cpu 0: rx_hash 0xbcf60c14 [saddr fc00:100::2 daddr fc00:100::1 sport 36389 dport 37625] != expected 0x924aa176
+# Exception|           cpu 0: rx_hash 0x913ea03a [saddr fc00:100::2 daddr fc00:100::1 sport 53915 dport 37625] != expected 0xab424696
+# Exception|           cpu 1: rx_hash 0x3331d463 [saddr fc00:100::2 daddr fc00:100::1 sport 55385 dport 37625] != expected 0xb708f35b
+# Exception|           cpu 1: rx_hash 0x28249b87 [saddr fc00:100::2 daddr fc00:100::1 sport 36382 dport 37625] != expected 0x78202193
+# Exception|           cpu 18: rx_hash 0x4b31b133 [saddr fc00:100::2 daddr fc00:100::1 sport 39265 dport 37625] != expected 0x57897f4c
+# Exception|           cpu 18: rx_hash 0x3fd88b07 [saddr fc00:100::2 daddr fc00:100::1 sport 45409 dport 37625] != expected 0x44bd2394
+# Exception|           cpu 18: rx_hash 0xdf1669ac [saddr fc00:100::2 daddr fc00:100::1 sport 49298 dport 37625] != expected 0xe87cbef8
+# Exception|           cpu 19: rx_hash 0xaf8469b0 [saddr fc00:100::2 daddr fc00:100::1 sport 33167 dport 37625] != expected 0x5b5d6341
+# Exception|           cpu 0: rx_hash 0xd8776853 [saddr fc00:100::2 daddr fc00:100::1 sport 36213 dport 37625] != expected 0x1958763a
+# Exception|           cpu 0: rx_hash 0x7f8cace1 [saddr fc00:100::2 daddr fc00:100::1 sport 35389 dport 37625] != expected 0x3257fa5e
+# Exception|           cpu 1: rx_hash 0xfe7091ba [saddr fc00:100::2 daddr fc00:100::1 sport 53200 dport 37625] != expected 0x51c5495b
+# Exception|           cpu 18: rx_hash 0xdc3f6b35 [saddr fc00:100::2 daddr fc00:100::1 sport 56867 dport 37625] != expected 0x858d31ec
+# Exception|           cpu 19: rx_hash 0xf2e4c82b [saddr fc00:100::2 daddr fc00:100::1 sport 45090 dport 37625] != expected 0x1e8dc575
+# Exception|           cpu 0: rx_hash 0x44e7908b [saddr fc00:100::2 daddr fc00:100::1 sport 43827 dport 37625] != expected 0x27c99aba
+# Exception|           cpu 0: rx_hash 0x4ed85b76 [saddr fc00:100::2 daddr fc00:100::1 sport 55006 dport 37625] != expected 0xf68df842
+# Exception|           cpu 0: rx_hash 0xbefb2ab5 [saddr fc00:100::2 daddr fc00:100::1 sport 50294 dport 37625] != expected 0x50766082
+# Exception|           cpu 0: rx_hash 0x2c334c99 [saddr fc00:100::2 daddr fc00:100::1 sport 41192 dport 37625] != expected 0x2aeec42a
+# Exception|           cpu 1: rx_hash 0xcb513d70 [saddr fc00:100::2 daddr fc00:100::1 sport 48195 dport 37625] != expected 0x7bf566f3
+# Exception|           cpu 1: rx_hash 0xebd9fab1 [saddr fc00:100::2 daddr fc00:100::1 sport 43707 dport 37625] != expected 0xc0aaa697
+# Exception|           cpu 1: rx_hash 0x088c048d [saddr fc00:100::2 daddr fc00:100::1 sport 54626 dport 37625] != expected 0x87058f37
+# Exception|           cpu 18: rx_hash 0x647768b3 [saddr fc00:100::2 daddr fc00:100::1 sport 60933 dport 37625] != expected 0x1b85d618
+# Exception|           cpu 18: rx_hash 0x6b7b6d6d [saddr fc00:100::2 daddr fc00:100::1 sport 47694 dport 37625] != expected 0x9497b280
+# Exception|           cpu 18: rx_hash 0x5932e3ca [saddr fc00:100::2 daddr fc00:100::1 sport 33039 dport 37625] != expected 0x670cc7ec
+# Exception|           cpu 18: rx_hash 0xd4d6c1f6 [saddr fc00:100::2 daddr fc00:100::1 sport 35204 dport 37625] != expected 0xe1394e30
+# Exception|           cpu 19: rx_hash 0xadb19586 [saddr fc00:100::2 daddr fc00:100::1 sport 48801 dport 37625] != expected 0xd53c5bc1
+# Exception|           cpu 19: rx_hash 0x9097ce2c [saddr fc00:100::2 daddr fc00:100::1 sport 35411 dport 37625] != expected 0xe0f5d591
+# Exception|           cpu 1: rx_hash 0xdf9bda9c [saddr fc00:100::2 daddr fc00:100::1 sport 57673 dport 37625] != expected 0xf97bd59b
+# Exception|           cpu 1: rx_hash 0x9d63fecc [saddr fc00:100::2 daddr fc00:100::1 sport 58748 dport 37625] != expected 0xcfdc95cb
+# Exception|           cpu 1: rx_hash 0x6b1c7838 [saddr fc00:100::2 daddr fc00:100::1 sport 59822 dport 37625] != expected 0xb98558d3
+# Exception|           cpu 18: rx_hash 0xe6aac562 [saddr fc00:100::2 daddr fc00:100::1 sport 51571 dport 37625] != expected 0x28f75f10
+# Exception|           cpu 19: rx_hash 0xddef483e [saddr fc00:100::2 daddr fc00:100::1 sport 37891 dport 37625] != expected 0x10627371
+# Exception|           count: pass=0 nohash=0 fail=40
+# Exception| 
+not ok 4 toeplitz.test.udp_ipv6
+# Check| At /home/validation1/selftests/sw-linux-patch-tests/repository/ksft/drivers/net/hw/toeplitz.py, line 152, in test:
+# Check|     ksft_in("receive-hashing: on", cmd(f"ethtool -k {cfg.ifname}").stdout)
+# Check failed receive-hashing: on not in Features for enp134s0:
+# rx-checksumming: on
+# tx-checksumming: on
+# 	tx-checksum-ipv4: off [fixed]
+# 	tx-checksum-ip-generic: on
+# 	tx-checksum-ipv6: off [fixed]
+# 	tx-checksum-fcoe-crc: off [fixed]
+# 	tx-checksum-sctp: off [fixed]
+# scatter-gather: on
+# 	tx-scatter-gather: on
+# 	tx-scatter-gather-fraglist: off [fixed]
+# tcp-segmentation-offload: on
+# 	tx-tcp-segmentation: on
+# 	tx-tcp-ecn-segmentation: off [fixed]
+# 	tx-tcp-mangleid-segmentation: off
+# 	tx-tcp6-segmentation: off [fixed]
+# 	tx-tcp-accecn-segmentation: off [fixed]
+# generic-segmentation-offload: on
+# generic-receive-offload: on
+# large-receive-offload: off [fixed]
+# rx-vlan-offload: off [fixed]
+# tx-vlan-offload: off [fixed]
+# ntuple-filters: off [fixed]
+# receive-hashing: off [fixed]
+# highdma: off [fixed]
+# rx-vlan-filter: off [fixed]
+# vlan-challenged: off [fixed]
+# tx-gso-robust: off [fixed]
+# tx-fcoe-segmentation: off [fixed]
+# tx-gre-segmentation: off [fixed]
+# tx-gre-csum-segmentation: off [fixed]
+# tx-ipxip4-segmentation: off [fixed]
+# tx-ipxip6-segmentation: off [fixed]
+# tx-udp_tnl-segmentation: off [fixed]
+# tx-udp_tnl-csum-segmentation: off [fixed]
+# tx-gso-partial: off [fixed]
+# tx-tunnel-remcsum-segmentation: off [fixed]
+# tx-sctp-segmentation: off [fixed]
+# tx-esp-segmentation: off [fixed]
+# tx-udp-segmentation: off [fixed]
+# tx-gso-list: off [fixed]
+# tx-nocache-copy: off
+# loopback: off [fixed]
+# rx-fcs: off [fixed]
+# rx-all: off [fixed]
+# tx-vlan-stag-hw-insert: off [fixed]
+# rx-vlan-stag-hw-parse: off [fixed]
+# rx-vlan-stag-filter: off [fixed]
+# l2-fwd-offload: off [fixed]
+# hw-tc-offload: off [fixed]
+# esp-hw-offload: off [fixed]
+# esp-tx-csum-hw-offload: off [fixed]
+# rx-udp_tunnel-port-offload: off [fixed]
+# tls-hw-tx-offload: off [fixed]
+# tls-hw-rx-offload: off [fixed]
+# rx-gro-hw: off [fixed]
+# tls-hw-record: off [fixed]
+# rx-gro-list: off
+# macsec-hw-offload: off [fixed]
+# rx-udp-gro-forwarding: off
+# hsr-tag-ins-offload: off [fixed]
+# hsr-tag-rm-offload: off [fixed]
+# hsr-fwd-offload: off [fixed]
+# hsr-dup-offload: off [fixed]
+#  
+# Exception| Traceback (most recent call last):
+# Exception|   File "/home/validation1/selftests/sw-linux-patch-tests/repository/ksft/net/lib/py/ksft.py", line 420, in ksft_run
+# Exception|     func(*args)
+# Exception|     ~~~~^^^^^^^
+# Exception|   File "/home/validation1/selftests/sw-linux-patch-tests/repository/ksft/drivers/net/hw/toeplitz.py", line 182, in test
+# Exception|     irq_cpus = ",".join([str(x) for x in _get_irq_cpus(cfg)])
+# Exception|                                          ~~~~~~~~~~~~~^^^^^
+# Exception|   File "/home/validation1/selftests/sw-linux-patch-tests/repository/ksft/drivers/net/hw/toeplitz.py", line 67, in _get_irq_cpus
+# Exception|     cpus.append(_get_cpu_for_irq(napis[queues[name]["napi-id"]]["irq"]))
+# Exception|                                        ~~~~~~~~~~~~^^^^^^^^^^^
+# Exception| KeyError: 'napi-id'
+# Exception| 
+not ok 5 toeplitz.test.rss_tcp_ipv4
+# Check| At /home/validation1/selftests/sw-linux-patch-tests/repository/ksft/drivers/net/hw/toeplitz.py, line 152, in test:
+# Check|     ksft_in("receive-hashing: on", cmd(f"ethtool -k {cfg.ifname}").stdout)
+# Check failed receive-hashing: on not in Features for enp134s0:
+# rx-checksumming: on
+# tx-checksumming: on
+# 	tx-checksum-ipv4: off [fixed]
+# 	tx-checksum-ip-generic: on
+# 	tx-checksum-ipv6: off [fixed]
+# 	tx-checksum-fcoe-crc: off [fixed]
+# 	tx-checksum-sctp: off [fixed]
+# scatter-gather: on
+# 	tx-scatter-gather: on
+# 	tx-scatter-gather-fraglist: off [fixed]
+# tcp-segmentation-offload: on
+# 	tx-tcp-segmentation: on
+# 	tx-tcp-ecn-segmentation: off [fixed]
+# 	tx-tcp-mangleid-segmentation: off
+# 	tx-tcp6-segmentation: off [fixed]
+# 	tx-tcp-accecn-segmentation: off [fixed]
+# generic-segmentation-offload: on
+# generic-receive-offload: on
+# large-receive-offload: off [fixed]
+# rx-vlan-offload: off [fixed]
+# tx-vlan-offload: off [fixed]
+# ntuple-filters: off [fixed]
+# receive-hashing: off [fixed]
+# highdma: off [fixed]
+# rx-vlan-filter: off [fixed]
+# vlan-challenged: off [fixed]
+# tx-gso-robust: off [fixed]
+# tx-fcoe-segmentation: off [fixed]
+# tx-gre-segmentation: off [fixed]
+# tx-gre-csum-segmentation: off [fixed]
+# tx-ipxip4-segmentation: off [fixed]
+# tx-ipxip6-segmentation: off [fixed]
+# tx-udp_tnl-segmentation: off [fixed]
+# tx-udp_tnl-csum-segmentation: off [fixed]
+# tx-gso-partial: off [fixed]
+# tx-tunnel-remcsum-segmentation: off [fixed]
+# tx-sctp-segmentation: off [fixed]
+# tx-esp-segmentation: off [fixed]
+# tx-udp-segmentation: off [fixed]
+# tx-gso-list: off [fixed]
+# tx-nocache-copy: off
+# loopback: off [fixed]
+# rx-fcs: off [fixed]
+# rx-all: off [fixed]
+# tx-vlan-stag-hw-insert: off [fixed]
+# rx-vlan-stag-hw-parse: off [fixed]
+# rx-vlan-stag-filter: off [fixed]
+# l2-fwd-offload: off [fixed]
+# hw-tc-offload: off [fixed]
+# esp-hw-offload: off [fixed]
+# esp-tx-csum-hw-offload: off [fixed]
+# rx-udp_tunnel-port-offload: off [fixed]
+# tls-hw-tx-offload: off [fixed]
+# tls-hw-rx-offload: off [fixed]
+# rx-gro-hw: off [fixed]
+# tls-hw-record: off [fixed]
+# rx-gro-list: off
+# macsec-hw-offload: off [fixed]
+# rx-udp-gro-forwarding: off
+# hsr-tag-ins-offload: off [fixed]
+# hsr-tag-rm-offload: off [fixed]
+# hsr-fwd-offload: off [fixed]
+# hsr-dup-offload: off [fixed]
+#  
+# Exception| Traceback (most recent call last):
+# Exception|   File "/home/validation1/selftests/sw-linux-patch-tests/repository/ksft/net/lib/py/ksft.py", line 420, in ksft_run
+# Exception|     func(*args)
+# Exception|     ~~~~^^^^^^^
+# Exception|   File "/home/validation1/selftests/sw-linux-patch-tests/repository/ksft/drivers/net/hw/toeplitz.py", line 182, in test
+# Exception|     irq_cpus = ",".join([str(x) for x in _get_irq_cpus(cfg)])
+# Exception|                                          ~~~~~~~~~~~~~^^^^^
+# Exception|   File "/home/validation1/selftests/sw-linux-patch-tests/repository/ksft/drivers/net/hw/toeplitz.py", line 67, in _get_irq_cpus
+# Exception|     cpus.append(_get_cpu_for_irq(napis[queues[name]["napi-id"]]["irq"]))
+# Exception|                                        ~~~~~~~~~~~~^^^^^^^^^^^
+# Exception| KeyError: 'napi-id'
+# Exception| 
+not ok 6 toeplitz.test.rss_tcp_ipv6
+# Check| At /home/validation1/selftests/sw-linux-patch-tests/repository/ksft/drivers/net/hw/toeplitz.py, line 152, in test:
+# Check|     ksft_in("receive-hashing: on", cmd(f"ethtool -k {cfg.ifname}").stdout)
+# Check failed receive-hashing: on not in Features for enp134s0:
+# rx-checksumming: on
+# tx-checksumming: on
+# 	tx-checksum-ipv4: off [fixed]
+# 	tx-checksum-ip-generic: on
+# 	tx-checksum-ipv6: off [fixed]
+# 	tx-checksum-fcoe-crc: off [fixed]
+# 	tx-checksum-sctp: off [fixed]
+# scatter-gather: on
+# 	tx-scatter-gather: on
+# 	tx-scatter-gather-fraglist: off [fixed]
+# tcp-segmentation-offload: on
+# 	tx-tcp-segmentation: on
+# 	tx-tcp-ecn-segmentation: off [fixed]
+# 	tx-tcp-mangleid-segmentation: off
+# 	tx-tcp6-segmentation: off [fixed]
+# 	tx-tcp-accecn-segmentation: off [fixed]
+# generic-segmentation-offload: on
+# generic-receive-offload: on
+# large-receive-offload: off [fixed]
+# rx-vlan-offload: off [fixed]
+# tx-vlan-offload: off [fixed]
+# ntuple-filters: off [fixed]
+# receive-hashing: off [fixed]
+# highdma: off [fixed]
+# rx-vlan-filter: off [fixed]
+# vlan-challenged: off [fixed]
+# tx-gso-robust: off [fixed]
+# tx-fcoe-segmentation: off [fixed]
+# tx-gre-segmentation: off [fixed]
+# tx-gre-csum-segmentation: off [fixed]
+# tx-ipxip4-segmentation: off [fixed]
+# tx-ipxip6-segmentation: off [fixed]
+# tx-udp_tnl-segmentation: off [fixed]
+# tx-udp_tnl-csum-segmentation: off [fixed]
+# tx-gso-partial: off [fixed]
+# tx-tunnel-remcsum-segmentation: off [fixed]
+# tx-sctp-segmentation: off [fixed]
+# tx-esp-segmentation: off [fixed]
+# tx-udp-segmentation: off [fixed]
+# tx-gso-list: off [fixed]
+# tx-nocache-copy: off
+# loopback: off [fixed]
+# rx-fcs: off [fixed]
+# rx-all: off [fixed]
+# tx-vlan-stag-hw-insert: off [fixed]
+# rx-vlan-stag-hw-parse: off [fixed]
+# rx-vlan-stag-filter: off [fixed]
+# l2-fwd-offload: off [fixed]
+# hw-tc-offload: off [fixed]
+# esp-hw-offload: off [fixed]
+# esp-tx-csum-hw-offload: off [fixed]
+# rx-udp_tunnel-port-offload: off [fixed]
+# tls-hw-tx-offload: off [fixed]
+# tls-hw-rx-offload: off [fixed]
+# rx-gro-hw: off [fixed]
+# tls-hw-record: off [fixed]
+# rx-gro-list: off
+# macsec-hw-offload: off [fixed]
+# rx-udp-gro-forwarding: off
+# hsr-tag-ins-offload: off [fixed]
+# hsr-tag-rm-offload: off [fixed]
+# hsr-fwd-offload: off [fixed]
+# hsr-dup-offload: off [fixed]
+#  
+# Exception| Traceback (most recent call last):
+# Exception|   File "/home/validation1/selftests/sw-linux-patch-tests/repository/ksft/net/lib/py/ksft.py", line 420, in ksft_run
+# Exception|     func(*args)
+# Exception|     ~~~~^^^^^^^
+# Exception|   File "/home/validation1/selftests/sw-linux-patch-tests/repository/ksft/drivers/net/hw/toeplitz.py", line 182, in test
+# Exception|     irq_cpus = ",".join([str(x) for x in _get_irq_cpus(cfg)])
+# Exception|                                          ~~~~~~~~~~~~~^^^^^
+# Exception|   File "/home/validation1/selftests/sw-linux-patch-tests/repository/ksft/drivers/net/hw/toeplitz.py", line 67, in _get_irq_cpus
+# Exception|     cpus.append(_get_cpu_for_irq(napis[queues[name]["napi-id"]]["irq"]))
+# Exception|                                        ~~~~~~~~~~~~^^^^^^^^^^^
+# Exception| KeyError: 'napi-id'
+# Exception| 
+not ok 7 toeplitz.test.rss_udp_ipv4
+# Check| At /home/validation1/selftests/sw-linux-patch-tests/repository/ksft/drivers/net/hw/toeplitz.py, line 152, in test:
+# Check|     ksft_in("receive-hashing: on", cmd(f"ethtool -k {cfg.ifname}").stdout)
+# Check failed receive-hashing: on not in Features for enp134s0:
+# rx-checksumming: on
+# tx-checksumming: on
+# 	tx-checksum-ipv4: off [fixed]
+# 	tx-checksum-ip-generic: on
+# 	tx-checksum-ipv6: off [fixed]
+# 	tx-checksum-fcoe-crc: off [fixed]
+# 	tx-checksum-sctp: off [fixed]
+# scatter-gather: on
+# 	tx-scatter-gather: on
+# 	tx-scatter-gather-fraglist: off [fixed]
+# tcp-segmentation-offload: on
+# 	tx-tcp-segmentation: on
+# 	tx-tcp-ecn-segmentation: off [fixed]
+# 	tx-tcp-mangleid-segmentation: off
+# 	tx-tcp6-segmentation: off [fixed]
+# 	tx-tcp-accecn-segmentation: off [fixed]
+# generic-segmentation-offload: on
+# generic-receive-offload: on
+# large-receive-offload: off [fixed]
+# rx-vlan-offload: off [fixed]
+# tx-vlan-offload: off [fixed]
+# ntuple-filters: off [fixed]
+# receive-hashing: off [fixed]
+# highdma: off [fixed]
+# rx-vlan-filter: off [fixed]
+# vlan-challenged: off [fixed]
+# tx-gso-robust: off [fixed]
+# tx-fcoe-segmentation: off [fixed]
+# tx-gre-segmentation: off [fixed]
+# tx-gre-csum-segmentation: off [fixed]
+# tx-ipxip4-segmentation: off [fixed]
+# tx-ipxip6-segmentation: off [fixed]
+# tx-udp_tnl-segmentation: off [fixed]
+# tx-udp_tnl-csum-segmentation: off [fixed]
+# tx-gso-partial: off [fixed]
+# tx-tunnel-remcsum-segmentation: off [fixed]
+# tx-sctp-segmentation: off [fixed]
+# tx-esp-segmentation: off [fixed]
+# tx-udp-segmentation: off [fixed]
+# tx-gso-list: off [fixed]
+# tx-nocache-copy: off
+# loopback: off [fixed]
+# rx-fcs: off [fixed]
+# rx-all: off [fixed]
+# tx-vlan-stag-hw-insert: off [fixed]
+# rx-vlan-stag-hw-parse: off [fixed]
+# rx-vlan-stag-filter: off [fixed]
+# l2-fwd-offload: off [fixed]
+# hw-tc-offload: off [fixed]
+# esp-hw-offload: off [fixed]
+# esp-tx-csum-hw-offload: off [fixed]
+# rx-udp_tunnel-port-offload: off [fixed]
+# tls-hw-tx-offload: off [fixed]
+# tls-hw-rx-offload: off [fixed]
+# rx-gro-hw: off [fixed]
+# tls-hw-record: off [fixed]
+# rx-gro-list: off
+# macsec-hw-offload: off [fixed]
+# rx-udp-gro-forwarding: off
+# hsr-tag-ins-offload: off [fixed]
+# hsr-tag-rm-offload: off [fixed]
+# hsr-fwd-offload: off [fixed]
+# hsr-dup-offload: off [fixed]
+#  
+# Exception| Traceback (most recent call last):
+# Exception|   File "/home/validation1/selftests/sw-linux-patch-tests/repository/ksft/net/lib/py/ksft.py", line 420, in ksft_run
+# Exception|     func(*args)
+# Exception|     ~~~~^^^^^^^
+# Exception|   File "/home/validation1/selftests/sw-linux-patch-tests/repository/ksft/drivers/net/hw/toeplitz.py", line 182, in test
+# Exception|     irq_cpus = ",".join([str(x) for x in _get_irq_cpus(cfg)])
+# Exception|                                          ~~~~~~~~~~~~~^^^^^
+# Exception|   File "/home/validation1/selftests/sw-linux-patch-tests/repository/ksft/drivers/net/hw/toeplitz.py", line 67, in _get_irq_cpus
+# Exception|     cpus.append(_get_cpu_for_irq(napis[queues[name]["napi-id"]]["irq"]))
+# Exception|                                        ~~~~~~~~~~~~^^^^^^^^^^^
+# Exception| KeyError: 'napi-id'
+# Exception| 
+not ok 8 toeplitz.test.rss_udp_ipv6
+# Check| At /home/validation1/selftests/sw-linux-patch-tests/repository/ksft/drivers/net/hw/toeplitz.py, line 152, in test:
+# Check|     ksft_in("receive-hashing: on", cmd(f"ethtool -k {cfg.ifname}").stdout)
+# Check failed receive-hashing: on not in Features for enp134s0:
+# rx-checksumming: on
+# tx-checksumming: on
+# 	tx-checksum-ipv4: off [fixed]
+# 	tx-checksum-ip-generic: on
+# 	tx-checksum-ipv6: off [fixed]
+# 	tx-checksum-fcoe-crc: off [fixed]
+# 	tx-checksum-sctp: off [fixed]
+# scatter-gather: on
+# 	tx-scatter-gather: on
+# 	tx-scatter-gather-fraglist: off [fixed]
+# tcp-segmentation-offload: on
+# 	tx-tcp-segmentation: on
+# 	tx-tcp-ecn-segmentation: off [fixed]
+# 	tx-tcp-mangleid-segmentation: off
+# 	tx-tcp6-segmentation: off [fixed]
+# 	tx-tcp-accecn-segmentation: off [fixed]
+# generic-segmentation-offload: on
+# generic-receive-offload: on
+# large-receive-offload: off [fixed]
+# rx-vlan-offload: off [fixed]
+# tx-vlan-offload: off [fixed]
+# ntuple-filters: off [fixed]
+# receive-hashing: off [fixed]
+# highdma: off [fixed]
+# rx-vlan-filter: off [fixed]
+# vlan-challenged: off [fixed]
+# tx-gso-robust: off [fixed]
+# tx-fcoe-segmentation: off [fixed]
+# tx-gre-segmentation: off [fixed]
+# tx-gre-csum-segmentation: off [fixed]
+# tx-ipxip4-segmentation: off [fixed]
+# tx-ipxip6-segmentation: off [fixed]
+# tx-udp_tnl-segmentation: off [fixed]
+# tx-udp_tnl-csum-segmentation: off [fixed]
+# tx-gso-partial: off [fixed]
+# tx-tunnel-remcsum-segmentation: off [fixed]
+# tx-sctp-segmentation: off [fixed]
+# tx-esp-segmentation: off [fixed]
+# tx-udp-segmentation: off [fixed]
+# tx-gso-list: off [fixed]
+# tx-nocache-copy: off
+# loopback: off [fixed]
+# rx-fcs: off [fixed]
+# rx-all: off [fixed]
+# tx-vlan-stag-hw-insert: off [fixed]
+# rx-vlan-stag-hw-parse: off [fixed]
+# rx-vlan-stag-filter: off [fixed]
+# l2-fwd-offload: off [fixed]
+# hw-tc-offload: off [fixed]
+# esp-hw-offload: off [fixed]
+# esp-tx-csum-hw-offload: off [fixed]
+# rx-udp_tunnel-port-offload: off [fixed]
+# tls-hw-tx-offload: off [fixed]
+# tls-hw-rx-offload: off [fixed]
+# rx-gro-hw: off [fixed]
+# tls-hw-record: off [fixed]
+# rx-gro-list: off
+# macsec-hw-offload: off [fixed]
+# rx-udp-gro-forwarding: off
+# hsr-tag-ins-offload: off [fixed]
+# hsr-tag-rm-offload: off [fixed]
+# hsr-fwd-offload: off [fixed]
+# hsr-dup-offload: off [fixed]
+#  
+# Exception| Traceback (most recent call last):
+# Exception|   File "/home/validation1/selftests/sw-linux-patch-tests/repository/ksft/net/lib/py/ksft.py", line 420, in ksft_run
+# Exception|     func(*args)
+# Exception|     ~~~~^^^^^^^
+# Exception|   File "/home/validation1/selftests/sw-linux-patch-tests/repository/ksft/drivers/net/hw/toeplitz.py", line 187, in test
+# Exception|     rps_cpus = _get_unused_rps_cpus(cfg, count=2)
+# Exception|   File "/home/validation1/selftests/sw-linux-patch-tests/repository/ksft/drivers/net/hw/toeplitz.py", line 80, in _get_unused_rps_cpus
+# Exception|     rx_cpus = set(_get_irq_cpus(cfg))
+# Exception|                   ~~~~~~~~~~~~~^^^^^
+# Exception|   File "/home/validation1/selftests/sw-linux-patch-tests/repository/ksft/drivers/net/hw/toeplitz.py", line 67, in _get_irq_cpus
+# Exception|     cpus.append(_get_cpu_for_irq(napis[queues[name]["napi-id"]]["irq"]))
+# Exception|                                        ~~~~~~~~~~~~^^^^^^^^^^^
+# Exception| KeyError: 'napi-id'
+# Exception| 
+not ok 9 toeplitz.test.rps_tcp_ipv4
+# Check| At /home/validation1/selftests/sw-linux-patch-tests/repository/ksft/drivers/net/hw/toeplitz.py, line 152, in test:
+# Check|     ksft_in("receive-hashing: on", cmd(f"ethtool -k {cfg.ifname}").stdout)
+# Check failed receive-hashing: on not in Features for enp134s0:
+# rx-checksumming: on
+# tx-checksumming: on
+# 	tx-checksum-ipv4: off [fixed]
+# 	tx-checksum-ip-generic: on
+# 	tx-checksum-ipv6: off [fixed]
+# 	tx-checksum-fcoe-crc: off [fixed]
+# 	tx-checksum-sctp: off [fixed]
+# scatter-gather: on
+# 	tx-scatter-gather: on
+# 	tx-scatter-gather-fraglist: off [fixed]
+# tcp-segmentation-offload: on
+# 	tx-tcp-segmentation: on
+# 	tx-tcp-ecn-segmentation: off [fixed]
+# 	tx-tcp-mangleid-segmentation: off
+# 	tx-tcp6-segmentation: off [fixed]
+# 	tx-tcp-accecn-segmentation: off [fixed]
+# generic-segmentation-offload: on
+# generic-receive-offload: on
+# large-receive-offload: off [fixed]
+# rx-vlan-offload: off [fixed]
+# tx-vlan-offload: off [fixed]
+# ntuple-filters: off [fixed]
+# receive-hashing: off [fixed]
+# highdma: off [fixed]
+# rx-vlan-filter: off [fixed]
+# vlan-challenged: off [fixed]
+# tx-gso-robust: off [fixed]
+# tx-fcoe-segmentation: off [fixed]
+# tx-gre-segmentation: off [fixed]
+# tx-gre-csum-segmentation: off [fixed]
+# tx-ipxip4-segmentation: off [fixed]
+# tx-ipxip6-segmentation: off [fixed]
+# tx-udp_tnl-segmentation: off [fixed]
+# tx-udp_tnl-csum-segmentation: off [fixed]
+# tx-gso-partial: off [fixed]
+# tx-tunnel-remcsum-segmentation: off [fixed]
+# tx-sctp-segmentation: off [fixed]
+# tx-esp-segmentation: off [fixed]
+# tx-udp-segmentation: off [fixed]
+# tx-gso-list: off [fixed]
+# tx-nocache-copy: off
+# loopback: off [fixed]
+# rx-fcs: off [fixed]
+# rx-all: off [fixed]
+# tx-vlan-stag-hw-insert: off [fixed]
+# rx-vlan-stag-hw-parse: off [fixed]
+# rx-vlan-stag-filter: off [fixed]
+# l2-fwd-offload: off [fixed]
+# hw-tc-offload: off [fixed]
+# esp-hw-offload: off [fixed]
+# esp-tx-csum-hw-offload: off [fixed]
+# rx-udp_tunnel-port-offload: off [fixed]
+# tls-hw-tx-offload: off [fixed]
+# tls-hw-rx-offload: off [fixed]
+# rx-gro-hw: off [fixed]
+# tls-hw-record: off [fixed]
+# rx-gro-list: off
+# macsec-hw-offload: off [fixed]
+# rx-udp-gro-forwarding: off
+# hsr-tag-ins-offload: off [fixed]
+# hsr-tag-rm-offload: off [fixed]
+# hsr-fwd-offload: off [fixed]
+# hsr-dup-offload: off [fixed]
+#  
+# Exception| Traceback (most recent call last):
+# Exception|   File "/home/validation1/selftests/sw-linux-patch-tests/repository/ksft/net/lib/py/ksft.py", line 420, in ksft_run
+# Exception|     func(*args)
+# Exception|     ~~~~^^^^^^^
+# Exception|   File "/home/validation1/selftests/sw-linux-patch-tests/repository/ksft/drivers/net/hw/toeplitz.py", line 187, in test
+# Exception|     rps_cpus = _get_unused_rps_cpus(cfg, count=2)
+# Exception|   File "/home/validation1/selftests/sw-linux-patch-tests/repository/ksft/drivers/net/hw/toeplitz.py", line 80, in _get_unused_rps_cpus
+# Exception|     rx_cpus = set(_get_irq_cpus(cfg))
+# Exception|                   ~~~~~~~~~~~~~^^^^^
+# Exception|   File "/home/validation1/selftests/sw-linux-patch-tests/repository/ksft/drivers/net/hw/toeplitz.py", line 67, in _get_irq_cpus
+# Exception|     cpus.append(_get_cpu_for_irq(napis[queues[name]["napi-id"]]["irq"]))
+# Exception|                                        ~~~~~~~~~~~~^^^^^^^^^^^
+# Exception| KeyError: 'napi-id'
+# Exception| 
+not ok 10 toeplitz.test.rps_tcp_ipv6
+# Check| At /home/validation1/selftests/sw-linux-patch-tests/repository/ksft/drivers/net/hw/toeplitz.py, line 152, in test:
+# Check|     ksft_in("receive-hashing: on", cmd(f"ethtool -k {cfg.ifname}").stdout)
+# Check failed receive-hashing: on not in Features for enp134s0:
+# rx-checksumming: on
+# tx-checksumming: on
+# 	tx-checksum-ipv4: off [fixed]
+# 	tx-checksum-ip-generic: on
+# 	tx-checksum-ipv6: off [fixed]
+# 	tx-checksum-fcoe-crc: off [fixed]
+# 	tx-checksum-sctp: off [fixed]
+# scatter-gather: on
+# 	tx-scatter-gather: on
+# 	tx-scatter-gather-fraglist: off [fixed]
+# tcp-segmentation-offload: on
+# 	tx-tcp-segmentation: on
+# 	tx-tcp-ecn-segmentation: off [fixed]
+# 	tx-tcp-mangleid-segmentation: off
+# 	tx-tcp6-segmentation: off [fixed]
+# 	tx-tcp-accecn-segmentation: off [fixed]
+# generic-segmentation-offload: on
+# generic-receive-offload: on
+# large-receive-offload: off [fixed]
+# rx-vlan-offload: off [fixed]
+# tx-vlan-offload: off [fixed]
+# ntuple-filters: off [fixed]
+# receive-hashing: off [fixed]
+# highdma: off [fixed]
+# rx-vlan-filter: off [fixed]
+# vlan-challenged: off [fixed]
+# tx-gso-robust: off [fixed]
+# tx-fcoe-segmentation: off [fixed]
+# tx-gre-segmentation: off [fixed]
+# tx-gre-csum-segmentation: off [fixed]
+# tx-ipxip4-segmentation: off [fixed]
+# tx-ipxip6-segmentation: off [fixed]
+# tx-udp_tnl-segmentation: off [fixed]
+# tx-udp_tnl-csum-segmentation: off [fixed]
+# tx-gso-partial: off [fixed]
+# tx-tunnel-remcsum-segmentation: off [fixed]
+# tx-sctp-segmentation: off [fixed]
+# tx-esp-segmentation: off [fixed]
+# tx-udp-segmentation: off [fixed]
+# tx-gso-list: off [fixed]
+# tx-nocache-copy: off
+# loopback: off [fixed]
+# rx-fcs: off [fixed]
+# rx-all: off [fixed]
+# tx-vlan-stag-hw-insert: off [fixed]
+# rx-vlan-stag-hw-parse: off [fixed]
+# rx-vlan-stag-filter: off [fixed]
+# l2-fwd-offload: off [fixed]
+# hw-tc-offload: off [fixed]
+# esp-hw-offload: off [fixed]
+# esp-tx-csum-hw-offload: off [fixed]
+# rx-udp_tunnel-port-offload: off [fixed]
+# tls-hw-tx-offload: off [fixed]
+# tls-hw-rx-offload: off [fixed]
+# rx-gro-hw: off [fixed]
+# tls-hw-record: off [fixed]
+# rx-gro-list: off
+# macsec-hw-offload: off [fixed]
+# rx-udp-gro-forwarding: off
+# hsr-tag-ins-offload: off [fixed]
+# hsr-tag-rm-offload: off [fixed]
+# hsr-fwd-offload: off [fixed]
+# hsr-dup-offload: off [fixed]
+#  
+# Exception| Traceback (most recent call last):
+# Exception|   File "/home/validation1/selftests/sw-linux-patch-tests/repository/ksft/net/lib/py/ksft.py", line 420, in ksft_run
+# Exception|     func(*args)
+# Exception|     ~~~~^^^^^^^
+# Exception|   File "/home/validation1/selftests/sw-linux-patch-tests/repository/ksft/drivers/net/hw/toeplitz.py", line 187, in test
+# Exception|     rps_cpus = _get_unused_rps_cpus(cfg, count=2)
+# Exception|   File "/home/validation1/selftests/sw-linux-patch-tests/repository/ksft/drivers/net/hw/toeplitz.py", line 80, in _get_unused_rps_cpus
+# Exception|     rx_cpus = set(_get_irq_cpus(cfg))
+# Exception|                   ~~~~~~~~~~~~~^^^^^
+# Exception|   File "/home/validation1/selftests/sw-linux-patch-tests/repository/ksft/drivers/net/hw/toeplitz.py", line 67, in _get_irq_cpus
+# Exception|     cpus.append(_get_cpu_for_irq(napis[queues[name]["napi-id"]]["irq"]))
+# Exception|                                        ~~~~~~~~~~~~^^^^^^^^^^^
+# Exception| KeyError: 'napi-id'
+# Exception| 
+not ok 11 toeplitz.test.rps_udp_ipv4
+# Check| At /home/validation1/selftests/sw-linux-patch-tests/repository/ksft/drivers/net/hw/toeplitz.py, line 152, in test:
+# Check|     ksft_in("receive-hashing: on", cmd(f"ethtool -k {cfg.ifname}").stdout)
+# Check failed receive-hashing: on not in Features for enp134s0:
+# rx-checksumming: on
+# tx-checksumming: on
+# 	tx-checksum-ipv4: off [fixed]
+# 	tx-checksum-ip-generic: on
+# 	tx-checksum-ipv6: off [fixed]
+# 	tx-checksum-fcoe-crc: off [fixed]
+# 	tx-checksum-sctp: off [fixed]
+# scatter-gather: on
+# 	tx-scatter-gather: on
+# 	tx-scatter-gather-fraglist: off [fixed]
+# tcp-segmentation-offload: on
+# 	tx-tcp-segmentation: on
+# 	tx-tcp-ecn-segmentation: off [fixed]
+# 	tx-tcp-mangleid-segmentation: off
+# 	tx-tcp6-segmentation: off [fixed]
+# 	tx-tcp-accecn-segmentation: off [fixed]
+# generic-segmentation-offload: on
+# generic-receive-offload: on
+# large-receive-offload: off [fixed]
+# rx-vlan-offload: off [fixed]
+# tx-vlan-offload: off [fixed]
+# ntuple-filters: off [fixed]
+# receive-hashing: off [fixed]
+# highdma: off [fixed]
+# rx-vlan-filter: off [fixed]
+# vlan-challenged: off [fixed]
+# tx-gso-robust: off [fixed]
+# tx-fcoe-segmentation: off [fixed]
+# tx-gre-segmentation: off [fixed]
+# tx-gre-csum-segmentation: off [fixed]
+# tx-ipxip4-segmentation: off [fixed]
+# tx-ipxip6-segmentation: off [fixed]
+# tx-udp_tnl-segmentation: off [fixed]
+# tx-udp_tnl-csum-segmentation: off [fixed]
+# tx-gso-partial: off [fixed]
+# tx-tunnel-remcsum-segmentation: off [fixed]
+# tx-sctp-segmentation: off [fixed]
+# tx-esp-segmentation: off [fixed]
+# tx-udp-segmentation: off [fixed]
+# tx-gso-list: off [fixed]
+# tx-nocache-copy: off
+# loopback: off [fixed]
+# rx-fcs: off [fixed]
+# rx-all: off [fixed]
+# tx-vlan-stag-hw-insert: off [fixed]
+# rx-vlan-stag-hw-parse: off [fixed]
+# rx-vlan-stag-filter: off [fixed]
+# l2-fwd-offload: off [fixed]
+# hw-tc-offload: off [fixed]
+# esp-hw-offload: off [fixed]
+# esp-tx-csum-hw-offload: off [fixed]
+# rx-udp_tunnel-port-offload: off [fixed]
+# tls-hw-tx-offload: off [fixed]
+# tls-hw-rx-offload: off [fixed]
+# rx-gro-hw: off [fixed]
+# tls-hw-record: off [fixed]
+# rx-gro-list: off
+# macsec-hw-offload: off [fixed]
+# rx-udp-gro-forwarding: off
+# hsr-tag-ins-offload: off [fixed]
+# hsr-tag-rm-offload: off [fixed]
+# hsr-fwd-offload: off [fixed]
+# hsr-dup-offload: off [fixed]
+#  
+# Exception| Traceback (most recent call last):
+# Exception|   File "/home/validation1/selftests/sw-linux-patch-tests/repository/ksft/net/lib/py/ksft.py", line 420, in ksft_run
+# Exception|     func(*args)
+# Exception|     ~~~~^^^^^^^
+# Exception|   File "/home/validation1/selftests/sw-linux-patch-tests/repository/ksft/drivers/net/hw/toeplitz.py", line 187, in test
+# Exception|     rps_cpus = _get_unused_rps_cpus(cfg, count=2)
+# Exception|   File "/home/validation1/selftests/sw-linux-patch-tests/repository/ksft/drivers/net/hw/toeplitz.py", line 80, in _get_unused_rps_cpus
+# Exception|     rx_cpus = set(_get_irq_cpus(cfg))
+# Exception|                   ~~~~~~~~~~~~~^^^^^
+# Exception|   File "/home/validation1/selftests/sw-linux-patch-tests/repository/ksft/drivers/net/hw/toeplitz.py", line 67, in _get_irq_cpus
+# Exception|     cpus.append(_get_cpu_for_irq(napis[queues[name]["napi-id"]]["irq"]))
+# Exception|                                        ~~~~~~~~~~~~^^^^^^^^^^^
+# Exception| KeyError: 'napi-id'
+# Exception| 
+not ok 12 toeplitz.test.rps_udp_ipv6
+# Totals: pass:0 fail:12 xfail:0 xpass:0 skip:0 error:0
