@@ -1,0 +1,100 @@
+TAP version 13
+1..26
+ok 1 ethtool_std_stats.eth-ctrl-MACControlFramesTransmitted # SKIP
+ok 2 ethtool_std_stats.eth-ctrl-MACControlFramesReceived # SKIP
+ok 3 ethtool_std_stats.eth-mac-FrameCheckSequenceErrors # SKIP
+ok 4 ethtool_std_stats.eth-mac-AlignmentErrors # SKIP
+ok 5 ethtool_std_stats.eth-mac-FramesLostDueToIntMACXmitError # SKIP
+ok 6 ethtool_std_stats.eth-mac-CarrierSenseErrors # SKIP
+ok 7 ethtool_std_stats.eth-mac-FramesLostDueToIntMACRcvError # SKIP
+ok 8 ethtool_std_stats.eth-mac-InRangeLengthErrors # SKIP
+ok 9 ethtool_std_stats.eth-mac-OutOfRangeLengthField # SKIP
+ok 10 ethtool_std_stats.eth-mac-FrameTooLongErrors # SKIP
+ok 11 ethtool_std_stats.eth-mac-FramesAbortedDueToXSColls # SKIP
+ok 12 ethtool_std_stats.eth-mac-SingleCollisionFrames # SKIP
+ok 13 ethtool_std_stats.eth-mac-MultipleCollisionFrames # SKIP
+ok 14 ethtool_std_stats.eth-mac-FramesWithDeferredXmissions # SKIP
+ok 15 ethtool_std_stats.eth-mac-LateCollisions # SKIP
+ok 16 ethtool_std_stats.eth-mac-FramesWithExcessiveDeferral # SKIP
+ok 17 ethtool_std_stats.eth-mac-BroadcastFramesXmittedOK # SKIP
+ok 18 ethtool_std_stats.eth-mac-OctetsTransmittedOK # SKIP
+ok 19 ethtool_std_stats.eth-mac-BroadcastFramesReceivedOK # SKIP
+ok 20 ethtool_std_stats.eth-mac-OctetsReceivedOK # SKIP
+ok 21 ethtool_std_stats.eth-mac-FramesTransmittedOK # SKIP
+ok 22 ethtool_std_stats.eth-mac-MulticastFramesXmittedOK # SKIP
+ok 23 ethtool_std_stats.eth-mac-FramesReceivedOK # SKIP
+ok 24 ethtool_std_stats.eth-mac-MulticastFramesReceivedOK # SKIP
+ok 25 ethtool_std_stats.pause-tx_pause_frames # SKIP
+
+mausezahn 0.6.9, a fast versatile traffic generator
+http://www.netsniff-ng.org
+
+Usage: mausezahn [options] [interface] <keyword>|<arg-string>|<hex-string>
+Options:
+  -x <port>             Interactive mode with telnet CLI, default port: 25542
+  -l <ip>               Listen address to bind to when in interactive mode, default: 0.0.0.0
+  -4                    IPv4 mode (default)
+  -6                    IPv6 mode
+  -R <PRIO>             Set socket priority
+  -c <count>            Send packet count times, default:1, infinite:0
+  -d <delay>            Apply delay between transmissions. The delay value can be
+                        specified in usec (default, no additional unit needed), or in
+                        msec (e.g. 100m or 100msec), or in seconds (e.g. 100s or 100sec)
+  -r                    Multiplies the specified delay with a random value
+  -p <length>           Pad the raw frame to specified length (using random bytes)
+  -a <srcmac|keyword>   Use specified source mac address, no matter what has
+                        been specified with other arguments; keywords see below,
+                        Default is own interface
+  -b <dstmac|keyword>   Same with destination mac address; keywords:
+     rand               Use a random MAC address
+     bc                 Use a broadcast MAC address
+     own                Use own interface MAC address (default for source MAC)
+     stp                Use IEEE 802.1d STP multicast address
+     cisco              Use Cisco multicast address as used for CDP, VTP, or PVST+
+  -A <srcip>            Use specified source IP address (default is own interface IP)
+  -B <dstip|dnsname>    Send packet to specified destination IP or domain name
+  -P <ascii payload>    Use the specified ASCII payload
+  -f <filename>         Read the ASCII payload from a file
+  -F <filename>         Read the hexadecimal payload from a file
+  -Q <[CoS:]vlan>       Specify 802.1Q VLAN tag and optional Class of Service, you can
+                        specify multiple 802.1Q VLAN tags (QinQ...) by separating them
+                        via a comma or a period (e.g. '5:10,20,2:30')
+  -t <packet-type|help> Specify packet type for autobuild (you don't need to care for
+                        encapsulations in lower layers, most packet types allow/require
+                        additional packet-specific arguments in an <arg-string>;
+                        Currently supported types: arp, bpdu, cdp, ip, icmp, udp, tcp,
+                        dns, rtp, syslog, lldp and more;
+                        For context-help use 'help' as <arg-string>!
+  -T <packet-type>      Specify packet type for server mode, currently only rtp is supported;
+                        Enter -T help or -T rtp help for further information
+  -M <MPLS-label>       Insert a MPLS label, enter '-M help' for a syntax description
+  -V|VV|...             Verbose and more verbose mode
+  -q                    Quiet mode, even omit 'important' standard short messages
+  -S                    Simulation mode: DOES NOT put anything on the wire, this is
+                        typically combined with one of the verbose modes (v or V)
+  -v                    Show version
+  -h                    Print this help
+
+Examples:
+  mausezahn -x 99
+  mausezahn -c 0 -d 2s -t bpdu conf
+  mausezahn -t cdp change -c 0
+  mausezahn -t syslog sev=3 -P "You have been mausezahned." -A 10.1.1.109 -B 192.168.7.7
+  mausezahn eth0 -A rand -B 1.1.1.1 -c 0 -t tcp "dp=1-1023, flags=syn"
+
+Note:
+  This tool is targeted for network developers! You should
+  be aware of what you are doing and what these options above
+  mean! Only use this tool in an isolated LAN that you own!
+
+Please report bugs to <bugs@netsniff-ng.org>
+Copyright (C) 2008-2010 Herbert Haas <herbert@perihel.at>,
+Copyright (C) 2011 Daniel Borkmann <dborkma@tik.ee.ethz.ch>,
+Swiss federal institute of technology (ETH Zurich)
+License: GNU GPL version 2.0
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+
+ok 26 ethtool_std_stats.pause-rx_pause_frames # SKIP
+# 26 skipped test(s) detected.  Consider enabling relevant config options to improve coverage.
+# Totals: pass:0 fail:0 xfail:0 xpass:0 skip:26 error:0
