@@ -1,0 +1,258 @@
+TAP version 13
+1..12
+ok 1 csum.ipv4_rx_tcp
+# Exception| Traceback (most recent call last):
+# Exception|   File "/home/validation1/selftests/sw-linux-patch-tests/repository/ksft/net/lib/py/ksft.py", line 420, in ksft_run
+# Exception|     func(*args)
+# Exception|     ~~~~^^^^^^^
+# Exception|   File "/home/validation1/selftests/sw-linux-patch-tests/repository/ksft/drivers/net/hw/csum.py", line 59, in f
+# Exception|     test_receive(cfg, ipver, extra_args)
+# Exception|     ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+# Exception|   File "/home/validation1/selftests/sw-linux-patch-tests/repository/ksft/drivers/net/hw/csum.py", line 22, in test_receive
+# Exception|     with bkg(rx_cmd, exit_wait=True):
+# Exception|          ~~~^^^^^^^^^^^^^^^^^^^^^^^^
+# Exception|   File "/home/validation1/selftests/sw-linux-patch-tests/repository/ksft/net/lib/py/utils.py", line 200, in __exit__
+# Exception|     return self.process(terminate=terminate, fail=self.check_fail,
+# Exception|            ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+# Exception|                         expect_fail=self.expect_fail)
+# Exception|                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+# Exception|   File "/home/validation1/selftests/sw-linux-patch-tests/repository/ksft/net/lib/py/utils.py", line 129, in process
+# Exception|     raise CmdExitFailure("Command failed", self)
+# Exception| net.lib.py.utils.CmdExitFailure: Command failed
+# Exception| CMD: /home/validation1/selftests/sw-linux-patch-tests/repository/ksft/net/lib/csum -i enp134s0 -n 100 -4 -S 192.168.100.2 -D 192.168.100.1 -r 1 -R -t -E
+# Exception|   EXIT: 1
+# Exception|   STDERR: /home/validation1/selftests/sw-linux-patch-tests/repository/ksft/net/lib/csum: rx: missing packets at pf_packet: 0 < 100
+# Exception| 
+not ok 2 csum.ipv4_rx_tcp_invalid
+# Exception| Traceback (most recent call last):
+# Exception|   File "/home/validation1/selftests/sw-linux-patch-tests/repository/ksft/drivers/net/hw/csum.py", line 24, in test_receive
+# Exception|     cmd(tx_cmd, host=cfg.remote)
+# Exception|     ~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+# Exception|   File "/home/validation1/selftests/sw-linux-patch-tests/repository/ksft/net/lib/py/utils.py", line 96, in __init__
+# Exception|     self.process(terminate=False, fail=fail, expect_fail=expect_fail,
+# Exception|     ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+# Exception|                  timeout=timeout)
+# Exception|                  ^^^^^^^^^^^^^^^^
+# Exception|   File "/home/validation1/selftests/sw-linux-patch-tests/repository/ksft/net/lib/py/utils.py", line 118, in process
+# Exception|     stdout, stderr = self._process_terminate(terminate=terminate,
+# Exception|                      ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+# Exception|                                              timeout=timeout)
+# Exception|                                              ^^^^^^^^^^^^^^^^
+# Exception|   File "/home/validation1/selftests/sw-linux-patch-tests/repository/ksft/net/lib/py/utils.py", line 102, in _process_terminate
+# Exception|     stdout, stderr = self.proc.communicate(timeout=timeout)
+# Exception|                      ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+# Exception|   File "/usr/lib/python3.14/subprocess.py", line 1221, in communicate
+# Exception|     stdout, stderr = self._communicate(input, endtime, timeout)
+# Exception|                      ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+# Exception|   File "/usr/lib/python3.14/subprocess.py", line 2154, in _communicate
+# Exception|     self._check_timeout(endtime, orig_timeout, stdout, stderr)
+# Exception|     ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+# Exception|   File "/usr/lib/python3.14/subprocess.py", line 1268, in _check_timeout
+# Exception|     raise TimeoutExpired(
+# Exception|     ...<2 lines>...
+# Exception|             stderr=b''.join(stderr_seq) if stderr_seq else None)
+# Exception| subprocess.TimeoutExpired: Command '['ssh', '-q', 'root@192.168.100.2', '/tmp/ebhogatd/qhjqgbalcsum -i enp9s0 -n 100 -4 -S 192.168.100.2 -D 192.168.100.1 -r 1 -T ']' timed out after 5 seconds
+# Exception| 
+# Exception| During handling of the above exception, another exception occurred:
+# Exception| 
+# Exception| Traceback (most recent call last):
+# Exception|   File "/home/validation1/selftests/sw-linux-patch-tests/repository/ksft/net/lib/py/ksft.py", line 420, in ksft_run
+# Exception|     func(*args)
+# Exception|     ~~~~^^^^^^^
+# Exception|   File "/home/validation1/selftests/sw-linux-patch-tests/repository/ksft/drivers/net/hw/csum.py", line 59, in f
+# Exception|     test_receive(cfg, ipver, extra_args)
+# Exception|     ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+# Exception|   File "/home/validation1/selftests/sw-linux-patch-tests/repository/ksft/drivers/net/hw/csum.py", line 22, in test_receive
+# Exception|     with bkg(rx_cmd, exit_wait=True):
+# Exception|          ~~~^^^^^^^^^^^^^^^^^^^^^^^^
+# Exception|   File "/home/validation1/selftests/sw-linux-patch-tests/repository/ksft/net/lib/py/utils.py", line 200, in __exit__
+# Exception|     return self.process(terminate=terminate, fail=self.check_fail,
+# Exception|            ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+# Exception|                         expect_fail=self.expect_fail)
+# Exception|                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+# Exception|   File "/home/validation1/selftests/sw-linux-patch-tests/repository/ksft/net/lib/py/utils.py", line 129, in process
+# Exception|     raise CmdExitFailure("Command failed", self)
+# Exception| net.lib.py.utils.CmdExitFailure: Command failed
+# Exception| CMD: /home/validation1/selftests/sw-linux-patch-tests/repository/ksft/net/lib/csum -i enp134s0 -n 100 -4 -S 192.168.100.2 -D 192.168.100.1 -r 1 -R 
+# Exception|   EXIT: 1
+# Exception|   STDERR: /home/validation1/selftests/sw-linux-patch-tests/repository/ksft/net/lib/csum: rx: missing packets at pf_packet: 0 < 100
+# Exception| 
+not ok 3 csum.ipv4_rx_udp
+# Exception| Traceback (most recent call last):
+# Exception|   File "/home/validation1/selftests/sw-linux-patch-tests/repository/ksft/net/lib/py/ksft.py", line 420, in ksft_run
+# Exception|     func(*args)
+# Exception|     ~~~~^^^^^^^
+# Exception|   File "/home/validation1/selftests/sw-linux-patch-tests/repository/ksft/drivers/net/hw/csum.py", line 59, in f
+# Exception|     test_receive(cfg, ipver, extra_args)
+# Exception|     ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+# Exception|   File "/home/validation1/selftests/sw-linux-patch-tests/repository/ksft/drivers/net/hw/csum.py", line 22, in test_receive
+# Exception|     with bkg(rx_cmd, exit_wait=True):
+# Exception|          ~~~^^^^^^^^^^^^^^^^^^^^^^^^
+# Exception|   File "/home/validation1/selftests/sw-linux-patch-tests/repository/ksft/net/lib/py/utils.py", line 200, in __exit__
+# Exception|     return self.process(terminate=terminate, fail=self.check_fail,
+# Exception|            ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+# Exception|                         expect_fail=self.expect_fail)
+# Exception|                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+# Exception|   File "/home/validation1/selftests/sw-linux-patch-tests/repository/ksft/net/lib/py/utils.py", line 129, in process
+# Exception|     raise CmdExitFailure("Command failed", self)
+# Exception| net.lib.py.utils.CmdExitFailure: Command failed
+# Exception| CMD: /home/validation1/selftests/sw-linux-patch-tests/repository/ksft/net/lib/csum -i enp134s0 -n 100 -4 -S 192.168.100.2 -D 192.168.100.1 -r 1 -R -E
+# Exception|   EXIT: 1
+# Exception|   STDERR: rx: pkt: sport=33000 len=108 csum=0x33cd verify=0x0
+# Exception|           pkt: good csum, while bad expected
+# Exception|           cmsg: expected bad csum, pf_packet returns valid
+# Exception|           rx: pkt: sport=33000 len=108 csum=0xcc32 verify=0x679a
+# Exception|           rx: pkt: sport=33000 len=40 csum=0x6557 verify=0x0
+# Exception|           pkt: good csum, while bad expected
+# Exception|           cmsg: expected bad csum, pf_packet returns valid
+# Exception|           rx: pkt: sport=33000 len=40 csum=0x9aa8 verify=0xcaae
+# Exception|           rx: pkt: sport=33000 len=734 csum=0x8ab2 verify=0x0
+# Exception|           pkt: good csum, while bad expected
+# Exception|           cmsg: expected bad csum, pf_packet returns valid
+# Exception|           rx: pkt: sport=33000 len=522 csum=0xa5e7 verify=0x0
+# Exception|           pkt: good csum, while bad expected
+# Exception|           cmsg: expected bad csum, pf_packet returns valid
+# Exception|           rx: pkt: sport=33000 len=734 csum=0x754d verify=0x1565
+# Exception|           rx: pkt: sport=33000 len=145 csum=0xb463 verify=0x0
+# Exception|           pkt: good csum, while bad expected
+# Exception|           cmsg: expected bad csum, pf_packet returns valid
+# Exception|           rx: pkt: sport=33000 len=522 csum=0x5a18 verify=0x4bcf
+# Exception|           rx: pkt: sport=33000 len=381 csum=0xca47 verify=0x0
+# Exception|           pkt: good csum, while bad expected
+# Exception|           cmsg: expected bad csum, pf_packet returns valid
+# Exception|           rx: pkt: sport=33000 len=38 csum=0xdb6b verify=0x0
+# Exception|           pkt: good csum, while bad expected
+# Exception|           cmsg: expected bad csum, pf_packet returns valid
+# Exception|           rx: pkt: sport=33000 len=145 csum=0x4b9c verify=0x68c7
+# Exception|           rx: pkt: sport=33000 len=111 csum=0x4313 verify=0x0
+# Exception|           pkt: good csum, while bad expected
+# Exception|           cmsg: expected bad csum, pf_packet returns valid
+# Exception|           rx: pkt: sport=33000 len=381 csum=0x35b8 verify=0x948f
+# Exception|           rx: pkt: sport=33000 len=886 csum=0xb186 verify=0x0
+# Exception|           pkt: good csum, while bad expected
+# Exception|           cmsg: expected bad csum, pf_packet returns valid
+# Exception|           rx: pkt: sport=33000 len=816 csum=0x68d0 verify=0x0
+# Exception|           pkt: good csum, while bad expected
+# Exception|           cmsg: expected bad csum, pf_packet returns valid
+# Exception|           rx: pkt: sport=33000 len=38 csum=0x2494 verify=0xb6d7
+# Exception|           rx: pkt: sport=33000 len=402 csum=0xe4fb verify=0x0
+# Exception|           pkt: good csum, while bad expected
+# Exception|           cmsg: expected bad csum, pf_packet returns valid
+# Exception|           rx: pkt: sport=33000 len=111 csum=0xbcec verify=0x8626
+# Exception|           rx: pkt: sport=33000 len=376 csum=0xa2ba verify=0x0
+# Exception|           pkt: good csum, while bad expected
+# Exception|           cmsg: expected bad csum, pf_packet returns valid
+# Exception|           rx: pkt: sport=33000 len=112 csum=0xd1ff verify=0x0
+# Exception|           pkt: good csum, while bad expected
+# Exception|           cmsg: expected bad csum, pf_packet returns valid
+# Exception|           rx: pkt: sport=33000 len=886 csum=0x4e79 verify=0x630d
+# Exception|           rx: pkt: sport=33000 len=921 csum=0x6582 verify=0x0
+# Exception|           pkt: good csum, while bad expected
+# Exception|           cmsg: expected bad csum, pf_packet returns valid
+# Exception|           rx: pkt: sport=33000 len=291 csum=0xf9b4 verify=0x0
+# Exception|           pkt: good csum, while bad expected
+# Exception|           cmsg: expected bad csum, pf_packet returns valid
+# Exception|           rx: pkt: sport=33000 len=816 csum=0x972f verify=0xd1a0
+# Exception|           rx: pkt: sport=33000 len=802 csum=0x4074 verify=0x0
+# Exception|           pkt: good csum, while bad expected
+# Exception|           cmsg: expected bad csum, pf_packet returns valid
+# Exception|           rx: pkt: sport=33000 len=45 csum=0x68df verify=0x0
+# Exception|           pkt: good csum, while bad expected
+# Exception|           cmsg: expected bad csum, pf_packet returns valid
+# Exception|           rx: pkt: sport=33000 len=402 csum=0x1b04 verify=0xc9f7
+# Exception|           rx: pkt: sport=33000 len=292 csum=0x2d62 verify=0x0
+# Exception|           pkt: good csum, while bad expected
+# Exception|           cmsg: expected bad csum, pf_packet returns valid
+# Exception|           rx: pkt: sport=33000 len=801 csum=0xced9 verify=0x0
+# Exception|           pkt: good csum, while bad expected
+# Exception|           cmsg: expected bad csum, pf_packet returns valid
+# Exception|           rx: pkt: sport=33000 len=376 csum=0x5d45 verify=0x4575
+# Exception|           rx: pkt: sport=33000 len=832 csum=0x49cc verify=0x0
+# Exception|           pkt: good csum, while bad expected
+# Exception|           cmsg: expected bad csum, pf_packet returns valid
+# Exception|           rx: pkt: sport=33000 len=112 csum=0x2e00 verify=0xa3ff
+# Exception|           rx: pkt: sport=33000 len=650 csum=0x9daf verify=0x0
+# Exception|           pkt: good csum, while bad expected
+# Exception|           cmsg: expected bad csum, pf_packet returns valid
+# Exception|           rx: pkt: sport=33000 len=921 csum=0x9a7d verify=0xcb04
+# Exception|           rx: pkt: sport=33000 len=399 csum=0x1da2 verify=0x0
+# Exception|           pkt: good csum, while bad expected
+# Exception|           cmsg: expected bad csum, pf_packet returns valid
+# Exception|           rx: pkt: sport=33000 len=1017 csum=0x829 verify=0x0
+# Exception|           pkt: good csum, while bad expected
+# Exception|           cmsg: expected bad csum, pf_packet returns valid
+# Exception|           rx: pkt: sport=33000 len=291 csum=0x64b verify=0xf369
+# Exception|           rx: pkt: sport=33000 len=958 csum=0x1f4d verify=0x0
+# Exception|           pkt: good csum, while bad expected
+# Exception|           cmsg: expected bad csum, pf_packet returns valid
+# Exception|           rx: pkt: sport=33000 len=802 csum=0xbf8b verify=0x80e8
+# Exception|           rx: pkt: sport=33000 len=764 csum=0x6150 verify=0x0
+# Exception|           pkt: good csum, while bad expected
+# Exception|           cmsg: expected bad csum, pf_packet returns valid
+# Exception|           rx: pkt: sport=33000 len=929 csum=0xbc15 verify=0x0
+# Exception|           pkt: good csum, while bad expected
+# Exception|           cmsg: expected bad csum, pf_packet returns valid
+# Exception|           rx: pkt: sport=33000 len=45 csum=0x9720 verify=0xd1be
+# Exception|           rx: pkt: sport=33000 len=929 csum=0xea21 verify=0x0
+# Exception|           pkt: good csum, while bad expected
+# Exception|           cmsg: expected bad csum, pf_packet returns valid
+# Exception|           rx: pkt: sport=33000 len=292 csum=0xd29d verify=0x5ac4
+# Exception|           rx: pkt: sport=33000 len=860 csum=0x3ec5 verify=0x0
+# Exception|           pkt: good csum, while bad expected
+# Exception|           cmsg: expected bad csum, pf_packet returns valid
+# Exception|           rx: pkt: sport=33000 len=858 csum=0x3cdc verify=0x0
+# Exception|           pkt: good csum, while bad expected
+# Exception|           cmsg: expected bad csum, pf_packet returns valid
+# Exception|           rx: pkt: sport=33000 len=801 csum=0x3126 verify=0x9db3
+# Exception|           rx: pkt: sport=33000 len=274 csum=0x8724 verify=0x0
+# Exception|           pkt: good csum, while bad expected
+# Exception|           cmsg: expected bad csum, pf_packet returns valid
+# Exception|           rx: pkt: sport=33000 len=832 csum=0xb633 verify=0x9398
+# Exception|           rx: pkt: sport=33000 len=385 csum=0x94e1 verify=0x0
+# Exception|           pkt: good csum, while bad expected
+# Exception|           cmsg: expected bad csum, pf_packet returns valid
+# Exception|           rx: pkt: sport=33000 len=650 csum=0x6250 verify=0x3b5f
+# Exception|           rx: pkt: sport=33000 len=489 csum=0x9f99 verify=0x0
+# Exception|           pkt: good csum, while bad expected
+# Exception|           cmsg: expected bad csum, pf_packet returns valid
+# Exception|           rx: pkt: sport=33000 len=713 csum=0x67d2 verify=0x0
+# Exception|           pkt: good csum, while bad expected
+# Exception|           cmsg: expected bad csum, pf_packet returns valid
+# Exception|           rx: pkt: sport=33000 len=399 csum=0xe25d verify=0x3b44
+# Exception|           rx: pkt: sport=33000 len=199 csum=0x5bd1 verify=0x0
+# Exception|           pkt: good csum, while bad expected
+# Exception|           cmsg: expected bad csum, pf_packet returns valid
+# Exception|           /home/validation1/selftests/sw-linux-patch-tests/repository/ksft/net/lib/csum: rx: errors at pf_packet: total=56 bad_csums=34 bad_valids=34
+# Exception| 
+not ok 4 csum.ipv4_rx_udp_invalid
+ok 5 csum.ipv4_tx_udp_csum_offload
+ok 6 csum.ipv4_tx_udp_zero_checksum
+ok 7 csum.ipv6_rx_tcp
+ok 8 csum.ipv6_rx_tcp_invalid
+# Exception| Traceback (most recent call last):
+# Exception|   File "/home/validation1/selftests/sw-linux-patch-tests/repository/ksft/net/lib/py/ksft.py", line 420, in ksft_run
+# Exception|     func(*args)
+# Exception|     ~~~~^^^^^^^
+# Exception|   File "/home/validation1/selftests/sw-linux-patch-tests/repository/ksft/drivers/net/hw/csum.py", line 59, in f
+# Exception|     test_receive(cfg, ipver, extra_args)
+# Exception|     ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+# Exception|   File "/home/validation1/selftests/sw-linux-patch-tests/repository/ksft/drivers/net/hw/csum.py", line 22, in test_receive
+# Exception|     with bkg(rx_cmd, exit_wait=True):
+# Exception|          ~~~^^^^^^^^^^^^^^^^^^^^^^^^
+# Exception|   File "/home/validation1/selftests/sw-linux-patch-tests/repository/ksft/net/lib/py/utils.py", line 200, in __exit__
+# Exception|     return self.process(terminate=terminate, fail=self.check_fail,
+# Exception|            ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+# Exception|                         expect_fail=self.expect_fail)
+# Exception|                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+# Exception|   File "/home/validation1/selftests/sw-linux-patch-tests/repository/ksft/net/lib/py/utils.py", line 129, in process
+# Exception|     raise CmdExitFailure("Command failed", self)
+# Exception| net.lib.py.utils.CmdExitFailure: Command failed
+# Exception| CMD: /home/validation1/selftests/sw-linux-patch-tests/repository/ksft/net/lib/csum -i enp134s0 -n 100 -6 -S fc00:100::2 -D fc00:100::1 -r 1 -R 
+# Exception|   EXIT: 1
+# Exception|   STDERR: /home/validation1/selftests/sw-linux-patch-tests/repository/ksft/net/lib/csum: rx: missing packets at pf_packet: 0 < 100
+# Exception| 
+not ok 9 csum.ipv6_rx_udp
+ok 10 csum.ipv6_rx_udp_invalid
+ok 11 csum.ipv6_tx_udp_csum_offload
+ok 12 csum.ipv6_tx_udp_zero_checksum
+# Totals: pass:8 fail:4 xfail:0 xpass:0 skip:0 error:0

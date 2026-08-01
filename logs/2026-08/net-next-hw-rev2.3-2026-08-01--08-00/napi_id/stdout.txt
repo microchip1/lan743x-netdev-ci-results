@@ -1,0 +1,36 @@
+TAP version 13
+1..1
+# Exception| Traceback (most recent call last):
+# Exception|   File "/home/validation1/selftests/sw-linux-patch-tests/repository/ksft/net/lib/py/ksft.py", line 420, in ksft_run
+# Exception|     func(*args)
+# Exception|     ~~~~^^^^^^^
+# Exception|   File "/home/validation1/selftests/sw-linux-patch-tests/repository/ksft/drivers/net/napi_id.py", line 13, in test_napi_id
+# Exception|     cmd(f"echo a | socat - TCP:{cfg.baddr}:{port}", host=cfg.remote, shell=True)
+# Exception|     ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+# Exception|   File "/home/validation1/selftests/sw-linux-patch-tests/repository/ksft/net/lib/py/utils.py", line 96, in __init__
+# Exception|     self.process(terminate=False, fail=fail, expect_fail=expect_fail,
+# Exception|     ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+# Exception|                  timeout=timeout)
+# Exception|                  ^^^^^^^^^^^^^^^^
+# Exception|   File "/home/validation1/selftests/sw-linux-patch-tests/repository/ksft/net/lib/py/utils.py", line 118, in process
+# Exception|     stdout, stderr = self._process_terminate(terminate=terminate,
+# Exception|                      ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+# Exception|                                              timeout=timeout)
+# Exception|                                              ^^^^^^^^^^^^^^^^
+# Exception|   File "/home/validation1/selftests/sw-linux-patch-tests/repository/ksft/net/lib/py/utils.py", line 102, in _process_terminate
+# Exception|     stdout, stderr = self.proc.communicate(timeout=timeout)
+# Exception|                      ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+# Exception|   File "/usr/lib/python3.14/subprocess.py", line 1221, in communicate
+# Exception|     stdout, stderr = self._communicate(input, endtime, timeout)
+# Exception|                      ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+# Exception|   File "/usr/lib/python3.14/subprocess.py", line 2154, in _communicate
+# Exception|     self._check_timeout(endtime, orig_timeout, stdout, stderr)
+# Exception|     ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+# Exception|   File "/usr/lib/python3.14/subprocess.py", line 1268, in _check_timeout
+# Exception|     raise TimeoutExpired(
+# Exception|     ...<2 lines>...
+# Exception|             stderr=b''.join(stderr_seq) if stderr_seq else None)
+# Exception| subprocess.TimeoutExpired: Command '['ssh', '-q', 'root@192.168.100.2', 'echo a | socat - TCP:[fc00:100::1]:36365']' timed out after 5 seconds
+# Exception| 
+not ok 1 napi_id.test_napi_id
+# Totals: pass:0 fail:1 xfail:0 xpass:0 skip:0 error:0
