@@ -1,0 +1,85 @@
+TAP version 13
+1..12
+ok 1 csum.ipv4_rx_tcp
+ok 2 csum.ipv4_rx_tcp_invalid
+ok 3 csum.ipv4_rx_udp
+ok 4 csum.ipv4_rx_udp_invalid
+# Exception| Traceback (most recent call last):
+# Exception|   File "/home/validation1/selftests/sw-linux-patch-tests/repository/ksft/net/lib/py/ksft.py", line 420, in ksft_run
+# Exception|     func(*args)
+# Exception|     ~~~~^^^^^^^
+# Exception|   File "/home/validation1/selftests/sw-linux-patch-tests/repository/ksft/drivers/net/hw/csum.py", line 57, in f
+# Exception|     test_transmit(cfg, ipver, extra_args)
+# Exception|     ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+# Exception|   File "/home/validation1/selftests/sw-linux-patch-tests/repository/ksft/drivers/net/hw/csum.py", line 44, in test_transmit
+# Exception|     wait_port_listen(34000, proto="udp", host=cfg.remote)
+# Exception|     ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+# Exception|   File "/home/validation1/selftests/sw-linux-patch-tests/repository/ksft/net/lib/py/utils.py", line 346, in wait_port_listen
+# Exception|     data = cmd(f'cat /proc/net/{proto}*', ns=ns, host=host, shell=True).stdout
+# Exception|            ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+# Exception|   File "/home/validation1/selftests/sw-linux-patch-tests/repository/ksft/net/lib/py/utils.py", line 96, in __init__
+# Exception|     self.process(terminate=False, fail=fail, expect_fail=expect_fail,
+# Exception|     ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+# Exception|                  timeout=timeout)
+# Exception|                  ^^^^^^^^^^^^^^^^
+# Exception|   File "/home/validation1/selftests/sw-linux-patch-tests/repository/ksft/net/lib/py/utils.py", line 118, in process
+# Exception|     stdout, stderr = self._process_terminate(terminate=terminate,
+# Exception|                      ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+# Exception|                                              timeout=timeout)
+# Exception|                                              ^^^^^^^^^^^^^^^^
+# Exception|   File "/home/validation1/selftests/sw-linux-patch-tests/repository/ksft/net/lib/py/utils.py", line 102, in _process_terminate
+# Exception|     stdout, stderr = self.proc.communicate(timeout=timeout)
+# Exception|                      ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+# Exception|   File "/usr/lib/python3.14/subprocess.py", line 1221, in communicate
+# Exception|     stdout, stderr = self._communicate(input, endtime, timeout)
+# Exception|                      ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+# Exception|   File "/usr/lib/python3.14/subprocess.py", line 2154, in _communicate
+# Exception|     self._check_timeout(endtime, orig_timeout, stdout, stderr)
+# Exception|     ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+# Exception|   File "/usr/lib/python3.14/subprocess.py", line 1268, in _check_timeout
+# Exception|     raise TimeoutExpired(
+# Exception|     ...<2 lines>...
+# Exception|             stderr=b''.join(stderr_seq) if stderr_seq else None)
+# Exception| subprocess.TimeoutExpired: Command '['ssh', '-q', 'root@192.168.100.2', 'cat /proc/net/udp*']' timed out after 5 seconds
+# Exception| 
+not ok 5 csum.ipv4_tx_udp_csum_offload
+# Exception| Traceback (most recent call last):
+# Exception|   File "/home/validation1/selftests/sw-linux-patch-tests/repository/ksft/drivers/net/hw/csum.py", line 44, in test_transmit
+# Exception|     wait_port_listen(34000, proto="udp", host=cfg.remote)
+# Exception|     ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+# Exception|   File "/home/validation1/selftests/sw-linux-patch-tests/repository/ksft/net/lib/py/utils.py", line 351, in wait_port_listen
+# Exception|     raise Exception("Waiting for port listen timed out")
+# Exception| Exception: Waiting for port listen timed out
+# Exception| 
+# Exception| During handling of the above exception, another exception occurred:
+# Exception| 
+# Exception| Traceback (most recent call last):
+# Exception|   File "/home/validation1/selftests/sw-linux-patch-tests/repository/ksft/net/lib/py/ksft.py", line 420, in ksft_run
+# Exception|     func(*args)
+# Exception|     ~~~~^^^^^^^
+# Exception|   File "/home/validation1/selftests/sw-linux-patch-tests/repository/ksft/drivers/net/hw/csum.py", line 57, in f
+# Exception|     test_transmit(cfg, ipver, extra_args)
+# Exception|     ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+# Exception|   File "/home/validation1/selftests/sw-linux-patch-tests/repository/ksft/drivers/net/hw/csum.py", line 43, in test_transmit
+# Exception|     with bkg(rx_cmd, host=cfg.remote, exit_wait=True):
+# Exception|          ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+# Exception|   File "/home/validation1/selftests/sw-linux-patch-tests/repository/ksft/net/lib/py/utils.py", line 200, in __exit__
+# Exception|     return self.process(terminate=terminate, fail=self.check_fail,
+# Exception|            ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+# Exception|                         expect_fail=self.expect_fail)
+# Exception|                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+# Exception|   File "/home/validation1/selftests/sw-linux-patch-tests/repository/ksft/net/lib/py/utils.py", line 129, in process
+# Exception|     raise CmdExitFailure("Command failed", self)
+# Exception| net.lib.py.utils.CmdExitFailure: Command failed
+# Exception| CMD[remote]: /tmp/hnlqtljn/hdefartxcsum -i enp9s0 -L 1 -n 100 -4 -S 192.168.100.1 -D 192.168.100.2 -R -U -Z
+# Exception|   EXIT: 1
+# Exception|   STDERR: /tmp/hnlqtljn/hdefartxcsum: rx: missing packets at pf_packet: 0 < 100
+# Exception| 
+not ok 6 csum.ipv4_tx_udp_zero_checksum
+ok 7 csum.ipv6_rx_tcp
+ok 8 csum.ipv6_rx_tcp_invalid
+ok 9 csum.ipv6_rx_udp
+ok 10 csum.ipv6_rx_udp_invalid
+ok 11 csum.ipv6_tx_udp_csum_offload
+ok 12 csum.ipv6_tx_udp_zero_checksum
+# Totals: pass:10 fail:2 xfail:0 xpass:0 skip:0 error:0
