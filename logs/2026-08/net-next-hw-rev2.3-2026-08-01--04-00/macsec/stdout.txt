@@ -1,0 +1,85 @@
+TAP version 13
+1..8
+ok 1 macsec.test_offload_api # SKIP macsec-hw-offload not supported
+ok 2 macsec.test_max_secy # XFAIL Test only works on netdevsim
+ok 3 macsec.test_max_sc # XFAIL Test only works on netdevsim
+ok 4 macsec.test_offload_state # SKIP macsec-hw-offload not supported
+# Exception| Traceback (most recent call last):
+# Exception|   File "/home/validation1/selftests/sw-linux-patch-tests/repository/ksft/net/lib/py/ksft.py", line 420, in ksft_run
+# Exception|     func(*args)
+# Exception|     ~~~~^^^^^^^
+# Exception|   File "/home/validation1/selftests/sw-linux-patch-tests/repository/ksft/drivers/net/macsec.py", line 289, in test_vlan
+# Exception|     _require_ip_macsec(cfg)
+# Exception|     ~~~~~~~~~~~~~~~~~~^^^^^
+# Exception|   File "/home/validation1/selftests/sw-linux-patch-tests/repository/ksft/drivers/net/macsec.py", line 40, in _require_ip_macsec
+# Exception|     out = cmd("ip macsec help", fail=False, host=host)
+# Exception|   File "/home/validation1/selftests/sw-linux-patch-tests/repository/ksft/net/lib/py/utils.py", line 96, in __init__
+# Exception|     self.process(terminate=False, fail=fail, expect_fail=expect_fail,
+# Exception|     ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+# Exception|                  timeout=timeout)
+# Exception|                  ^^^^^^^^^^^^^^^^
+# Exception|   File "/home/validation1/selftests/sw-linux-patch-tests/repository/ksft/net/lib/py/utils.py", line 118, in process
+# Exception|     stdout, stderr = self._process_terminate(terminate=terminate,
+# Exception|                      ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+# Exception|                                              timeout=timeout)
+# Exception|                                              ^^^^^^^^^^^^^^^^
+# Exception|   File "/home/validation1/selftests/sw-linux-patch-tests/repository/ksft/net/lib/py/utils.py", line 102, in _process_terminate
+# Exception|     stdout, stderr = self.proc.communicate(timeout=timeout)
+# Exception|                      ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+# Exception|   File "/usr/lib/python3.14/subprocess.py", line 1221, in communicate
+# Exception|     stdout, stderr = self._communicate(input, endtime, timeout)
+# Exception|                      ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+# Exception|   File "/usr/lib/python3.14/subprocess.py", line 2154, in _communicate
+# Exception|     self._check_timeout(endtime, orig_timeout, stdout, stderr)
+# Exception|     ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+# Exception|   File "/usr/lib/python3.14/subprocess.py", line 1268, in _check_timeout
+# Exception|     raise TimeoutExpired(
+# Exception|     ...<2 lines>...
+# Exception|             stderr=b''.join(stderr_seq) if stderr_seq else None)
+# Exception| subprocess.TimeoutExpired: Command '['ssh', '-q', 'root@192.168.100.2', 'ip macsec help']' timed out after 5 seconds
+# Exception| 
+not ok 5 macsec.test_vlan.offloaded
+# Exception| Traceback (most recent call last):
+# Exception|   File "/home/validation1/selftests/sw-linux-patch-tests/repository/ksft/net/lib/py/ksft.py", line 420, in ksft_run
+# Exception|     func(*args)
+# Exception|     ~~~~^^^^^^^
+# Exception|   File "/home/validation1/selftests/sw-linux-patch-tests/repository/ksft/drivers/net/macsec.py", line 296, in test_vlan
+# Exception|     _setup_macsec_sa(cfg, name)
+# Exception|     ~~~~~~~~~~~~~~~~^^^^^^^^^^^
+# Exception|   File "/home/validation1/selftests/sw-linux-patch-tests/repository/ksft/drivers/net/macsec.py", line 75, in _setup_macsec_sa
+# Exception|     remote_mac = _get_mac(name, host=cfg.remote)
+# Exception|   File "/home/validation1/selftests/sw-linux-patch-tests/repository/ksft/drivers/net/macsec.py", line 68, in _get_mac
+# Exception|     dev = ip(f"link show dev {ifname}", json=True, host=host)
+# Exception|   File "/home/validation1/selftests/sw-linux-patch-tests/repository/ksft/net/lib/py/utils.py", line 260, in ip
+# Exception|     return tool('ip', args, json=json, host=host)
+# Exception|   File "/home/validation1/selftests/sw-linux-patch-tests/repository/ksft/net/lib/py/utils.py", line 247, in tool
+# Exception|     cmd_obj = cmd(cmd_str, ns=ns, host=host)
+# Exception|   File "/home/validation1/selftests/sw-linux-patch-tests/repository/ksft/net/lib/py/utils.py", line 96, in __init__
+# Exception|     self.process(terminate=False, fail=fail, expect_fail=expect_fail,
+# Exception|     ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+# Exception|                  timeout=timeout)
+# Exception|                  ^^^^^^^^^^^^^^^^
+# Exception|   File "/home/validation1/selftests/sw-linux-patch-tests/repository/ksft/net/lib/py/utils.py", line 118, in process
+# Exception|     stdout, stderr = self._process_terminate(terminate=terminate,
+# Exception|                      ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+# Exception|                                              timeout=timeout)
+# Exception|                                              ^^^^^^^^^^^^^^^^
+# Exception|   File "/home/validation1/selftests/sw-linux-patch-tests/repository/ksft/net/lib/py/utils.py", line 102, in _process_terminate
+# Exception|     stdout, stderr = self.proc.communicate(timeout=timeout)
+# Exception|                      ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+# Exception|   File "/usr/lib/python3.14/subprocess.py", line 1221, in communicate
+# Exception|     stdout, stderr = self._communicate(input, endtime, timeout)
+# Exception|                      ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+# Exception|   File "/usr/lib/python3.14/subprocess.py", line 2154, in _communicate
+# Exception|     self._check_timeout(endtime, orig_timeout, stdout, stderr)
+# Exception|     ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+# Exception|   File "/usr/lib/python3.14/subprocess.py", line 1268, in _check_timeout
+# Exception|     raise TimeoutExpired(
+# Exception|     ...<2 lines>...
+# Exception|             stderr=b''.join(stderr_seq) if stderr_seq else None)
+# Exception| subprocess.TimeoutExpired: Command '['ssh', '-q', 'root@192.168.100.2', 'ip --json link show dev ms1664444_0']' timed out after 5 seconds
+# Exception| 
+not ok 6 macsec.test_vlan.software
+ok 7 macsec.test_vlan_toggle.on_to_off # SKIP macsec-hw-offload not supported
+ok 8 macsec.test_vlan_toggle.off_to_on # SKIP macsec-hw-offload not supported
+# Totals: pass:0 fail:2 xfail:2 xpass:0 skip:4 error:0
