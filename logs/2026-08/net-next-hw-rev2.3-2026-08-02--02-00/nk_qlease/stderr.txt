@@ -1,0 +1,29 @@
+Traceback (most recent call last):
+  File "/home/validation1/selftests/sw-linux-patch-tests/repository/ksft/drivers/net/hw/nk_qlease.py", line 265, in <module>
+    main()
+    ~~~~^^
+  File "/home/validation1/selftests/sw-linux-patch-tests/repository/ksft/drivers/net/hw/nk_qlease.py", line 226, in main
+    with NetDrvContEnv(__file__, rxqueues=2) as cfg:
+         ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/validation1/selftests/sw-linux-patch-tests/repository/ksft/drivers/net/lib/py/env.py", line 355, in __init__
+    super().__init__(src_path, **kwargs)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "/home/validation1/selftests/sw-linux-patch-tests/repository/ksft/drivers/net/lib/py/env.py", line 174, in __init__
+    self.remote_ifname = self.resolve_remote_ifc()
+                         ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/home/validation1/selftests/sw-linux-patch-tests/repository/ksft/drivers/net/lib/py/env.py", line 228, in resolve_remote_ifc
+    v4 = ip("addr show to " + self.remote_addr_v["4"], json=True, host=self.remote)
+  File "/home/validation1/selftests/sw-linux-patch-tests/repository/ksft/net/lib/py/utils.py", line 260, in ip
+    return tool('ip', args, json=json, host=host)
+  File "/home/validation1/selftests/sw-linux-patch-tests/repository/ksft/net/lib/py/utils.py", line 247, in tool
+    cmd_obj = cmd(cmd_str, ns=ns, host=host)
+  File "/home/validation1/selftests/sw-linux-patch-tests/repository/ksft/net/lib/py/utils.py", line 96, in __init__
+    self.process(terminate=False, fail=fail, expect_fail=expect_fail,
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                 timeout=timeout)
+                 ^^^^^^^^^^^^^^^^
+  File "/home/validation1/selftests/sw-linux-patch-tests/repository/ksft/net/lib/py/utils.py", line 129, in process
+    raise CmdExitFailure("Command failed", self)
+net.lib.py.utils.CmdExitFailure: Command failed
+CMD[remote]: ip --json addr show to 192.168.100.2
+  EXIT: 255
