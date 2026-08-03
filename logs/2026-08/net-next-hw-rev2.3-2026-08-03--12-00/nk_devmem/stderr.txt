@@ -1,0 +1,23 @@
+Traceback (most recent call last):
+  File "/home/validation1/selftests/sw-linux-patch-tests/repository/ksft/drivers/net/hw/nk_devmem.py", line 46, in <module>
+    main()
+    ~~~~^^
+  File "/home/validation1/selftests/sw-linux-patch-tests/repository/ksft/drivers/net/hw/nk_devmem.py", line 36, in main
+    with NetDrvContEnv(__file__, rxqueues=2, primary_rx_redirect=True) as cfg:
+         ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/validation1/selftests/sw-linux-patch-tests/repository/ksft/drivers/net/lib/py/env.py", line 372, in __init__
+    rtnl.newlink(
+    ~~~~~~~~~~~~^
+        {
+        ^
+    ...<10 lines>...
+        flags=[Netlink.NLM_F_CREATE, Netlink.NLM_F_EXCL],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/validation1/selftests/sw-linux-patch-tests/repository/ksft/net/lib/ynl/pyynl/lib/ynl.py", line 1395, in _op
+    return self._ops(ops)[0]
+           ~~~~~~~~~^^^^^
+  File "/home/validation1/selftests/sw-linux-patch-tests/repository/ksft/net/lib/ynl/pyynl/lib/ynl.py", line 1352, in _ops
+    raise NlError(nl_msg)
+net.lib.ynl.pyynl.lib.ynl.NlError: Netlink error: Unknown device type: Operation not supported
