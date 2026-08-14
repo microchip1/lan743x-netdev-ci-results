@@ -1,0 +1,665 @@
+# Interface: enp134s0, driver: lan743x
+TAP version 13
+1..318
+ok 1 gro.test.sw_ipv4_data_same
+ok 2 gro.test.sw_ipv4_data_lrg_sml
+ok 3 gro.test.sw_ipv4_data_sml_lrg
+# CMD: /home/validation1/testrunner/repository/ksft/net/lib/gro --ipv4 --dmac 00:80:0f:74:31:00 --smac 00:01:02:03:04:02 --daddr 192.168.100.1 --saddr 192.168.100.2 --test data_lrg_1byte --verbose --rx --iface enp134s0
+#   EXIT: 1
+#   STDOUT: large data packet followed by a 1 byte one:
+#   STDERR: Expected {101 }, Total 1 packets
+#           Received {100 [!=101]1 [!=0]}, Total 2 packets.
+#           /home/validation1/testrunner/repository/ksft/net/lib/gro: incorrect number of packets
+# Attempt 1/6 failed, retrying...
+# CMD: /home/validation1/testrunner/repository/ksft/net/lib/gro --ipv4 --dmac 00:80:0f:74:31:00 --smac 00:01:02:03:04:02 --daddr 192.168.100.1 --saddr 192.168.100.2 --test data_lrg_1byte --verbose --rx --iface enp134s0
+#   EXIT: 1
+#   STDOUT: large data packet followed by a 1 byte one:
+#   STDERR: Expected {101 }, Total 1 packets
+#           Received {100 [!=101]1 [!=0]}, Total 2 packets.
+#           /home/validation1/testrunner/repository/ksft/net/lib/gro: incorrect number of packets
+# Attempt 2/6 failed, retrying...
+# CMD: /home/validation1/testrunner/repository/ksft/net/lib/gro --ipv4 --dmac 00:80:0f:74:31:00 --smac 00:01:02:03:04:02 --daddr 192.168.100.1 --saddr 192.168.100.2 --test data_lrg_1byte --verbose --rx --iface enp134s0
+#   EXIT: 1
+#   STDOUT: large data packet followed by a 1 byte one:
+#   STDERR: Expected {101 }, Total 1 packets
+#           Received {100 [!=101]1 [!=0]}, Total 2 packets.
+#           /home/validation1/testrunner/repository/ksft/net/lib/gro: incorrect number of packets
+# Attempt 3/6 failed, retrying...
+# CMD: /home/validation1/testrunner/repository/ksft/net/lib/gro --ipv4 --dmac 00:80:0f:74:31:00 --smac 00:01:02:03:04:02 --daddr 192.168.100.1 --saddr 192.168.100.2 --test data_lrg_1byte --verbose --rx --iface enp134s0
+#   EXIT: 1
+#   STDOUT: large data packet followed by a 1 byte one:
+#   STDERR: Expected {101 }, Total 1 packets
+#           Received {100 [!=101]1 [!=0]}, Total 2 packets.
+#           /home/validation1/testrunner/repository/ksft/net/lib/gro: incorrect number of packets
+# Attempt 4/6 failed, retrying...
+# CMD: /home/validation1/testrunner/repository/ksft/net/lib/gro --ipv4 --dmac 00:80:0f:74:31:00 --smac 00:01:02:03:04:02 --daddr 192.168.100.1 --saddr 192.168.100.2 --test data_lrg_1byte --verbose --rx --iface enp134s0
+#   EXIT: 1
+#   STDOUT: large data packet followed by a 1 byte one:
+#   STDERR: Expected {101 }, Total 1 packets
+#           Received {100 [!=101]1 [!=0]}, Total 2 packets.
+#           /home/validation1/testrunner/repository/ksft/net/lib/gro: incorrect number of packets
+# Attempt 5/6 failed, retrying...
+# Exception| Traceback (most recent call last):
+# Exception|   File "/home/validation1/testrunner/repository/ksft/net/lib/py/ksft.py", line 420, in ksft_run
+# Exception|     func(*args)
+# Exception|     ~~~~^^^^^^^
+# Exception|   File "/home/validation1/testrunner/repository/ksft/drivers/net/gro.py", line 365, in test
+# Exception|     rx_proc = _run_gro_bin(cfg, test_name, protocol=protocol,
+# Exception|                            verbose=True, fail=fail_now)
+# Exception|   File "/home/validation1/testrunner/repository/ksft/drivers/net/gro.py", line 220, in _run_gro_bin
+# Exception|     with bkg(rx_cmd, ksft_ready=True, exit_wait=True, fail=fail) as rx_proc:
+# Exception|          ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+# Exception|   File "/home/validation1/testrunner/repository/ksft/net/lib/py/utils.py", line 205, in __exit__
+# Exception|     return self.process(terminate=terminate, fail=self.check_fail,
+# Exception|            ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+# Exception|                         expect_fail=self.expect_fail)
+# Exception|                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+# Exception|   File "/home/validation1/testrunner/repository/ksft/net/lib/py/utils.py", line 134, in process
+# Exception|     raise CmdExitFailure("Command failed", self)
+# Exception| net.lib.py.utils.CmdExitFailure: Command failed
+# Exception| CMD: /home/validation1/testrunner/repository/ksft/net/lib/gro --ipv4 --dmac 00:80:0f:74:31:00 --smac 00:01:02:03:04:02 --daddr 192.168.100.1 --saddr 192.168.100.2 --test data_lrg_1byte --verbose --rx --iface enp134s0
+# Exception|   EXIT: 1
+# Exception|   STDOUT: large data packet followed by a 1 byte one:
+# Exception|   STDERR: Expected {101 }, Total 1 packets
+# Exception|           Received {100 [!=101]1 [!=0]}, Total 2 packets.
+# Exception|           /home/validation1/testrunner/repository/ksft/net/lib/gro: incorrect number of packets
+# Exception| 
+not ok 4 gro.test.sw_ipv4_data_lrg_1byte
+ok 5 gro.test.sw_ipv4_data_burst
+ok 6 gro.test.sw_ipv4_ack
+ok 7 gro.test.sw_ipv4_flags_psh
+ok 8 gro.test.sw_ipv4_flags_syn
+ok 9 gro.test.sw_ipv4_flags_rst
+ok 10 gro.test.sw_ipv4_flags_urg
+ok 11 gro.test.sw_ipv4_flags_cwr
+ok 12 gro.test.sw_ipv4_tcp_csum
+ok 13 gro.test.sw_ipv4_tcp_seq
+ok 14 gro.test.sw_ipv4_tcp_ts
+ok 15 gro.test.sw_ipv4_tcp_opt
+ok 16 gro.test.sw_ipv4_ip_ecn
+ok 17 gro.test.sw_ipv4_ip_tos
+ok 18 gro.test.sw_ipv4_large_max
+ok 19 gro.test.sw_ipv4_large_rem
+ok 20 gro.test.sw_ipv4_ip_csum
+ok 21 gro.test.sw_ipv4_ip_ttl
+ok 22 gro.test.sw_ipv4_ip_opt
+ok 23 gro.test.sw_ipv4_ip_frag4
+ok 24 gro.test.sw_ipv4_ip_id_df1_inc
+ok 25 gro.test.sw_ipv4_ip_id_df1_fixed
+ok 26 gro.test.sw_ipv4_ip_id_df0_inc
+ok 27 gro.test.sw_ipv4_ip_id_df0_fixed
+ok 28 gro.test.sw_ipv4_ip_id_df1_inc_fixed
+ok 29 gro.test.sw_ipv4_ip_id_df1_fixed_inc
+ok 30 gro.test.sw_ipv6_data_same # SKIP Test requires IPv6 connectivity
+ok 31 gro.test.sw_ipv6_data_lrg_sml # SKIP Test requires IPv6 connectivity
+ok 32 gro.test.sw_ipv6_data_sml_lrg # SKIP Test requires IPv6 connectivity
+ok 33 gro.test.sw_ipv6_data_lrg_1byte # SKIP Test requires IPv6 connectivity
+ok 34 gro.test.sw_ipv6_data_burst # SKIP Test requires IPv6 connectivity
+ok 35 gro.test.sw_ipv6_ack # SKIP Test requires IPv6 connectivity
+ok 36 gro.test.sw_ipv6_flags_psh # SKIP Test requires IPv6 connectivity
+ok 37 gro.test.sw_ipv6_flags_syn # SKIP Test requires IPv6 connectivity
+ok 38 gro.test.sw_ipv6_flags_rst # SKIP Test requires IPv6 connectivity
+ok 39 gro.test.sw_ipv6_flags_urg # SKIP Test requires IPv6 connectivity
+ok 40 gro.test.sw_ipv6_flags_cwr # SKIP Test requires IPv6 connectivity
+ok 41 gro.test.sw_ipv6_tcp_csum # SKIP Test requires IPv6 connectivity
+ok 42 gro.test.sw_ipv6_tcp_seq # SKIP Test requires IPv6 connectivity
+ok 43 gro.test.sw_ipv6_tcp_ts # SKIP Test requires IPv6 connectivity
+ok 44 gro.test.sw_ipv6_tcp_opt # SKIP Test requires IPv6 connectivity
+ok 45 gro.test.sw_ipv6_ip_ecn # SKIP Test requires IPv6 connectivity
+ok 46 gro.test.sw_ipv6_ip_tos # SKIP Test requires IPv6 connectivity
+ok 47 gro.test.sw_ipv6_large_max # SKIP Test requires IPv6 connectivity
+ok 48 gro.test.sw_ipv6_large_rem # SKIP Test requires IPv6 connectivity
+ok 49 gro.test.sw_ipv6_ip_frag6 # SKIP Test requires IPv6 connectivity
+ok 50 gro.test.sw_ipv6_ip_v6ext_same # SKIP Test requires IPv6 connectivity
+ok 51 gro.test.sw_ipv6_ip_v6ext_diff # SKIP Test requires IPv6 connectivity
+ok 52 gro.test.sw_ipip_data_same
+ok 53 gro.test.sw_ipip_data_lrg_sml
+ok 54 gro.test.sw_ipip_data_sml_lrg
+ok 55 gro.test.sw_ipip_data_lrg_1byte
+ok 56 gro.test.sw_ipip_data_burst
+ok 57 gro.test.sw_ipip_ack
+ok 58 gro.test.sw_ipip_flags_psh
+ok 59 gro.test.sw_ipip_flags_syn
+ok 60 gro.test.sw_ipip_flags_rst
+ok 61 gro.test.sw_ipip_flags_urg
+ok 62 gro.test.sw_ipip_flags_cwr
+ok 63 gro.test.sw_ipip_tcp_csum
+ok 64 gro.test.sw_ipip_tcp_seq
+ok 65 gro.test.sw_ipip_tcp_ts
+ok 66 gro.test.sw_ipip_tcp_opt
+ok 67 gro.test.sw_ipip_ip_ecn
+ok 68 gro.test.sw_ipip_ip_tos
+ok 69 gro.test.sw_ipip_large_max
+# CMD: /home/validation1/testrunner/repository/ksft/net/lib/gro --ipip --dmac 00:80:0f:74:31:00 --smac 00:01:02:03:04:02 --daddr 192.168.100.1 --saddr 192.168.100.2 --test large_rem --verbose --rx --iface enp134s0
+#   EXIT: 1
+#   STDOUT: last segment sent individually:
+#   STDERR: Expected {64576 900 900 }, Total 3 packets
+#           Received {48432 [!=64576]17044 [!=900]900 }, Total 3 packets.
+#           /home/validation1/testrunner/repository/ksft/net/lib/gro: incorrect packet geometry
+# Attempt 1/6 failed, retrying...
+ok 70 gro.test.sw_ipip_large_rem
+ok 71 gro.test.sw_ipip_ip_csum
+ok 72 gro.test.sw_ipip_ip_ttl
+ok 73 gro.test.sw_ipip_ip_opt
+ok 74 gro.test.sw_ipip_ip_frag4
+ok 75 gro.test.sw_ipip_ip_id_df1_inc
+ok 76 gro.test.sw_ipip_ip_id_df1_fixed
+ok 77 gro.test.sw_ipip_ip_id_df0_inc
+ok 78 gro.test.sw_ipip_ip_id_df0_fixed
+ok 79 gro.test.sw_ipip_ip_id_df1_inc_fixed
+ok 80 gro.test.sw_ipip_ip_id_df1_fixed_inc
+ok 81 gro.test.sw_ip6ip6_data_same # SKIP Test requires IPv6 connectivity
+ok 82 gro.test.sw_ip6ip6_data_lrg_sml # SKIP Test requires IPv6 connectivity
+ok 83 gro.test.sw_ip6ip6_data_sml_lrg # SKIP Test requires IPv6 connectivity
+ok 84 gro.test.sw_ip6ip6_data_lrg_1byte # SKIP Test requires IPv6 connectivity
+ok 85 gro.test.sw_ip6ip6_data_burst # SKIP Test requires IPv6 connectivity
+ok 86 gro.test.sw_ip6ip6_ack # SKIP Test requires IPv6 connectivity
+ok 87 gro.test.sw_ip6ip6_flags_psh # SKIP Test requires IPv6 connectivity
+ok 88 gro.test.sw_ip6ip6_flags_syn # SKIP Test requires IPv6 connectivity
+ok 89 gro.test.sw_ip6ip6_flags_rst # SKIP Test requires IPv6 connectivity
+ok 90 gro.test.sw_ip6ip6_flags_urg # SKIP Test requires IPv6 connectivity
+ok 91 gro.test.sw_ip6ip6_flags_cwr # SKIP Test requires IPv6 connectivity
+ok 92 gro.test.sw_ip6ip6_tcp_csum # SKIP Test requires IPv6 connectivity
+ok 93 gro.test.sw_ip6ip6_tcp_seq # SKIP Test requires IPv6 connectivity
+ok 94 gro.test.sw_ip6ip6_tcp_ts # SKIP Test requires IPv6 connectivity
+ok 95 gro.test.sw_ip6ip6_tcp_opt # SKIP Test requires IPv6 connectivity
+ok 96 gro.test.sw_ip6ip6_ip_ecn # SKIP Test requires IPv6 connectivity
+ok 97 gro.test.sw_ip6ip6_ip_tos # SKIP Test requires IPv6 connectivity
+ok 98 gro.test.sw_ip6ip6_large_max # SKIP Test requires IPv6 connectivity
+ok 99 gro.test.sw_ip6ip6_large_rem # SKIP Test requires IPv6 connectivity
+ok 100 gro.test.hw_ipv4_data_same # XFAIL Device does not support rx-gro-hw
+ok 101 gro.test.hw_ipv4_data_lrg_sml # XFAIL Device does not support rx-gro-hw
+ok 102 gro.test.hw_ipv4_data_sml_lrg # XFAIL Device does not support rx-gro-hw
+ok 103 gro.test.hw_ipv4_data_lrg_1byte # XFAIL Device does not support rx-gro-hw
+ok 104 gro.test.hw_ipv4_data_burst # XFAIL Device does not support rx-gro-hw
+ok 105 gro.test.hw_ipv4_ack # XFAIL Device does not support rx-gro-hw
+ok 106 gro.test.hw_ipv4_flags_psh # XFAIL Device does not support rx-gro-hw
+ok 107 gro.test.hw_ipv4_flags_syn # XFAIL Device does not support rx-gro-hw
+ok 108 gro.test.hw_ipv4_flags_rst # XFAIL Device does not support rx-gro-hw
+ok 109 gro.test.hw_ipv4_flags_urg # XFAIL Device does not support rx-gro-hw
+ok 110 gro.test.hw_ipv4_flags_cwr # XFAIL Device does not support rx-gro-hw
+ok 111 gro.test.hw_ipv4_tcp_csum # XFAIL Device does not support rx-gro-hw
+ok 112 gro.test.hw_ipv4_tcp_seq # XFAIL Device does not support rx-gro-hw
+ok 113 gro.test.hw_ipv4_tcp_ts # XFAIL Device does not support rx-gro-hw
+ok 114 gro.test.hw_ipv4_tcp_opt # XFAIL Device does not support rx-gro-hw
+ok 115 gro.test.hw_ipv4_ip_ecn # XFAIL Device does not support rx-gro-hw
+ok 116 gro.test.hw_ipv4_ip_tos # XFAIL Device does not support rx-gro-hw
+ok 117 gro.test.hw_ipv4_large_max # XFAIL Device does not support rx-gro-hw
+ok 118 gro.test.hw_ipv4_large_rem # XFAIL Device does not support rx-gro-hw
+ok 119 gro.test.hw_ipv4_ip_csum # XFAIL Device does not support rx-gro-hw
+ok 120 gro.test.hw_ipv4_ip_ttl # XFAIL Device does not support rx-gro-hw
+ok 121 gro.test.hw_ipv4_ip_opt # XFAIL Device does not support rx-gro-hw
+ok 122 gro.test.hw_ipv4_ip_frag4 # XFAIL Device does not support rx-gro-hw
+ok 123 gro.test.hw_ipv4_ip_id_df1_inc # XFAIL Device does not support rx-gro-hw
+ok 124 gro.test.hw_ipv4_ip_id_df1_fixed # XFAIL Device does not support rx-gro-hw
+ok 125 gro.test.hw_ipv4_ip_id_df0_inc # XFAIL Device does not support rx-gro-hw
+ok 126 gro.test.hw_ipv4_ip_id_df0_fixed # XFAIL Device does not support rx-gro-hw
+ok 127 gro.test.hw_ipv4_ip_id_df1_inc_fixed # XFAIL Device does not support rx-gro-hw
+ok 128 gro.test.hw_ipv4_ip_id_df1_fixed_inc # XFAIL Device does not support rx-gro-hw
+ok 129 gro.test.hw_ipv6_data_same # SKIP Test requires IPv6 connectivity
+ok 130 gro.test.hw_ipv6_data_lrg_sml # SKIP Test requires IPv6 connectivity
+ok 131 gro.test.hw_ipv6_data_sml_lrg # SKIP Test requires IPv6 connectivity
+ok 132 gro.test.hw_ipv6_data_lrg_1byte # SKIP Test requires IPv6 connectivity
+ok 133 gro.test.hw_ipv6_data_burst # SKIP Test requires IPv6 connectivity
+ok 134 gro.test.hw_ipv6_ack # SKIP Test requires IPv6 connectivity
+ok 135 gro.test.hw_ipv6_flags_psh # SKIP Test requires IPv6 connectivity
+ok 136 gro.test.hw_ipv6_flags_syn # SKIP Test requires IPv6 connectivity
+ok 137 gro.test.hw_ipv6_flags_rst # SKIP Test requires IPv6 connectivity
+ok 138 gro.test.hw_ipv6_flags_urg # SKIP Test requires IPv6 connectivity
+ok 139 gro.test.hw_ipv6_flags_cwr # SKIP Test requires IPv6 connectivity
+ok 140 gro.test.hw_ipv6_tcp_csum # SKIP Test requires IPv6 connectivity
+ok 141 gro.test.hw_ipv6_tcp_seq # SKIP Test requires IPv6 connectivity
+ok 142 gro.test.hw_ipv6_tcp_ts # SKIP Test requires IPv6 connectivity
+ok 143 gro.test.hw_ipv6_tcp_opt # SKIP Test requires IPv6 connectivity
+ok 144 gro.test.hw_ipv6_ip_ecn # SKIP Test requires IPv6 connectivity
+ok 145 gro.test.hw_ipv6_ip_tos # SKIP Test requires IPv6 connectivity
+ok 146 gro.test.hw_ipv6_large_max # SKIP Test requires IPv6 connectivity
+ok 147 gro.test.hw_ipv6_large_rem # SKIP Test requires IPv6 connectivity
+ok 148 gro.test.hw_ipv6_ip_frag6 # SKIP Test requires IPv6 connectivity
+ok 149 gro.test.hw_ipv6_ip_v6ext_same # SKIP Test requires IPv6 connectivity
+ok 150 gro.test.hw_ipv6_ip_v6ext_diff # SKIP Test requires IPv6 connectivity
+ok 151 gro.test.hw_ipip_data_same # XFAIL Device does not support rx-gro-hw
+ok 152 gro.test.hw_ipip_data_lrg_sml # XFAIL Device does not support rx-gro-hw
+ok 153 gro.test.hw_ipip_data_sml_lrg # XFAIL Device does not support rx-gro-hw
+ok 154 gro.test.hw_ipip_data_lrg_1byte # XFAIL Device does not support rx-gro-hw
+ok 155 gro.test.hw_ipip_data_burst # XFAIL Device does not support rx-gro-hw
+ok 156 gro.test.hw_ipip_ack # XFAIL Device does not support rx-gro-hw
+ok 157 gro.test.hw_ipip_flags_psh # XFAIL Device does not support rx-gro-hw
+ok 158 gro.test.hw_ipip_flags_syn # XFAIL Device does not support rx-gro-hw
+ok 159 gro.test.hw_ipip_flags_rst # XFAIL Device does not support rx-gro-hw
+ok 160 gro.test.hw_ipip_flags_urg # XFAIL Device does not support rx-gro-hw
+ok 161 gro.test.hw_ipip_flags_cwr # XFAIL Device does not support rx-gro-hw
+ok 162 gro.test.hw_ipip_tcp_csum # XFAIL Device does not support rx-gro-hw
+ok 163 gro.test.hw_ipip_tcp_seq # XFAIL Device does not support rx-gro-hw
+ok 164 gro.test.hw_ipip_tcp_ts # XFAIL Device does not support rx-gro-hw
+ok 165 gro.test.hw_ipip_tcp_opt # XFAIL Device does not support rx-gro-hw
+ok 166 gro.test.hw_ipip_ip_ecn # XFAIL Device does not support rx-gro-hw
+ok 167 gro.test.hw_ipip_ip_tos # XFAIL Device does not support rx-gro-hw
+ok 168 gro.test.hw_ipip_large_max # XFAIL Device does not support rx-gro-hw
+ok 169 gro.test.hw_ipip_large_rem # XFAIL Device does not support rx-gro-hw
+ok 170 gro.test.hw_ipip_ip_csum # XFAIL Device does not support rx-gro-hw
+ok 171 gro.test.hw_ipip_ip_ttl # XFAIL Device does not support rx-gro-hw
+ok 172 gro.test.hw_ipip_ip_opt # XFAIL Device does not support rx-gro-hw
+ok 173 gro.test.hw_ipip_ip_frag4 # XFAIL Device does not support rx-gro-hw
+ok 174 gro.test.hw_ipip_ip_id_df1_inc # XFAIL Device does not support rx-gro-hw
+ok 175 gro.test.hw_ipip_ip_id_df1_fixed # XFAIL Device does not support rx-gro-hw
+ok 176 gro.test.hw_ipip_ip_id_df0_inc # XFAIL Device does not support rx-gro-hw
+ok 177 gro.test.hw_ipip_ip_id_df0_fixed # XFAIL Device does not support rx-gro-hw
+ok 178 gro.test.hw_ipip_ip_id_df1_inc_fixed # XFAIL Device does not support rx-gro-hw
+ok 179 gro.test.hw_ipip_ip_id_df1_fixed_inc # XFAIL Device does not support rx-gro-hw
+ok 180 gro.test.hw_ip6ip6_data_same # SKIP Test requires IPv6 connectivity
+ok 181 gro.test.hw_ip6ip6_data_lrg_sml # SKIP Test requires IPv6 connectivity
+ok 182 gro.test.hw_ip6ip6_data_sml_lrg # SKIP Test requires IPv6 connectivity
+ok 183 gro.test.hw_ip6ip6_data_lrg_1byte # SKIP Test requires IPv6 connectivity
+ok 184 gro.test.hw_ip6ip6_data_burst # SKIP Test requires IPv6 connectivity
+ok 185 gro.test.hw_ip6ip6_ack # SKIP Test requires IPv6 connectivity
+ok 186 gro.test.hw_ip6ip6_flags_psh # SKIP Test requires IPv6 connectivity
+ok 187 gro.test.hw_ip6ip6_flags_syn # SKIP Test requires IPv6 connectivity
+ok 188 gro.test.hw_ip6ip6_flags_rst # SKIP Test requires IPv6 connectivity
+ok 189 gro.test.hw_ip6ip6_flags_urg # SKIP Test requires IPv6 connectivity
+ok 190 gro.test.hw_ip6ip6_flags_cwr # SKIP Test requires IPv6 connectivity
+ok 191 gro.test.hw_ip6ip6_tcp_csum # SKIP Test requires IPv6 connectivity
+ok 192 gro.test.hw_ip6ip6_tcp_seq # SKIP Test requires IPv6 connectivity
+ok 193 gro.test.hw_ip6ip6_tcp_ts # SKIP Test requires IPv6 connectivity
+ok 194 gro.test.hw_ip6ip6_tcp_opt # SKIP Test requires IPv6 connectivity
+ok 195 gro.test.hw_ip6ip6_ip_ecn # SKIP Test requires IPv6 connectivity
+ok 196 gro.test.hw_ip6ip6_ip_tos # SKIP Test requires IPv6 connectivity
+ok 197 gro.test.hw_ip6ip6_large_max # SKIP Test requires IPv6 connectivity
+ok 198 gro.test.hw_ip6ip6_large_rem # SKIP Test requires IPv6 connectivity
+ok 199 gro.test.lro_ipv4_data_same # XFAIL Device does not support large-receive-offload
+ok 200 gro.test.lro_ipv4_data_lrg_sml # XFAIL Device does not support large-receive-offload
+ok 201 gro.test.lro_ipv4_data_sml_lrg # XFAIL Device does not support large-receive-offload
+ok 202 gro.test.lro_ipv4_data_lrg_1byte # XFAIL Device does not support large-receive-offload
+ok 203 gro.test.lro_ipv4_data_burst # XFAIL Device does not support large-receive-offload
+ok 204 gro.test.lro_ipv4_ack # XFAIL Device does not support large-receive-offload
+ok 205 gro.test.lro_ipv4_flags_psh # XFAIL Device does not support large-receive-offload
+ok 206 gro.test.lro_ipv4_flags_syn # XFAIL Device does not support large-receive-offload
+ok 207 gro.test.lro_ipv4_flags_rst # XFAIL Device does not support large-receive-offload
+ok 208 gro.test.lro_ipv4_flags_urg # XFAIL Device does not support large-receive-offload
+ok 209 gro.test.lro_ipv4_flags_cwr # XFAIL Device does not support large-receive-offload
+ok 210 gro.test.lro_ipv4_tcp_csum # XFAIL Device does not support large-receive-offload
+ok 211 gro.test.lro_ipv4_tcp_seq # XFAIL Device does not support large-receive-offload
+ok 212 gro.test.lro_ipv4_tcp_ts # XFAIL Device does not support large-receive-offload
+ok 213 gro.test.lro_ipv4_tcp_opt # XFAIL Device does not support large-receive-offload
+ok 214 gro.test.lro_ipv4_ip_ecn # XFAIL Device does not support large-receive-offload
+ok 215 gro.test.lro_ipv4_ip_tos # XFAIL Device does not support large-receive-offload
+ok 216 gro.test.lro_ipv4_large_max # XFAIL Device does not support large-receive-offload
+ok 217 gro.test.lro_ipv4_large_rem # XFAIL Device does not support large-receive-offload
+ok 218 gro.test.lro_ipv4_ip_csum # XFAIL Device does not support large-receive-offload
+ok 219 gro.test.lro_ipv4_ip_ttl # XFAIL Device does not support large-receive-offload
+ok 220 gro.test.lro_ipv4_ip_opt # XFAIL Device does not support large-receive-offload
+ok 221 gro.test.lro_ipv4_ip_frag4 # XFAIL Device does not support large-receive-offload
+ok 222 gro.test.lro_ipv4_ip_id_df1_inc # XFAIL Device does not support large-receive-offload
+ok 223 gro.test.lro_ipv4_ip_id_df1_fixed # XFAIL Device does not support large-receive-offload
+ok 224 gro.test.lro_ipv4_ip_id_df0_inc # XFAIL Device does not support large-receive-offload
+ok 225 gro.test.lro_ipv4_ip_id_df0_fixed # XFAIL Device does not support large-receive-offload
+ok 226 gro.test.lro_ipv4_ip_id_df1_inc_fixed # XFAIL Device does not support large-receive-offload
+ok 227 gro.test.lro_ipv4_ip_id_df1_fixed_inc # XFAIL Device does not support large-receive-offload
+ok 228 gro.test.lro_ipv6_data_same # SKIP Test requires IPv6 connectivity
+ok 229 gro.test.lro_ipv6_data_lrg_sml # SKIP Test requires IPv6 connectivity
+ok 230 gro.test.lro_ipv6_data_sml_lrg # SKIP Test requires IPv6 connectivity
+ok 231 gro.test.lro_ipv6_data_lrg_1byte # SKIP Test requires IPv6 connectivity
+ok 232 gro.test.lro_ipv6_data_burst # SKIP Test requires IPv6 connectivity
+ok 233 gro.test.lro_ipv6_ack # SKIP Test requires IPv6 connectivity
+ok 234 gro.test.lro_ipv6_flags_psh # SKIP Test requires IPv6 connectivity
+ok 235 gro.test.lro_ipv6_flags_syn # SKIP Test requires IPv6 connectivity
+ok 236 gro.test.lro_ipv6_flags_rst # SKIP Test requires IPv6 connectivity
+ok 237 gro.test.lro_ipv6_flags_urg # SKIP Test requires IPv6 connectivity
+ok 238 gro.test.lro_ipv6_flags_cwr # SKIP Test requires IPv6 connectivity
+ok 239 gro.test.lro_ipv6_tcp_csum # SKIP Test requires IPv6 connectivity
+ok 240 gro.test.lro_ipv6_tcp_seq # SKIP Test requires IPv6 connectivity
+ok 241 gro.test.lro_ipv6_tcp_ts # SKIP Test requires IPv6 connectivity
+ok 242 gro.test.lro_ipv6_tcp_opt # SKIP Test requires IPv6 connectivity
+ok 243 gro.test.lro_ipv6_ip_ecn # SKIP Test requires IPv6 connectivity
+ok 244 gro.test.lro_ipv6_ip_tos # SKIP Test requires IPv6 connectivity
+ok 245 gro.test.lro_ipv6_large_max # SKIP Test requires IPv6 connectivity
+ok 246 gro.test.lro_ipv6_large_rem # SKIP Test requires IPv6 connectivity
+ok 247 gro.test.lro_ipv6_ip_frag6 # SKIP Test requires IPv6 connectivity
+ok 248 gro.test.lro_ipv6_ip_v6ext_same # SKIP Test requires IPv6 connectivity
+ok 249 gro.test.lro_ipv6_ip_v6ext_diff # SKIP Test requires IPv6 connectivity
+ok 250 gro.test.lro_ipip_data_same # XFAIL Device does not support large-receive-offload
+ok 251 gro.test.lro_ipip_data_lrg_sml # XFAIL Device does not support large-receive-offload
+ok 252 gro.test.lro_ipip_data_sml_lrg # XFAIL Device does not support large-receive-offload
+ok 253 gro.test.lro_ipip_data_lrg_1byte # XFAIL Device does not support large-receive-offload
+ok 254 gro.test.lro_ipip_data_burst # XFAIL Device does not support large-receive-offload
+ok 255 gro.test.lro_ipip_ack # XFAIL Device does not support large-receive-offload
+ok 256 gro.test.lro_ipip_flags_psh # XFAIL Device does not support large-receive-offload
+ok 257 gro.test.lro_ipip_flags_syn # XFAIL Device does not support large-receive-offload
+ok 258 gro.test.lro_ipip_flags_rst # XFAIL Device does not support large-receive-offload
+ok 259 gro.test.lro_ipip_flags_urg # XFAIL Device does not support large-receive-offload
+ok 260 gro.test.lro_ipip_flags_cwr # XFAIL Device does not support large-receive-offload
+ok 261 gro.test.lro_ipip_tcp_csum # XFAIL Device does not support large-receive-offload
+ok 262 gro.test.lro_ipip_tcp_seq # XFAIL Device does not support large-receive-offload
+ok 263 gro.test.lro_ipip_tcp_ts # XFAIL Device does not support large-receive-offload
+ok 264 gro.test.lro_ipip_tcp_opt # XFAIL Device does not support large-receive-offload
+ok 265 gro.test.lro_ipip_ip_ecn # XFAIL Device does not support large-receive-offload
+ok 266 gro.test.lro_ipip_ip_tos # XFAIL Device does not support large-receive-offload
+ok 267 gro.test.lro_ipip_large_max # XFAIL Device does not support large-receive-offload
+ok 268 gro.test.lro_ipip_large_rem # XFAIL Device does not support large-receive-offload
+ok 269 gro.test.lro_ipip_ip_csum # XFAIL Device does not support large-receive-offload
+ok 270 gro.test.lro_ipip_ip_ttl # XFAIL Device does not support large-receive-offload
+ok 271 gro.test.lro_ipip_ip_opt # XFAIL Device does not support large-receive-offload
+ok 272 gro.test.lro_ipip_ip_frag4 # XFAIL Device does not support large-receive-offload
+ok 273 gro.test.lro_ipip_ip_id_df1_inc # XFAIL Device does not support large-receive-offload
+ok 274 gro.test.lro_ipip_ip_id_df1_fixed # XFAIL Device does not support large-receive-offload
+ok 275 gro.test.lro_ipip_ip_id_df0_inc # XFAIL Device does not support large-receive-offload
+ok 276 gro.test.lro_ipip_ip_id_df0_fixed # XFAIL Device does not support large-receive-offload
+ok 277 gro.test.lro_ipip_ip_id_df1_inc_fixed # XFAIL Device does not support large-receive-offload
+ok 278 gro.test.lro_ipip_ip_id_df1_fixed_inc # XFAIL Device does not support large-receive-offload
+ok 279 gro.test.lro_ip6ip6_data_same # SKIP Test requires IPv6 connectivity
+ok 280 gro.test.lro_ip6ip6_data_lrg_sml # SKIP Test requires IPv6 connectivity
+ok 281 gro.test.lro_ip6ip6_data_sml_lrg # SKIP Test requires IPv6 connectivity
+ok 282 gro.test.lro_ip6ip6_data_lrg_1byte # SKIP Test requires IPv6 connectivity
+ok 283 gro.test.lro_ip6ip6_data_burst # SKIP Test requires IPv6 connectivity
+ok 284 gro.test.lro_ip6ip6_ack # SKIP Test requires IPv6 connectivity
+ok 285 gro.test.lro_ip6ip6_flags_psh # SKIP Test requires IPv6 connectivity
+ok 286 gro.test.lro_ip6ip6_flags_syn # SKIP Test requires IPv6 connectivity
+ok 287 gro.test.lro_ip6ip6_flags_rst # SKIP Test requires IPv6 connectivity
+ok 288 gro.test.lro_ip6ip6_flags_urg # SKIP Test requires IPv6 connectivity
+ok 289 gro.test.lro_ip6ip6_flags_cwr # SKIP Test requires IPv6 connectivity
+ok 290 gro.test.lro_ip6ip6_tcp_csum # SKIP Test requires IPv6 connectivity
+ok 291 gro.test.lro_ip6ip6_tcp_seq # SKIP Test requires IPv6 connectivity
+ok 292 gro.test.lro_ip6ip6_tcp_ts # SKIP Test requires IPv6 connectivity
+ok 293 gro.test.lro_ip6ip6_tcp_opt # SKIP Test requires IPv6 connectivity
+ok 294 gro.test.lro_ip6ip6_ip_ecn # SKIP Test requires IPv6 connectivity
+ok 295 gro.test.lro_ip6ip6_ip_tos # SKIP Test requires IPv6 connectivity
+ok 296 gro.test.lro_ip6ip6_large_max # SKIP Test requires IPv6 connectivity
+ok 297 gro.test.lro_ip6ip6_large_rem # SKIP Test requires IPv6 connectivity
+# CMD: /home/validation1/testrunner/repository/ksft/net/lib/gro --pppoev4 --dmac 00:80:0f:74:31:00 --smac 00:01:02:03:04:02 --daddr 192.168.100.1 --saddr 192.168.100.2 --test data_same --verbose --rx --iface enp134s0
+#   EXIT: 1
+#   STDOUT: pure data packet of same size:
+#   STDERR: Expected {200 }, Total 1 packets
+#           Received {100 [!=200]100 [!=0]}, Total 2 packets.
+#           /home/validation1/testrunner/repository/ksft/net/lib/gro: incorrect number of packets
+# Attempt 1/6 failed, retrying...
+# CMD: /home/validation1/testrunner/repository/ksft/net/lib/gro --pppoev4 --dmac 00:80:0f:74:31:00 --smac 00:01:02:03:04:02 --daddr 192.168.100.1 --saddr 192.168.100.2 --test data_same --verbose --rx --iface enp134s0
+#   EXIT: 1
+#   STDOUT: pure data packet of same size:
+#   STDERR: Expected {200 }, Total 1 packets
+#           Received {100 [!=200]100 [!=0]}, Total 2 packets.
+#           /home/validation1/testrunner/repository/ksft/net/lib/gro: incorrect number of packets
+# Attempt 2/6 failed, retrying...
+# CMD: /home/validation1/testrunner/repository/ksft/net/lib/gro --pppoev4 --dmac 00:80:0f:74:31:00 --smac 00:01:02:03:04:02 --daddr 192.168.100.1 --saddr 192.168.100.2 --test data_same --verbose --rx --iface enp134s0
+#   EXIT: 1
+#   STDOUT: pure data packet of same size:
+#   STDERR: Expected {200 }, Total 1 packets
+#           Received {100 [!=200]100 [!=0]}, Total 2 packets.
+#           /home/validation1/testrunner/repository/ksft/net/lib/gro: incorrect number of packets
+# Attempt 3/6 failed, retrying...
+# CMD: /home/validation1/testrunner/repository/ksft/net/lib/gro --pppoev4 --dmac 00:80:0f:74:31:00 --smac 00:01:02:03:04:02 --daddr 192.168.100.1 --saddr 192.168.100.2 --test data_same --verbose --rx --iface enp134s0
+#   EXIT: 1
+#   STDOUT: pure data packet of same size:
+#   STDERR: Expected {200 }, Total 1 packets
+#           Received {100 [!=200]100 [!=0]}, Total 2 packets.
+#           /home/validation1/testrunner/repository/ksft/net/lib/gro: incorrect number of packets
+# Attempt 4/6 failed, retrying...
+# CMD: /home/validation1/testrunner/repository/ksft/net/lib/gro --pppoev4 --dmac 00:80:0f:74:31:00 --smac 00:01:02:03:04:02 --daddr 192.168.100.1 --saddr 192.168.100.2 --test data_same --verbose --rx --iface enp134s0
+#   EXIT: 1
+#   STDOUT: pure data packet of same size:
+#   STDERR: Expected {200 }, Total 1 packets
+#           Received {100 [!=200]100 [!=0]}, Total 2 packets.
+#           /home/validation1/testrunner/repository/ksft/net/lib/gro: incorrect number of packets
+# Attempt 5/6 failed, retrying...
+# Exception| Traceback (most recent call last):
+# Exception|   File "/home/validation1/testrunner/repository/ksft/net/lib/py/ksft.py", line 420, in ksft_run
+# Exception|     func(*args)
+# Exception|     ~~~~^^^^^^^
+# Exception|   File "/home/validation1/testrunner/repository/ksft/drivers/net/gro.py", line 365, in test
+# Exception|     rx_proc = _run_gro_bin(cfg, test_name, protocol=protocol,
+# Exception|                            verbose=True, fail=fail_now)
+# Exception|   File "/home/validation1/testrunner/repository/ksft/drivers/net/gro.py", line 220, in _run_gro_bin
+# Exception|     with bkg(rx_cmd, ksft_ready=True, exit_wait=True, fail=fail) as rx_proc:
+# Exception|          ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+# Exception|   File "/home/validation1/testrunner/repository/ksft/net/lib/py/utils.py", line 205, in __exit__
+# Exception|     return self.process(terminate=terminate, fail=self.check_fail,
+# Exception|            ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+# Exception|                         expect_fail=self.expect_fail)
+# Exception|                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+# Exception|   File "/home/validation1/testrunner/repository/ksft/net/lib/py/utils.py", line 134, in process
+# Exception|     raise CmdExitFailure("Command failed", self)
+# Exception| net.lib.py.utils.CmdExitFailure: Command failed
+# Exception| CMD: /home/validation1/testrunner/repository/ksft/net/lib/gro --pppoev4 --dmac 00:80:0f:74:31:00 --smac 00:01:02:03:04:02 --daddr 192.168.100.1 --saddr 192.168.100.2 --test data_same --verbose --rx --iface enp134s0
+# Exception|   EXIT: 1
+# Exception|   STDOUT: pure data packet of same size:
+# Exception|   STDERR: Expected {200 }, Total 1 packets
+# Exception|           Received {100 [!=200]100 [!=0]}, Total 2 packets.
+# Exception|           /home/validation1/testrunner/repository/ksft/net/lib/gro: incorrect number of packets
+# Exception| 
+not ok 298 gro.test.sw_pppoev4_data_same
+# CMD: /home/validation1/testrunner/repository/ksft/net/lib/gro --pppoev4 --dmac 00:80:0f:74:31:00 --smac 00:01:02:03:04:02 --daddr 192.168.100.1 --saddr 192.168.100.2 --test data_lrg_sml --verbose --rx --iface enp134s0
+#   EXIT: 1
+#   STDOUT: large data packets followed by a smaller one:
+#   STDERR: Expected {150 }, Total 1 packets
+#           Received {100 [!=150]50 [!=0]}, Total 2 packets.
+#           /home/validation1/testrunner/repository/ksft/net/lib/gro: incorrect number of packets
+# Attempt 1/6 failed, retrying...
+# CMD: /home/validation1/testrunner/repository/ksft/net/lib/gro --pppoev4 --dmac 00:80:0f:74:31:00 --smac 00:01:02:03:04:02 --daddr 192.168.100.1 --saddr 192.168.100.2 --test data_lrg_sml --verbose --rx --iface enp134s0
+#   EXIT: 1
+#   STDOUT: large data packets followed by a smaller one:
+#   STDERR: Expected {150 }, Total 1 packets
+#           Received {100 [!=150]50 [!=0]}, Total 2 packets.
+#           /home/validation1/testrunner/repository/ksft/net/lib/gro: incorrect number of packets
+# Attempt 2/6 failed, retrying...
+# CMD: /home/validation1/testrunner/repository/ksft/net/lib/gro --pppoev4 --dmac 00:80:0f:74:31:00 --smac 00:01:02:03:04:02 --daddr 192.168.100.1 --saddr 192.168.100.2 --test data_lrg_sml --verbose --rx --iface enp134s0
+#   EXIT: 1
+#   STDOUT: large data packets followed by a smaller one:
+#   STDERR: Expected {150 }, Total 1 packets
+#           Received {100 [!=150]50 [!=0]}, Total 2 packets.
+#           /home/validation1/testrunner/repository/ksft/net/lib/gro: incorrect number of packets
+# Attempt 3/6 failed, retrying...
+# CMD: /home/validation1/testrunner/repository/ksft/net/lib/gro --pppoev4 --dmac 00:80:0f:74:31:00 --smac 00:01:02:03:04:02 --daddr 192.168.100.1 --saddr 192.168.100.2 --test data_lrg_sml --verbose --rx --iface enp134s0
+#   EXIT: 1
+#   STDOUT: large data packets followed by a smaller one:
+#   STDERR: Expected {150 }, Total 1 packets
+#           Received {100 [!=150]50 [!=0]}, Total 2 packets.
+#           /home/validation1/testrunner/repository/ksft/net/lib/gro: incorrect number of packets
+# Attempt 4/6 failed, retrying...
+# CMD: /home/validation1/testrunner/repository/ksft/net/lib/gro --pppoev4 --dmac 00:80:0f:74:31:00 --smac 00:01:02:03:04:02 --daddr 192.168.100.1 --saddr 192.168.100.2 --test data_lrg_sml --verbose --rx --iface enp134s0
+#   EXIT: 1
+#   STDOUT: large data packets followed by a smaller one:
+#   STDERR: Expected {150 }, Total 1 packets
+#           Received {100 [!=150]50 [!=0]}, Total 2 packets.
+#           /home/validation1/testrunner/repository/ksft/net/lib/gro: incorrect number of packets
+# Attempt 5/6 failed, retrying...
+# Exception| Traceback (most recent call last):
+# Exception|   File "/home/validation1/testrunner/repository/ksft/net/lib/py/ksft.py", line 420, in ksft_run
+# Exception|     func(*args)
+# Exception|     ~~~~^^^^^^^
+# Exception|   File "/home/validation1/testrunner/repository/ksft/drivers/net/gro.py", line 365, in test
+# Exception|     rx_proc = _run_gro_bin(cfg, test_name, protocol=protocol,
+# Exception|                            verbose=True, fail=fail_now)
+# Exception|   File "/home/validation1/testrunner/repository/ksft/drivers/net/gro.py", line 220, in _run_gro_bin
+# Exception|     with bkg(rx_cmd, ksft_ready=True, exit_wait=True, fail=fail) as rx_proc:
+# Exception|          ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+# Exception|   File "/home/validation1/testrunner/repository/ksft/net/lib/py/utils.py", line 205, in __exit__
+# Exception|     return self.process(terminate=terminate, fail=self.check_fail,
+# Exception|            ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+# Exception|                         expect_fail=self.expect_fail)
+# Exception|                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+# Exception|   File "/home/validation1/testrunner/repository/ksft/net/lib/py/utils.py", line 134, in process
+# Exception|     raise CmdExitFailure("Command failed", self)
+# Exception| net.lib.py.utils.CmdExitFailure: Command failed
+# Exception| CMD: /home/validation1/testrunner/repository/ksft/net/lib/gro --pppoev4 --dmac 00:80:0f:74:31:00 --smac 00:01:02:03:04:02 --daddr 192.168.100.1 --saddr 192.168.100.2 --test data_lrg_sml --verbose --rx --iface enp134s0
+# Exception|   EXIT: 1
+# Exception|   STDOUT: large data packets followed by a smaller one:
+# Exception|   STDERR: Expected {150 }, Total 1 packets
+# Exception|           Received {100 [!=150]50 [!=0]}, Total 2 packets.
+# Exception|           /home/validation1/testrunner/repository/ksft/net/lib/gro: incorrect number of packets
+# Exception| 
+not ok 299 gro.test.sw_pppoev4_data_lrg_sml
+ok 300 gro.test.sw_pppoev4_data_sml_lrg
+# CMD: /home/validation1/testrunner/repository/ksft/net/lib/gro --pppoev4 --dmac 00:80:0f:74:31:00 --smac 00:01:02:03:04:02 --daddr 192.168.100.1 --saddr 192.168.100.2 --test data_lrg_1byte --verbose --rx --iface enp134s0
+#   EXIT: 1
+#   STDOUT: large data packet followed by a 1 byte one:
+#   STDERR: Expected {101 }, Total 1 packets
+#           Received {100 [!=101]1 [!=0]}, Total 2 packets.
+#           /home/validation1/testrunner/repository/ksft/net/lib/gro: incorrect number of packets
+# Attempt 1/6 failed, retrying...
+# CMD: /home/validation1/testrunner/repository/ksft/net/lib/gro --pppoev4 --dmac 00:80:0f:74:31:00 --smac 00:01:02:03:04:02 --daddr 192.168.100.1 --saddr 192.168.100.2 --test data_lrg_1byte --verbose --rx --iface enp134s0
+#   EXIT: 1
+#   STDOUT: large data packet followed by a 1 byte one:
+#   STDERR: Expected {101 }, Total 1 packets
+#           Received {100 [!=101]1 [!=0]}, Total 2 packets.
+#           /home/validation1/testrunner/repository/ksft/net/lib/gro: incorrect number of packets
+# Attempt 2/6 failed, retrying...
+# CMD: /home/validation1/testrunner/repository/ksft/net/lib/gro --pppoev4 --dmac 00:80:0f:74:31:00 --smac 00:01:02:03:04:02 --daddr 192.168.100.1 --saddr 192.168.100.2 --test data_lrg_1byte --verbose --rx --iface enp134s0
+#   EXIT: 1
+#   STDOUT: large data packet followed by a 1 byte one:
+#   STDERR: Expected {101 }, Total 1 packets
+#           Received {100 [!=101]1 [!=0]}, Total 2 packets.
+#           /home/validation1/testrunner/repository/ksft/net/lib/gro: incorrect number of packets
+# Attempt 3/6 failed, retrying...
+# CMD: /home/validation1/testrunner/repository/ksft/net/lib/gro --pppoev4 --dmac 00:80:0f:74:31:00 --smac 00:01:02:03:04:02 --daddr 192.168.100.1 --saddr 192.168.100.2 --test data_lrg_1byte --verbose --rx --iface enp134s0
+#   EXIT: 1
+#   STDOUT: large data packet followed by a 1 byte one:
+#   STDERR: Expected {101 }, Total 1 packets
+#           Received {100 [!=101]1 [!=0]}, Total 2 packets.
+#           /home/validation1/testrunner/repository/ksft/net/lib/gro: incorrect number of packets
+# Attempt 4/6 failed, retrying...
+# CMD: /home/validation1/testrunner/repository/ksft/net/lib/gro --pppoev4 --dmac 00:80:0f:74:31:00 --smac 00:01:02:03:04:02 --daddr 192.168.100.1 --saddr 192.168.100.2 --test data_lrg_1byte --verbose --rx --iface enp134s0
+#   EXIT: 1
+#   STDOUT: large data packet followed by a 1 byte one:
+#   STDERR: Expected {101 }, Total 1 packets
+#           Received {100 [!=101]1 [!=0]}, Total 2 packets.
+#           /home/validation1/testrunner/repository/ksft/net/lib/gro: incorrect number of packets
+# Attempt 5/6 failed, retrying...
+# Exception| Traceback (most recent call last):
+# Exception|   File "/home/validation1/testrunner/repository/ksft/net/lib/py/ksft.py", line 420, in ksft_run
+# Exception|     func(*args)
+# Exception|     ~~~~^^^^^^^
+# Exception|   File "/home/validation1/testrunner/repository/ksft/drivers/net/gro.py", line 365, in test
+# Exception|     rx_proc = _run_gro_bin(cfg, test_name, protocol=protocol,
+# Exception|                            verbose=True, fail=fail_now)
+# Exception|   File "/home/validation1/testrunner/repository/ksft/drivers/net/gro.py", line 220, in _run_gro_bin
+# Exception|     with bkg(rx_cmd, ksft_ready=True, exit_wait=True, fail=fail) as rx_proc:
+# Exception|          ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+# Exception|   File "/home/validation1/testrunner/repository/ksft/net/lib/py/utils.py", line 205, in __exit__
+# Exception|     return self.process(terminate=terminate, fail=self.check_fail,
+# Exception|            ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+# Exception|                         expect_fail=self.expect_fail)
+# Exception|                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+# Exception|   File "/home/validation1/testrunner/repository/ksft/net/lib/py/utils.py", line 134, in process
+# Exception|     raise CmdExitFailure("Command failed", self)
+# Exception| net.lib.py.utils.CmdExitFailure: Command failed
+# Exception| CMD: /home/validation1/testrunner/repository/ksft/net/lib/gro --pppoev4 --dmac 00:80:0f:74:31:00 --smac 00:01:02:03:04:02 --daddr 192.168.100.1 --saddr 192.168.100.2 --test data_lrg_1byte --verbose --rx --iface enp134s0
+# Exception|   EXIT: 1
+# Exception|   STDOUT: large data packet followed by a 1 byte one:
+# Exception|   STDERR: Expected {101 }, Total 1 packets
+# Exception|           Received {100 [!=101]1 [!=0]}, Total 2 packets.
+# Exception|           /home/validation1/testrunner/repository/ksft/net/lib/gro: incorrect number of packets
+# Exception| 
+not ok 301 gro.test.sw_pppoev4_data_lrg_1byte
+# CMD: /home/validation1/testrunner/repository/ksft/net/lib/gro --pppoev4 --dmac 00:80:0f:74:31:00 --smac 00:01:02:03:04:02 --daddr 192.168.100.1 --saddr 192.168.100.2 --test data_burst --verbose --rx --iface enp134s0
+#   EXIT: 1
+#   STDOUT: two bursts of two data packets:
+#   STDERR: Expected {200 200 }, Total 2 packets
+#           Received {100 [!=200]100 [!=200]100 [!=0]100 [!=0]}, Total 4 packets.
+#           /home/validation1/testrunner/repository/ksft/net/lib/gro: incorrect number of packets
+# Attempt 1/6 failed, retrying...
+# CMD: /home/validation1/testrunner/repository/ksft/net/lib/gro --pppoev4 --dmac 00:80:0f:74:31:00 --smac 00:01:02:03:04:02 --daddr 192.168.100.1 --saddr 192.168.100.2 --test data_burst --verbose --rx --iface enp134s0
+#   EXIT: 1
+#   STDOUT: two bursts of two data packets:
+#   STDERR: Expected {200 200 }, Total 2 packets
+#           Received {100 [!=200]100 [!=200]100 [!=0]100 [!=0]}, Total 4 packets.
+#           /home/validation1/testrunner/repository/ksft/net/lib/gro: incorrect number of packets
+# Attempt 2/6 failed, retrying...
+# CMD: /home/validation1/testrunner/repository/ksft/net/lib/gro --pppoev4 --dmac 00:80:0f:74:31:00 --smac 00:01:02:03:04:02 --daddr 192.168.100.1 --saddr 192.168.100.2 --test data_burst --verbose --rx --iface enp134s0
+#   EXIT: 1
+#   STDOUT: two bursts of two data packets:
+#   STDERR: Expected {200 200 }, Total 2 packets
+#           Received {100 [!=200]100 [!=200]100 [!=0]100 [!=0]}, Total 4 packets.
+#           /home/validation1/testrunner/repository/ksft/net/lib/gro: incorrect number of packets
+# Attempt 3/6 failed, retrying...
+# CMD: /home/validation1/testrunner/repository/ksft/net/lib/gro --pppoev4 --dmac 00:80:0f:74:31:00 --smac 00:01:02:03:04:02 --daddr 192.168.100.1 --saddr 192.168.100.2 --test data_burst --verbose --rx --iface enp134s0
+#   EXIT: 1
+#   STDOUT: two bursts of two data packets:
+#   STDERR: Expected {200 200 }, Total 2 packets
+#           Received {100 [!=200]100 [!=200]100 [!=0]100 [!=0]}, Total 4 packets.
+#           /home/validation1/testrunner/repository/ksft/net/lib/gro: incorrect number of packets
+# Attempt 4/6 failed, retrying...
+# CMD: /home/validation1/testrunner/repository/ksft/net/lib/gro --pppoev4 --dmac 00:80:0f:74:31:00 --smac 00:01:02:03:04:02 --daddr 192.168.100.1 --saddr 192.168.100.2 --test data_burst --verbose --rx --iface enp134s0
+#   EXIT: 1
+#   STDOUT: two bursts of two data packets:
+#   STDERR: Expected {200 200 }, Total 2 packets
+#           Received {100 [!=200]100 [!=200]100 [!=0]100 [!=0]}, Total 4 packets.
+#           /home/validation1/testrunner/repository/ksft/net/lib/gro: incorrect number of packets
+# Attempt 5/6 failed, retrying...
+# Exception| Traceback (most recent call last):
+# Exception|   File "/home/validation1/testrunner/repository/ksft/net/lib/py/ksft.py", line 420, in ksft_run
+# Exception|     func(*args)
+# Exception|     ~~~~^^^^^^^
+# Exception|   File "/home/validation1/testrunner/repository/ksft/drivers/net/gro.py", line 365, in test
+# Exception|     rx_proc = _run_gro_bin(cfg, test_name, protocol=protocol,
+# Exception|                            verbose=True, fail=fail_now)
+# Exception|   File "/home/validation1/testrunner/repository/ksft/drivers/net/gro.py", line 220, in _run_gro_bin
+# Exception|     with bkg(rx_cmd, ksft_ready=True, exit_wait=True, fail=fail) as rx_proc:
+# Exception|          ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+# Exception|   File "/home/validation1/testrunner/repository/ksft/net/lib/py/utils.py", line 205, in __exit__
+# Exception|     return self.process(terminate=terminate, fail=self.check_fail,
+# Exception|            ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+# Exception|                         expect_fail=self.expect_fail)
+# Exception|                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+# Exception|   File "/home/validation1/testrunner/repository/ksft/net/lib/py/utils.py", line 134, in process
+# Exception|     raise CmdExitFailure("Command failed", self)
+# Exception| net.lib.py.utils.CmdExitFailure: Command failed
+# Exception| CMD: /home/validation1/testrunner/repository/ksft/net/lib/gro --pppoev4 --dmac 00:80:0f:74:31:00 --smac 00:01:02:03:04:02 --daddr 192.168.100.1 --saddr 192.168.100.2 --test data_burst --verbose --rx --iface enp134s0
+# Exception|   EXIT: 1
+# Exception|   STDOUT: two bursts of two data packets:
+# Exception|   STDERR: Expected {200 200 }, Total 2 packets
+# Exception|           Received {100 [!=200]100 [!=200]100 [!=0]100 [!=0]}, Total 4 packets.
+# Exception|           /home/validation1/testrunner/repository/ksft/net/lib/gro: incorrect number of packets
+# Exception| 
+not ok 302 gro.test.sw_pppoev4_data_burst
+ok 303 gro.test.sw_pppoev4_pppoe_sid
+ok 304 gro.test.sw_pppoev6_data_same # SKIP Test requires IPv6 connectivity
+ok 305 gro.test.sw_pppoev6_data_lrg_sml # SKIP Test requires IPv6 connectivity
+ok 306 gro.test.sw_pppoev6_data_sml_lrg # SKIP Test requires IPv6 connectivity
+ok 307 gro.test.sw_pppoev6_data_lrg_1byte # SKIP Test requires IPv6 connectivity
+ok 308 gro.test.sw_pppoev6_data_burst # SKIP Test requires IPv6 connectivity
+ok 309 gro.test.sw_pppoev6_pppoe_sid # SKIP Test requires IPv6 connectivity
+ok 310 gro.test_gro_capacity.sw_isolated # XFAIL Device does not support ntuple-filters
+# Exception| Traceback (most recent call last):
+# Exception|   File "/home/validation1/testrunner/repository/ksft/net/lib/py/ksft.py", line 420, in ksft_run
+# Exception|     func(*args)
+# Exception|     ~~~~^^^^^^^
+# Exception|   File "/home/validation1/testrunner/repository/ksft/drivers/net/gro.py", line 414, in test_gro_capacity
+# Exception|     queue_id = setup_func(cfg)
+# Exception|   File "/home/validation1/testrunner/repository/ksft/drivers/net/gro.py", line 390, in <lambda>
+# Exception|     ("1q", lambda cfg: _setup_queue_count(cfg, 1)),
+# Exception|                        ~~~~~~~~~~~~~~~~~~^^^^^^^^
+# Exception|   File "/home/validation1/testrunner/repository/ksft/drivers/net/gro.py", line 174, in _setup_queue_count
+# Exception|     channels = cfg.ethnl.channels_get({'header': {'dev-index': cfg.ifindex}})
+# Exception|   File "/home/validation1/testrunner/repository/ksft/net/lib/ynl/pyynl/lib/ynl.py", line 1440, in _op
+# Exception|     return self._ops(ops)[0]
+# Exception|            ~~~~~~~~~^^^^^
+# Exception|   File "/home/validation1/testrunner/repository/ksft/net/lib/ynl/pyynl/lib/ynl.py", line 1397, in _ops
+# Exception|     raise NlError(nl_msg)
+# Exception| net.lib.ynl.pyynl.lib.ynl.NlError: Netlink error: Operation not supported
+# Exception| 
+not ok 311 gro.test_gro_capacity.sw_1q
+# Exception| Traceback (most recent call last):
+# Exception|   File "/home/validation1/testrunner/repository/ksft/net/lib/py/ksft.py", line 420, in ksft_run
+# Exception|     func(*args)
+# Exception|     ~~~~^^^^^^^
+# Exception|   File "/home/validation1/testrunner/repository/ksft/drivers/net/gro.py", line 414, in test_gro_capacity
+# Exception|     queue_id = setup_func(cfg)
+# Exception|   File "/home/validation1/testrunner/repository/ksft/drivers/net/gro.py", line 391, in <lambda>
+# Exception|     ("8q", lambda cfg: _setup_queue_count(cfg, 8)),
+# Exception|                        ~~~~~~~~~~~~~~~~~~^^^^^^^^
+# Exception|   File "/home/validation1/testrunner/repository/ksft/drivers/net/gro.py", line 174, in _setup_queue_count
+# Exception|     channels = cfg.ethnl.channels_get({'header': {'dev-index': cfg.ifindex}})
+# Exception|   File "/home/validation1/testrunner/repository/ksft/net/lib/ynl/pyynl/lib/ynl.py", line 1440, in _op
+# Exception|     return self._ops(ops)[0]
+# Exception|            ~~~~~~~~~^^^^^
+# Exception|   File "/home/validation1/testrunner/repository/ksft/net/lib/ynl/pyynl/lib/ynl.py", line 1397, in _ops
+# Exception|     raise NlError(nl_msg)
+# Exception| net.lib.ynl.pyynl.lib.ynl.NlError: Netlink error: Operation not supported
+# Exception| 
+not ok 312 gro.test_gro_capacity.sw_8q
+ok 313 gro.test_gro_capacity.hw_isolated # XFAIL Device does not support rx-gro-hw
+ok 314 gro.test_gro_capacity.hw_1q # XFAIL Device does not support rx-gro-hw
+ok 315 gro.test_gro_capacity.hw_8q # XFAIL Device does not support rx-gro-hw
+ok 316 gro.test_gro_capacity.lro_isolated # XFAIL Device does not support large-receive-offload
+ok 317 gro.test_gro_capacity.lro_1q # XFAIL Device does not support large-receive-offload
+ok 318 gro.test_gro_capacity.lro_8q # XFAIL Device does not support large-receive-offload
+# Totals: pass:59 fail:7 xfail:123 xpass:0 skip:129 error:0
