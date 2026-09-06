@@ -1,0 +1,181 @@
+# Interface: enp134s0, driver: lan743x
+TAP version 13
+1..12
+ok 1 rss_api.test_rxfh_nl_set_fail
+ok 2 rss_api.test_rxfh_nl_set_indir
+# Exception| Traceback (most recent call last):
+# Exception|   File "/home/validation1/testrunner/repository/ksft/net/lib/py/ksft.py", line 420, in ksft_run
+# Exception|     func(*args)
+# Exception|     ~~~~^^^^^^^
+# Exception|   File "/home/validation1/testrunner/repository/ksft/drivers/net/hw/rss_api.py", line 125, in test_rxfh_nl_set_indir_ctx
+# Exception|     ctx_id = _ethtool_create(cfg, "-X", "context new")
+# Exception|   File "/home/validation1/testrunner/repository/ksft/drivers/net/hw/rss_api.py", line 26, in _ethtool_create
+# Exception|     output = ethtool(f"{act} {cfg.ifname} {opts}").stdout
+# Exception|              ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+# Exception|   File "/home/validation1/testrunner/repository/ksft/net/lib/py/utils.py", line 276, in ethtool
+# Exception|     return tool('ethtool', args, json=json, ns=ns, host=host)
+# Exception|   File "/home/validation1/testrunner/repository/ksft/net/lib/py/utils.py", line 252, in tool
+# Exception|     cmd_obj = cmd(cmd_str, ns=ns, host=host)
+# Exception|   File "/home/validation1/testrunner/repository/ksft/net/lib/py/utils.py", line 101, in __init__
+# Exception|     self.process(terminate=False, fail=fail, expect_fail=expect_fail,
+# Exception|     ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+# Exception|                  timeout=timeout)
+# Exception|                  ^^^^^^^^^^^^^^^^
+# Exception|   File "/home/validation1/testrunner/repository/ksft/net/lib/py/utils.py", line 134, in process
+# Exception|     raise CmdExitFailure("Command failed", self)
+# Exception| net.lib.py.utils.CmdExitFailure: Command failed
+# Exception| CMD: ethtool -X enp134s0 context new
+# Exception|   EXIT: 1
+# Exception|   STDERR: Cannot set RX flow hash configuration: Operation not supported
+# Exception| 
+not ok 3 rss_api.test_rxfh_nl_set_indir_ctx
+ok 4 rss_api.test_rxfh_indir_ntf
+# Exception| Traceback (most recent call last):
+# Exception|   File "/home/validation1/testrunner/repository/ksft/net/lib/py/ksft.py", line 420, in ksft_run
+# Exception|     func(*args)
+# Exception|     ~~~~^^^^^^^
+# Exception|   File "/home/validation1/testrunner/repository/ksft/drivers/net/hw/rss_api.py", line 188, in test_rxfh_indir_ctx_ntf
+# Exception|     ctx_id = _ethtool_create(cfg, "-X", "context new")
+# Exception|   File "/home/validation1/testrunner/repository/ksft/drivers/net/hw/rss_api.py", line 26, in _ethtool_create
+# Exception|     output = ethtool(f"{act} {cfg.ifname} {opts}").stdout
+# Exception|              ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+# Exception|   File "/home/validation1/testrunner/repository/ksft/net/lib/py/utils.py", line 276, in ethtool
+# Exception|     return tool('ethtool', args, json=json, ns=ns, host=host)
+# Exception|   File "/home/validation1/testrunner/repository/ksft/net/lib/py/utils.py", line 252, in tool
+# Exception|     cmd_obj = cmd(cmd_str, ns=ns, host=host)
+# Exception|   File "/home/validation1/testrunner/repository/ksft/net/lib/py/utils.py", line 101, in __init__
+# Exception|     self.process(terminate=False, fail=fail, expect_fail=expect_fail,
+# Exception|     ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+# Exception|                  timeout=timeout)
+# Exception|                  ^^^^^^^^^^^^^^^^
+# Exception|   File "/home/validation1/testrunner/repository/ksft/net/lib/py/utils.py", line 134, in process
+# Exception|     raise CmdExitFailure("Command failed", self)
+# Exception| net.lib.py.utils.CmdExitFailure: Command failed
+# Exception| CMD: ethtool -X enp134s0 context new
+# Exception|   EXIT: 1
+# Exception|   STDERR: Cannot set RX flow hash configuration: Operation not supported
+# Exception| 
+not ok 5 rss_api.test_rxfh_indir_ctx_ntf
+ok 6 rss_api.test_rxfh_nl_set_key
+ok 7 rss_api.test_rxfh_fields
+# Exception| Traceback (most recent call last):
+# Exception|   File "/home/validation1/testrunner/repository/ksft/net/lib/py/ksft.py", line 420, in ksft_run
+# Exception|     func(*args)
+# Exception|     ~~~~^^^^^^^
+# Exception|   File "/home/validation1/testrunner/repository/ksft/drivers/net/hw/rss_api.py", line 281, in test_rxfh_fields_set
+# Exception|     cfg.ethnl.rss_set({
+# Exception|     ~~~~~~~~~~~~~~~~~^^
+# Exception|         "header": {"dev-index": cfg.ifindex},
+# Exception|         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+# Exception|         "flow-hash": {fl_type: change_nl}
+# Exception|         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+# Exception|     })
+# Exception|     ^^
+# Exception|   File "/home/validation1/testrunner/repository/ksft/net/lib/ynl/pyynl/lib/ynl.py", line 1440, in _op
+# Exception|     return self._ops(ops)[0]
+# Exception|            ~~~~~~~~~^^^^^
+# Exception|   File "/home/validation1/testrunner/repository/ksft/net/lib/ynl/pyynl/lib/ynl.py", line 1397, in _ops
+# Exception|     raise NlError(nl_msg)
+# Exception| net.lib.ynl.pyynl.lib.ynl.NlError: Netlink error: Operation not supported {'bad-attr': '.flow-hash'}
+# Exception| 
+# Exception while handling defer / cleanup (callback 2 of 2)!
+# Defer Exception| Traceback (most recent call last):
+# Defer Exception|   File "/home/validation1/testrunner/repository/ksft/net/lib/py/ksft.py", line 235, in ksft_flush_defer
+# Defer Exception|     entry.exec_only()
+# Defer Exception|     ~~~~~~~~~~~~~~~^^
+# Defer Exception|   File "/home/validation1/testrunner/repository/ksft/net/lib/py/utils.py", line 234, in exec_only
+# Defer Exception|     self.func(*self.args, **self.kwargs)
+# Defer Exception|     ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+# Defer Exception|   File "/home/validation1/testrunner/repository/ksft/net/lib/ynl/pyynl/lib/ynl.py", line 1440, in _op
+# Defer Exception|     return self._ops(ops)[0]
+# Defer Exception|            ~~~~~~~~~^^^^^
+# Defer Exception|   File "/home/validation1/testrunner/repository/ksft/net/lib/ynl/pyynl/lib/ynl.py", line 1397, in _ops
+# Defer Exception|     raise NlError(nl_msg)
+# Defer Exception| net.lib.ynl.pyynl.lib.ynl.NlError: Netlink error: Operation not supported {'bad-attr': '.flow-hash'}
+# Defer Exception| 
+not ok 8 rss_api.test_rxfh_fields_set
+# Exception| Traceback (most recent call last):
+# Exception|   File "/home/validation1/testrunner/repository/ksft/net/lib/py/ksft.py", line 420, in ksft_run
+# Exception|     func(*args)
+# Exception|     ~~~~^^^^^^^
+# Exception|   File "/home/validation1/testrunner/repository/ksft/drivers/net/hw/rss_api.py", line 336, in test_rxfh_fields_set_xfrm
+# Exception|     set_rss(cfg, {}, {})
+# Exception|     ~~~~~~~^^^^^^^^^^^^^
+# Exception|   File "/home/validation1/testrunner/repository/ksft/drivers/net/hw/rss_api.py", line 321, in set_rss
+# Exception|     cfg.ethnl.rss_set({"header": {"dev-index": cfg.ifindex},
+# Exception|     ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+# Exception|                        "input-xfrm": xfrm, "flow-hash": fh})
+# Exception|                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+# Exception|   File "/home/validation1/testrunner/repository/ksft/net/lib/ynl/pyynl/lib/ynl.py", line 1440, in _op
+# Exception|     return self._ops(ops)[0]
+# Exception|            ~~~~~~~~~^^^^^
+# Exception|   File "/home/validation1/testrunner/repository/ksft/net/lib/ynl/pyynl/lib/ynl.py", line 1397, in _ops
+# Exception|     raise NlError(nl_msg)
+# Exception| net.lib.ynl.pyynl.lib.ynl.NlError: Netlink error: Operation not supported {'bad-attr': '.flow-hash'}
+# Exception| 
+# Exception while handling defer / cleanup (callback 2 of 2)!
+# Defer Exception| Traceback (most recent call last):
+# Defer Exception|   File "/home/validation1/testrunner/repository/ksft/net/lib/py/ksft.py", line 235, in ksft_flush_defer
+# Defer Exception|     entry.exec_only()
+# Defer Exception|     ~~~~~~~~~~~~~~~^^
+# Defer Exception|   File "/home/validation1/testrunner/repository/ksft/net/lib/py/utils.py", line 234, in exec_only
+# Defer Exception|     self.func(*self.args, **self.kwargs)
+# Defer Exception|     ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+# Defer Exception|   File "/home/validation1/testrunner/repository/ksft/net/lib/ynl/pyynl/lib/ynl.py", line 1440, in _op
+# Defer Exception|     return self._ops(ops)[0]
+# Defer Exception|            ~~~~~~~~~^^^^^
+# Defer Exception|   File "/home/validation1/testrunner/repository/ksft/net/lib/ynl/pyynl/lib/ynl.py", line 1397, in _ops
+# Defer Exception|     raise NlError(nl_msg)
+# Defer Exception| net.lib.ynl.pyynl.lib.ynl.NlError: Netlink error: Operation not supported {'bad-attr': '.flow-hash'}
+# Defer Exception| 
+not ok 9 rss_api.test_rxfh_fields_set_xfrm
+# Exception| Traceback (most recent call last):
+# Exception|   File "/home/validation1/testrunner/repository/ksft/net/lib/py/ksft.py", line 420, in ksft_run
+# Exception|     func(*args)
+# Exception|     ~~~~^^^^^^^
+# Exception|   File "/home/validation1/testrunner/repository/ksft/drivers/net/hw/rss_api.py", line 371, in test_rxfh_fields_ntf
+# Exception|     ethnl.rss_set({
+# Exception|     ~~~~~~~~~~~~~^^
+# Exception|         "header": {"dev-index": cfg.ifindex},
+# Exception|         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+# Exception|         "flow-hash": {"tcp4": change}
+# Exception|         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+# Exception|     })
+# Exception|     ^^
+# Exception|   File "/home/validation1/testrunner/repository/ksft/net/lib/ynl/pyynl/lib/ynl.py", line 1440, in _op
+# Exception|     return self._ops(ops)[0]
+# Exception|            ~~~~~~~~~^^^^^
+# Exception|   File "/home/validation1/testrunner/repository/ksft/net/lib/ynl/pyynl/lib/ynl.py", line 1397, in _ops
+# Exception|     raise NlError(nl_msg)
+# Exception| net.lib.ynl.pyynl.lib.ynl.NlError: Netlink error: Operation not supported {'bad-attr': '.flow-hash'}
+# Exception| 
+not ok 10 rss_api.test_rxfh_fields_ntf
+# Exception| Traceback (most recent call last):
+# Exception|   File "/home/validation1/testrunner/repository/ksft/net/lib/py/ksft.py", line 420, in ksft_run
+# Exception|     func(*args)
+# Exception|     ~~~~^^^^^^^
+# Exception|   File "/home/validation1/testrunner/repository/ksft/drivers/net/hw/rss_api.py", line 400, in test_rss_ctx_add
+# Exception|     ctx = cfg.ethnl.rss_create_act({"header": {"dev-index": cfg.ifindex}})
+# Exception|   File "/home/validation1/testrunner/repository/ksft/net/lib/ynl/pyynl/lib/ynl.py", line 1440, in _op
+# Exception|     return self._ops(ops)[0]
+# Exception|            ~~~~~~~~~^^^^^
+# Exception|   File "/home/validation1/testrunner/repository/ksft/net/lib/ynl/pyynl/lib/ynl.py", line 1397, in _ops
+# Exception|     raise NlError(nl_msg)
+# Exception| net.lib.ynl.pyynl.lib.ynl.NlError: Netlink error: Operation not supported
+# Exception| 
+not ok 11 rss_api.test_rss_ctx_add
+# Exception| Traceback (most recent call last):
+# Exception|   File "/home/validation1/testrunner/repository/ksft/net/lib/py/ksft.py", line 420, in ksft_run
+# Exception|     func(*args)
+# Exception|     ~~~~^^^^^^^
+# Exception|   File "/home/validation1/testrunner/repository/ksft/drivers/net/hw/rss_api.py", line 435, in test_rss_ctx_ntf
+# Exception|     ctx = cfg.ethnl.rss_create_act({"header": {"dev-index": cfg.ifindex}})
+# Exception|   File "/home/validation1/testrunner/repository/ksft/net/lib/ynl/pyynl/lib/ynl.py", line 1440, in _op
+# Exception|     return self._ops(ops)[0]
+# Exception|            ~~~~~~~~~^^^^^
+# Exception|   File "/home/validation1/testrunner/repository/ksft/net/lib/ynl/pyynl/lib/ynl.py", line 1397, in _ops
+# Exception|     raise NlError(nl_msg)
+# Exception| net.lib.ynl.pyynl.lib.ynl.NlError: Netlink error: Operation not supported
+# Exception| 
+not ok 12 rss_api.test_rss_ctx_ntf
+# Totals: pass:5 fail:7 xfail:0 xpass:0 skip:0 error:0
