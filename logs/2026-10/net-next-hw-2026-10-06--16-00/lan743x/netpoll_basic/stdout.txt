@@ -1,0 +1,34 @@
+# Interface: enp134s0, driver: lan743x
+TAP version 13
+1..1
+# Exception| Traceback (most recent call last):
+# Exception|   File "/home/validation1/testrunner/repository/ksft/net/lib/py/ksft.py", line 420, in ksft_run
+# Exception|     func(*args)
+# Exception|     ~~~~^^^^^^^
+# Exception|   File "/home/validation1/testrunner/repository/ksft/drivers/net/netpoll_basic.py", line 360, in test_netpoll
+# Exception|     configure_network(ifname)
+# Exception|     ~~~~~~~~~~~~~~~~~^^^^^^^^
+# Exception|   File "/home/validation1/testrunner/repository/ksft/drivers/net/netpoll_basic.py", line 336, in configure_network
+# Exception|     prev_queues = ethtool_get_queues_cnt(ifname)
+# Exception|   File "/home/validation1/testrunner/repository/ksft/drivers/net/netpoll_basic.py", line 103, in ethtool_get_queues_cnt
+# Exception|     ethtool_result = ethtool(f"-l {interface_name}", json=True)[0]
+# Exception|                      ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+# Exception|   File "/home/validation1/testrunner/repository/ksft/net/lib/py/utils.py", line 276, in ethtool
+# Exception|     return tool('ethtool', args, json=json, ns=ns, host=host)
+# Exception|   File "/home/validation1/testrunner/repository/ksft/net/lib/py/utils.py", line 252, in tool
+# Exception|     cmd_obj = cmd(cmd_str, ns=ns, host=host)
+# Exception|   File "/home/validation1/testrunner/repository/ksft/net/lib/py/utils.py", line 101, in __init__
+# Exception|     self.process(terminate=False, fail=fail, expect_fail=expect_fail,
+# Exception|     ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+# Exception|                  timeout=timeout)
+# Exception|                  ^^^^^^^^^^^^^^^^
+# Exception|   File "/home/validation1/testrunner/repository/ksft/net/lib/py/utils.py", line 134, in process
+# Exception|     raise CmdExitFailure("Command failed", self)
+# Exception| net.lib.py.utils.CmdExitFailure: Command failed
+# Exception| CMD: ethtool --json -l enp134s0
+# Exception|   EXIT: 1
+# Exception|   STDOUT: [ ]
+# Exception|   STDERR: netlink error: Operation not supported
+# Exception| 
+not ok 1 netpoll_basic.test_netpoll
+# Totals: pass:0 fail:1 xfail:0 xpass:0 skip:0 error:0
