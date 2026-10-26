@@ -1,6 +1,6 @@
 # LAN743x Netdev CI Results
 
-Public NIPA-shaped test results for the Microchip **LAN7430 EVB rev 2.3**,
+Public NIPA-shaped test results for the Microchip **LAN743x** family EVBs (LAN7430, LAN7431, PCI11x1x),
 tested against `net-next-hw` snapshots on a 2-hour cadence from the
 Hauppauge, NY lab.
 
