@@ -1,0 +1,26 @@
+Traceback (most recent call last):
+  File "/home/validation1/testrunner/repository/ksft/drivers/net/psp.py", line 1209, in <module>
+    main()
+    ~~~~^^
+  File "/home/validation1/testrunner/repository/ksft/drivers/net/psp.py", line 1149, in main
+    env = NetDrvContEnv(__file__, primary_rx_redirect=True)
+  File "/home/validation1/testrunner/repository/ksft/drivers/net/lib/py/env.py", line 460, in __init__
+    self.attach_bpf()
+    ~~~~~~~~~~~~~~~^^
+  File "/home/validation1/testrunner/repository/ksft/drivers/net/lib/py/env.py", line 594, in attach_bpf
+    if self._tc_ensure_clsact():
+       ~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/home/validation1/testrunner/repository/ksft/drivers/net/lib/py/env.py", line 553, in _tc_ensure_clsact
+    cmd(f"tc qdisc add dev {ifname} clsact")
+    ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/validation1/testrunner/repository/ksft/net/lib/py/utils.py", line 101, in __init__
+    self.process(terminate=False, fail=fail, expect_fail=expect_fail,
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                 timeout=timeout)
+                 ^^^^^^^^^^^^^^^^
+  File "/home/validation1/testrunner/repository/ksft/net/lib/py/utils.py", line 134, in process
+    raise CmdExitFailure("Command failed", self)
+net.lib.py.utils.CmdExitFailure: Command failed
+CMD: tc qdisc add dev enp135s0 clsact
+  EXIT: 2
+  STDERR: Error: Specified qdisc kind is unknown.
