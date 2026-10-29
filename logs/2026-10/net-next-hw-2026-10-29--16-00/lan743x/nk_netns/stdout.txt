@@ -1,0 +1,25 @@
+# WARN: LOCAL_V6 fc00:100::1 not configured with nodad
+# Interface: enp135s0, driver: lan743x
+TAP version 13
+1..1
+# Exception| Traceback (most recent call last):
+# Exception|   File "/home/validation1/testrunner/repository/ksft/net/lib/py/ksft.py", line 420, in ksft_run
+# Exception|     func(*args)
+# Exception|     ~~~~^^^^^^^
+# Exception|   File "/home/validation1/testrunner/repository/ksft/drivers/net/hw/nk_netns.py", line 17, in test_ping
+# Exception|     cmd(f"ping -c 1 -W5 {cfg.nk_guest_ipv6}", host=cfg.remote)
+# Exception|     ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+# Exception|   File "/home/validation1/testrunner/repository/ksft/net/lib/py/utils.py", line 101, in __init__
+# Exception|     self.process(terminate=False, fail=fail, expect_fail=expect_fail,
+# Exception|     ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+# Exception|                  timeout=timeout)
+# Exception|                  ^^^^^^^^^^^^^^^^
+# Exception|   File "/home/validation1/testrunner/repository/ksft/net/lib/py/utils.py", line 134, in process
+# Exception|     raise CmdExitFailure("Command failed", self)
+# Exception| net.lib.py.utils.CmdExitFailure: Command failed
+# Exception| CMD[remote]: ping -c 1 -W5 fc00:200::2:2
+# Exception|   EXIT: 2
+# Exception|   STDERR: ping: connect: Network is unreachable
+# Exception| 
+not ok 1 nk_netns.test_ping
+# Totals: pass:0 fail:1 xfail:0 xpass:0 skip:0 error:0
