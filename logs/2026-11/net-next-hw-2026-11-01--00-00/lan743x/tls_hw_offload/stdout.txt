@@ -1,0 +1,27 @@
+TLS Hardware Offload Two-Node Test
+
+Usage:
+  /home/validation1/testrunner/repository/ksft/drivers/net/hw/tls_hw_offload server [OPTIONS]
+  /home/validation1/testrunner/repository/ksft/drivers/net/hw/tls_hw_offload client -s <ip> [OPTIONS]
+
+Options:
+  -s <ip>       Server IPv4/IPv6 address (client, required)
+  -p <port>     Server port (default: 4433)
+  -4            Force IPv4 (default: auto/either)
+  -6            Force IPv6 (default: auto/either)
+  -b <size>     Send buffer size in bytes (default: 16384)
+  -r <max>      Use random send buffer sizes (1..<max>)
+  -v <version>  TLS version: 1.2 (default: 1.2)
+  -c <cipher>   Cipher: 128 or 256 (default: 128)
+  -n <N>        Send/echo iterations (default: 100)
+  -t <type>     Record type test: 21=alert, 22=handshake
+  -V            Verbose: log every iteration
+  -h            Show this help message
+
+Example:
+  Node A: /home/validation1/testrunner/repository/ksft/drivers/net/hw/tls_hw_offload server
+  Node B: /home/validation1/testrunner/repository/ksft/drivers/net/hw/tls_hw_offload client -s 192.168.20.2
+
+IPv6 Example:
+  Node A: /home/validation1/testrunner/repository/ksft/drivers/net/hw/tls_hw_offload server -6
+  Node B: /home/validation1/testrunner/repository/ksft/drivers/net/hw/tls_hw_offload client -6 -s fd00::2
